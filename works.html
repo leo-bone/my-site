@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>投资观察与灵感片段 | leo</title>
+  <meta
+    name="description"
+    content="leo 的作品页：以图片形式记录投资观察、城市与生活的灵感片段，展示他在研究之外的审美与兴趣。"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+  />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:px-6">
+      <a href="index.html" class="flex items-center gap-2">
+        <span
+          class="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-lg font-semibold tracking-tight text-transparent"
+        >
+          MY SPACE
+        </span>
+      </a>
+      <button
+        id="nav-toggle"
+        class="inline-flex items-center justify-center rounded-md p-2 text-slate-300 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 md:hidden"
+        aria-label="打开主导航"
+      >
+        <span class="sr-only">打开主导航</span>
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div id="nav-menu" class="hidden flex-col gap-2 md:flex md:flex-row md:items-center md:gap-6">
+        <a href="index.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          首页
+        </a>
+        <a href="about.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          关于
+        </a>
+        <a
+          href="works.html"
+          class="text-sm font-medium text-sky-400"
+          aria-current="page"
+        >
+          作品
+        </a>
+        <a href="contact.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          联系
+        </a>
+      </div>
+    </nav>
+    <!-- mobile dropdown -->
+    <div id="nav-menu-mobile" class="hidden border-t border-slate-800 bg-slate-950 md:hidden">
+      <div class="mx-auto flex max-w-5xl flex-col px-4 py-2 space-y-1">
+        <a
+          href="index.html"
+          class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900"
+        >
+          首页
+        </a>
+        <a href="about.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          关于
+        </a>
+        <a
+          href="works.html"
+          class="block rounded-md px-2 py-2 text-sm font-medium text-sky-400"
+          aria-current="page"
+        >
+          作品
+        </a>
+        <a href="contact.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          联系
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-1">
+    <section class="mx-auto max-w-5xl px-4 py-10 md:px-6 md:py-16">
+      <div class="space-y-3 text-center md:text-left">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">
+          Works
+        </p>
+        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+          作品集
+        </h1>
+        <p class="text-sm text-slate-300 sm:text-base">
+          一些与城市、技术（尤其是 AI 与 Web3）以及日常生活相关的瞬间与创作片段，以图片的形式呈现。
+        </p>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Item 1 -->
+        <button
+          class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 text-left shadow-lg shadow-slate-950/60 transition duration-300 hover:-translate-y-1 hover:border-sky-500/80 hover:shadow-sky-700/40"
+          data-work-image="https://images.pexels.com/photos/3404200/pexels-photo-3404200.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        >
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src="https://images.pexels.com/photos/3404200/pexels-photo-3404200.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="夜色城市灯光占位图"
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex items-center justify-between px-3 py-3 text-xs text-slate-200">
+            <span class="truncate">夜色城市</span>
+            <span class="text-slate-400">摄影</span>
+          </div>
+        </button>
+
+        <!-- Item 2 -->
+        <button
+          class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 text-left shadow-lg shadow-slate-950/60 transition duration-300 hover:-translate-y-1 hover:border-sky-500/80 hover:shadow-sky-700/40"
+          data-work-image="https://images.pexels.com/photos/18104/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200"
+        >
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src="https://images.pexels.com/photos/18104/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800"
+              alt="极简建筑线条占位图"
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex items-center justify-between px-3 py-3 text-xs text-slate-200">
+            <span class="truncate">极简线条</span>
+            <span class="text-slate-400">构图</span>
+          </div>
+        </button>
+
+        <!-- Item 3 -->
+        <button
+          class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 text-left shadow-lg shadow-slate-950/60 transition duration-300 hover:-translate-y-1 hover:border-sky-500/80 hover:shadow-sky-700/40"
+          data-work-image="https://images.pexels.com/photos/34088/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200"
+        >
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src="https://images.pexels.com/photos/34088/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800"
+              alt="星空与银河占位图"
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex items-center justify-between px-3 py-3 text-xs text-slate-200">
+            <span class="truncate">银河碎片</span>
+            <span class="text-slate-400">夜空</span>
+          </div>
+        </button>
+
+        <!-- Item 4 -->
+        <button
+          class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 text-left shadow-lg shadow-slate-950/60 transition duration-300 hover:-translate-y-1 hover:border-sky-500/80 hover:shadow-sky-700/40"
+          data-work-image="https://images.pexels.com/photos/34078/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1200"
+        >
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src="https://images.pexels.com/photos/34078/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=800"
+              alt="海边日落占位图"
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex items-center justify-between px-3 py-3 text-xs text-slate-200">
+            <span class="truncate">海边日落</span>
+            <span class="text-slate-400">风景</span>
+          </div>
+        </button>
+
+        <!-- Item 5 -->
+        <button
+          class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 text-left shadow-lg shadow-slate-950/60 transition duration-300 hover:-translate-y-1 hover:border-sky-500/80 hover:shadow-sky-700/40"
+          data-work-image="https://images.pexels.com/photos/110854/pexels-photo-110854.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        >
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src="https://images.pexels.com/photos/110854/pexels-photo-110854.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="城市地铁灯光占位图"
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex items-center justify-between px-3 py-3 text-xs text-slate-200">
+            <span class="truncate">城市节奏</span>
+            <span class="text-slate-400">街拍</span>
+          </div>
+        </button>
+
+        <!-- Item 6 -->
+        <button
+          class="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 text-left shadow-lg shadow-slate-950/60 transition duration-300 hover:-translate-y-1 hover:border-sky-500/80 hover:shadow-sky-700/40"
+          data-work-image="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&cs=tinysrgb&w=1200"
+        >
+          <div class="aspect-[4/3] overflow-hidden">
+            <img
+              src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&cs=tinysrgb&w=800"
+              alt="笔记本电脑与代码占位图"
+              class="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex items-center justify-between px-3 py-3 text-xs text-slate-200">
+            <span class="truncate">代码与日常</span>
+            <span class="text-slate-400">日常</span>
+          </div>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal for enlarged image -->
+  <div
+    id="work-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 px-4 py-6"
+    role="dialog"
+    aria-modal="true"
+  >
+    <button
+      id="work-modal-close"
+      class="absolute right-4 top-4 rounded-full border border-slate-700 bg-slate-900/70 p-2 text-slate-200 shadow-lg shadow-black/60 transition hover:border-sky-500 hover:text-white"
+      aria-label="关闭大图预览"
+    >
+      ✕
+    </button>
+    <div class="max-h-full w-full max-w-3xl overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/90 shadow-2xl">
+      <img
+        id="work-modal-image"
+        src=""
+        alt="作品大图预览"
+        class="h-full w-full max-h-[75vh] object-contain"
+      />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-slate-400 md:flex-row md:px-6">
+      <p>© <span id="year"></span> leo. 保留所有权利。</p>
+      <p class="flex items-center gap-1">
+        <span class="h-1 w-1 rounded-full bg-sky-500"></span>
+        <span>点击任意作品可查看大图</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>关于 leo | 投资人 & 分析师</title>
+  <meta
+    name="description"
+    content="关于 leo：一名长期关注一级与二级市场的投资人 & 分析师。了解他的背景、研究方式与工作之外的兴趣爱好。"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+  />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:px-6">
+      <a href="index.html" class="flex items-center gap-2">
+        <span
+          class="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-lg font-semibold tracking-tight text-transparent"
+        >
+          MY SPACE
+        </span>
+      </a>
+      <button
+        id="nav-toggle"
+        class="inline-flex items-center justify-center rounded-md p-2 text-slate-300 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 md:hidden"
+        aria-label="打开主导航"
+      >
+        <span class="sr-only">打开主导航</span>
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div id="nav-menu" class="hidden flex-col gap-2 md:flex md:flex-row md:items-center md:gap-6">
+        <a href="index.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          首页
+        </a>
+        <a
+          href="about.html"
+          class="text-sm font-medium text-sky-400"
+          aria-current="page"
+        >
+          关于
+        </a>
+        <a href="works.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          作品
+        </a>
+        <a href="contact.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          联系
+        </a>
+      </div>
+    </nav>
+    <!-- mobile dropdown -->
+    <div id="nav-menu-mobile" class="hidden border-t border-slate-800 bg-slate-950 md:hidden">
+      <div class="mx-auto flex max-w-5xl flex-col px-4 py-2 space-y-1">
+        <a
+          href="index.html"
+          class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900"
+        >
+          首页
+        </a>
+        <a
+          href="about.html"
+          class="block rounded-md px-2 py-2 text-sm font-medium text-sky-400"
+          aria-current="page"
+        >
+          关于
+        </a>
+        <a href="works.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          作品
+        </a>
+        <a href="contact.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          联系
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-1">
+    <section class="mx-auto max-w-5xl px-4 py-10 md:px-6 md:py-16">
+      <div class="space-y-3 text-center md:text-left">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">
+          About
+        </p>
+        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+          关于我
+        </h1>
+        <p class="text-sm text-slate-300 sm:text-base">
+          一点关于 leo 的背景介绍、投资偏好，以及工作之外正在思考和好奇的事情。
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.6fr)] md:items-center">
+        <!-- Avatar -->
+        <div class="flex justify-center md:justify-start">
+          <div class="relative">
+            <div
+              class="h-40 w-40 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/60 shadow-xl md:h-48 md:w-48"
+            >
+              <img
+                src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="个人头像占位图"
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
+            <div class="pointer-events-none absolute -right-4 -top-4 h-16 w-16 rounded-full bg-sky-500/20 blur-2xl"></div>
+            <div class="pointer-events-none absolute -left-6 bottom-0 h-16 w-16 rounded-full bg-purple-500/10 blur-2xl"></div>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="space-y-5 text-sm leading-relaxed text-slate-200 sm:text-[0.95rem]">
+          <p>
+            你好，我是 leo，一名投资人 & 分析师，主要关注一级与二级市场中具有长期复利能力的公司和资产。
+            我喜欢从基本面出发，把复杂的商业与数据拆解成可以被理解、被验证的假设。
+          </p>
+          <p>
+            在投资之外，我也会记录一些对周期、企业家精神以及技术变革的观察，
+            特别是围绕 AI 与 Web3 这些长周期主题，
+            偶尔尝试用更直观的方式（图表、文字或小项目）呈现这些思考，帮助自己建立框架，也方便与他人交流。
+          </p>
+          <p>
+            如果你对投资、研究方法或者某些行业话题感兴趣，欢迎在「作品」页随意浏览，
+            也可以通过「联系」页把你的问题或想法发给我。
+          </p>
+
+          <!-- Interests -->
+          <div class="pt-2">
+            <h2 class="text-sm font-semibold tracking-tight text-slate-100">
+              兴趣爱好
+            </h2>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <span
+                class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200 shadow-sm shadow-slate-900/40"
+              >
+                行业研究 & 投资框架
+              </span>
+              <span
+                class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200 shadow-sm shadow-slate-900/40"
+              >
+                AI & Web3 产业观察
+              </span>
+              <span
+                class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200 shadow-sm shadow-slate-900/40"
+              >
+                商业传记 & 宏观阅读
+              </span>
+              <span
+                class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200 shadow-sm shadow-slate-900/40"
+              >
+                极简主义 & 记录型写作
+              </span>
+              <span
+                class="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-200 shadow-sm shadow-slate-900/40"
+              >
+                健身 & 旅行
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-slate-400 md:flex-row md:px-6">
+      <p>© <span id="year"></span> leo. 保留所有权利。</p>
+      <p class="flex items-center gap-1">
+        <span class="h-1 w-1 rounded-full bg-sky-500"></span>
+        <span>欢迎通过作品与我认识</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+

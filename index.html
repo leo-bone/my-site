@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>leo | 投资人 & 分析师个人主页</title>
+  <meta
+    name="description"
+    content="leo，投资人 & 分析师，重点关注 AI 与 Web3 相关方向。分享投资观察、行业洞见与个人思考，展示部分研究框架与工作之外的灵感作品。"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+  />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:px-6">
+      <a href="index.html" class="flex items-center gap-2">
+        <span
+          class="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-lg font-semibold tracking-tight text-transparent"
+        >
+          MY SPACE
+        </span>
+      </a>
+      <button
+        id="nav-toggle"
+        class="inline-flex items-center justify-center rounded-md p-2 text-slate-300 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 md:hidden"
+        aria-label="打开主导航"
+      >
+        <span class="sr-only">打开主导航</span>
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div id="nav-menu" class="hidden flex-col gap-2 md:flex md:flex-row md:items-center md:gap-6">
+        <a
+          href="index.html"
+          class="text-sm font-medium text-sky-400"
+          aria-current="page"
+        >
+          首页
+        </a>
+        <a href="about.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          关于
+        </a>
+        <a href="works.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          作品
+        </a>
+        <a href="contact.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          联系
+        </a>
+      </div>
+    </nav>
+    <!-- mobile dropdown -->
+    <div id="nav-menu-mobile" class="hidden border-t border-slate-800 bg-slate-950 md:hidden">
+      <div class="mx-auto flex max-w-5xl flex-col px-4 py-2 space-y-1">
+        <a
+          href="index.html"
+          class="block rounded-md px-2 py-2 text-sm font-medium text-sky-400"
+          aria-current="page"
+        >
+          首页
+        </a>
+        <a href="about.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          关于
+        </a>
+        <a href="works.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          作品
+        </a>
+        <a href="contact.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          联系
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-1">
+    <section class="mx-auto flex max-w-5xl flex-col items-center gap-10 px-4 py-12 md:flex-row md:py-20 md:px-6">
+      <!-- Text -->
+      <div class="w-full md:w-1/2 space-y-6 fade-in-up">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sky-400">
+          leo · Investor & Analyst
+        </p>
+        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+          欢迎来到我的世界
+        </h1>
+        <p class="text-sm leading-relaxed text-slate-300 sm:text-base">
+          这里是 leo 的个人空间，一名长期关注一级与二级市场的投资人 & 分析师。
+          在这里我会整理部分投资笔记、行业洞见，以及工作之外的一些兴趣与作品，也欢迎你通过留言与我交流想法。
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="about.html"
+            class="inline-flex items-center rounded-full bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-sky-500/20 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+          >
+            了解更多关于我
+          </a>
+          <a
+            href="works.html"
+            class="inline-flex items-center rounded-full border border-slate-700 px-5 py-2 text-sm font-medium text-slate-200 transition duration-300 hover:border-sky-500 hover:text-white"
+          >
+            查看我的作品
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="w-full md:w-1/2">
+        <div
+          class="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-1 shadow-2xl"
+        >
+          <div class="relative overflow-hidden rounded-3xl bg-slate-950/80">
+            <img
+              src="https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&w=1200"
+              alt="抽象科技术占位图"
+              class="h-full w-full max-h-80 object-cover object-center transition duration-500 hover:scale-105"
+            />
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-sky-500/10 via-transparent to-purple-500/20"></div>
+          </div>
+          <div class="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-sky-500/20 blur-3xl"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-slate-400 md:flex-row md:px-6">
+      <p>© <span id="year"></span> leo. 保留所有权利。</p>
+      <p class="flex items-center gap-1">
+        <span class="h-1 w-1 rounded-full bg-sky-500"></span>
+        <span>用 HTML · Tailwind CSS · JavaScript 构建</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+

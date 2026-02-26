@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>联系 leo | 投资交流 & 合作</title>
+  <meta
+    name="description"
+    content="联系 leo：如果你对投资、研究方法或潜在合作感兴趣，可通过邮箱、社交账号或页面下方的表单与他取得联系。"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
+  />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:px-6">
+      <a href="index.html" class="flex items-center gap-2">
+        <span
+          class="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-lg font-semibold tracking-tight text-transparent"
+        >
+          MY SPACE
+        </span>
+      </a>
+      <button
+        id="nav-toggle"
+        class="inline-flex items-center justify-center rounded-md p-2 text-slate-300 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 md:hidden"
+        aria-label="打开主导航"
+      >
+        <span class="sr-only">打开主导航</span>
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div id="nav-menu" class="hidden flex-col gap-2 md:flex md:flex-row md:items-center md:gap-6">
+        <a href="index.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          首页
+        </a>
+        <a href="about.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          关于
+        </a>
+        <a href="works.html" class="text-sm font-medium text-slate-300 hover:text-white">
+          作品
+        </a>
+        <a
+          href="contact.html"
+          class="text-sm font-medium text-sky-400"
+          aria-current="page"
+        >
+          联系
+        </a>
+      </div>
+    </nav>
+    <!-- mobile dropdown -->
+    <div id="nav-menu-mobile" class="hidden border-t border-slate-800 bg-slate-950 md:hidden">
+      <div class="mx-auto flex max-w-5xl flex-col px-4 py-2 space-y-1">
+        <a
+          href="index.html"
+          class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900"
+        >
+          首页
+        </a>
+        <a href="about.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          关于
+        </a>
+        <a href="works.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
+          作品
+        </a>
+        <a
+          href="contact.html"
+          class="block rounded-md px-2 py-2 text-sm font-medium text-sky-400"
+          aria-current="page"
+        >
+          联系
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-1">
+    <section class="mx-auto max-w-5xl px-4 py-10 md:px-6 md:py-16">
+      <div class="space-y-3 text-center md:text-left">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-sky-400">
+          Contact
+        </p>
+        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">
+          联系 leo
+        </h1>
+        <p class="text-sm text-slate-300 sm:text-base">
+          如果你对投资、行业研究、个人成长或潜在合作有想法，欢迎给我发消息，我们可以从一次简单的对话开始。
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.5fr)] md:items-start">
+        <!-- Contact Info -->
+        <div class="space-y-6 text-sm text-slate-200">
+          <div>
+            <h2 class="text-sm font-semibold tracking-tight text-slate-100">
+              直接联系
+            </h2>
+            <div class="mt-3 space-y-2">
+              <p>
+                <span class="text-slate-400">邮箱：</span>
+                <a
+                  href="mailto:youremail@example.com"
+                  class="text-sky-400 underline-offset-2 hover:underline"
+                >
+                  youremail@example.com
+                </a>
+              </p>
+              <p>
+                <span class="text-slate-400">微信：</span>
+                <span class="text-slate-200">可在邮件中索取微信号</span>
+              </p>
+              <p>
+                <span class="text-slate-400">微博：</span>
+                <a
+                  href="https://weibo.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-sky-400 underline-offset-2 hover:underline"
+                >
+                  微博主页链接
+                </a>
+              </p>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-slate-800 bg-slate-900/60 px-4 py-3 text-xs text-slate-300">
+            <p>
+              表单默认使用 Formspree 免费服务，你可以在获取自己的 endpoint 后，
+              把下面表单中的 <code class="rounded bg-slate-800 px-1 py-0.5 text-[0.7rem]">action</code> 地址替换掉即可。
+            </p>
+          </div>
+        </div>
+
+        <!-- Formspree Form -->
+        <div>
+          <form
+            action="https://formspree.io/f/yourFormId"
+            method="POST"
+            class="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/60 p-5 shadow-xl shadow-slate-950/60"
+          >
+            <div>
+              <label for="name" class="block text-xs font-medium text-slate-300">
+                姓名
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="mt-1 block w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/40"
+                placeholder="如何称呼你？"
+                required
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-xs font-medium text-slate-300">
+                邮箱
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="mt-1 block w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/40"
+                placeholder="your@email.com"
+                required
+              />
+            </div>
+            <div>
+              <label for="message" class="block text-xs font-medium text-slate-300">
+                留言
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="mt-1 block w-full rounded-lg border border-slate-700 bg-slate-950/60 px-3 py-2 text-sm text-slate-100 outline-none ring-0 transition placeholder:text-slate-500 focus:border-sky-500 focus:ring-2 focus:ring-sky-500/40"
+                placeholder="想对我说些什么？"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="inline-flex w-full items-center justify-center rounded-full bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-sky-500/30 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-sky-500/70 focus:ring-offset-2 focus:ring-offset-slate-950"
+            >
+              发送留言
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-slate-400 md:flex-row md:px-6">
+      <p>© <span id="year"></span> leo. 保留所有权利。</p>
+      <p class="flex items-center gap-1">
+        <span class="h-1 w-1 rounded-full bg-sky-500"></span>
+        <span>期待在这里收到你的消息</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+/* 全局微调与动画 */
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* 移动端点击态优化 */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
