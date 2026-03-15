@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UIChain 管理后台</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:       #060810;
+      --bg2:      #0d0f1a;
+      --bg3:      #131625;
+      --surface:  #181b2e;
+      --surface2: #1e2237;
+      --border:   rgba(99,179,255,0.1);
+      --border2:  rgba(99,179,255,0.18);
+      --cyan:     #00d4ff;
+      --blue:     #3b6ef8;
+      --purple:   #a78bfa;
+      --green:    #10b981;
+      --yellow:   #f59e0b;
+      --red:      #ef4444;
+      --orange:   #f97316;
+      --text:     #e2e8f8;
+      --muted:    #7a85aa;
+      --white:    #ffffff;
+      --sidebar-w:240px;
+      --header-h: 60px;
+      --r:        10px;
+      --tr:       0.22s cubic-bezier(.4,0,.2,1);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;font-size:14px;line-height:1.5}
+    ::-webkit-scrollbar{width:5px;height:5px}
+    ::-webkit-scrollbar-track{background:var(--bg)}
+    ::-webkit-scrollbar-thumb{background:rgba(99,179,255,0.2);border-radius:3px}
+
+    /* ── LAYOUT ── */
+    .layout{display:flex;min-height:100vh}
+
+    /* ── SIDEBAR ── */
+    .sidebar{
+      width:var(--sidebar-w);flex-shrink:0;
+      background:var(--bg2);border-right:1px solid var(--border);
+      display:flex;flex-direction:column;
+      position:fixed;top:0;left:0;height:100vh;z-index:100;
+      transition:transform var(--tr);
+    }
+    .sidebar-logo{
+      height:var(--header-h);display:flex;align-items:center;gap:10px;
+      padding:0 20px;border-bottom:1px solid var(--border);flex-shrink:0;
+    }
+    .logo-icon{
+      width:32px;height:32px;border-radius:8px;flex-shrink:0;
+      background:linear-gradient(135deg,var(--cyan),var(--blue));
+      display:flex;align-items:center;justify-content:center;
+    }
+    .logo-icon svg{width:18px;height:18px;stroke:white;fill:none;stroke-width:2}
+    .logo-text{font-weight:800;font-size:16px;letter-spacing:-0.02em}
+    .logo-text span{color:var(--cyan)}
+
+    .sidebar-nav{flex:1;overflow-y:auto;padding:12px 0}
+    .nav-group-label{
+      font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;
+      color:var(--muted);padding:12px 20px 6px;
+    }
+    .nav-item{
+      display:flex;align-items:center;gap:10px;
+      padding:9px 20px;cursor:pointer;border-radius:0;
+      color:var(--muted);font-size:13px;font-weight:500;
+      transition:all var(--tr);position:relative;
+      border-left:3px solid transparent;
+      user-select:none;
+    }
+    .nav-item:hover{color:var(--text);background:rgba(255,255,255,0.04)}
+    .nav-item.active{
+      color:var(--cyan);background:rgba(0,212,255,0.08);
+      border-left-color:var(--cyan);
+    }
+    .nav-item svg{width:16px;height:16px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.8}
+    .nav-badge{
+      margin-left:auto;font-size:10px;font-weight:700;
+      background:var(--cyan);color:var(--bg);
+      padding:2px 7px;border-radius:100px;
+    }
+    .nav-badge.red{background:var(--red);color:white}
+    .nav-badge.yellow{background:var(--yellow);color:var(--bg)}
+
+    .sidebar-footer{
+      padding:16px 20px;border-top:1px solid var(--border);
+      display:flex;align-items:center;gap:10px;
+    }
+    .user-avatar{
+      width:34px;height:34px;border-radius:50%;flex-shrink:0;
+      background:linear-gradient(135deg,var(--blue),var(--purple));
+      display:flex;align-items:center;justify-content:center;font-size:14px;
+    }
+    .user-info{flex:1;min-width:0}
+    .user-name{font-size:13px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .user-role{font-size:11px;color:var(--muted)}
+
+    /* ── MAIN ── */
+    .main{margin-left:var(--sidebar-w);flex:1;display:flex;flex-direction:column;min-height:100vh}
+
+    /* ── TOPBAR ── */
+    .topbar{
+      height:var(--header-h);background:rgba(6,8,16,0.8);
+      backdrop-filter:blur(20px);border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 28px;position:sticky;top:0;z-index:50;
+    }
+    .topbar-left{display:flex;align-items:center;gap:16px}
+    .page-title{font-size:17px;font-weight:700;color:var(--white)}
+    .breadcrumb{font-size:12px;color:var(--muted)}
+    .topbar-right{display:flex;align-items:center;gap:12px}
+    .topbar-btn{
+      width:36px;height:36px;border-radius:var(--r);
+      background:var(--surface);border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;color:var(--muted);transition:all var(--tr);position:relative;
+    }
+    .topbar-btn:hover{color:var(--text);border-color:var(--border2)}
+    .topbar-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+    .notif-dot{
+      position:absolute;top:6px;right:6px;
+      width:7px;height:7px;border-radius:50%;background:var(--red);
+      border:1.5px solid var(--bg);
+    }
+    .search-bar{
+      display:flex;align-items:center;gap:8px;
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--r);padding:8px 14px;width:220px;
+      transition:border-color var(--tr);
+    }
+    .search-bar:focus-within{border-color:rgba(0,212,255,0.3)}
+    .search-bar svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;flex-shrink:0}
+    .search-bar input{background:none;border:none;outline:none;font-size:13px;color:var(--text);width:100%;font-family:inherit}
+    .search-bar input::placeholder{color:var(--muted)}
+
+    /* ── CONTENT ── */
+    .content{flex:1;padding:28px;overflow-y:auto}
+    .page{display:none}
+    .page.active{display:block}
+
+    /* ── STATS ROW ── */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+    .stat-card{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--r);padding:20px 22px;
+      display:flex;flex-direction:column;gap:12px;
+      transition:all var(--tr);cursor:default;
+    }
+    .stat-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+    .stat-header{display:flex;align-items:flex-start;justify-content:space-between}
+    .stat-icon{
+      width:40px;height:40px;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .stat-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8}
+    .stat-change{
+      font-size:11px;font-weight:600;padding:3px 8px;border-radius:100px;
+    }
+    .stat-change.up{background:rgba(16,185,129,0.12);color:var(--green)}
+    .stat-change.down{background:rgba(239,68,68,0.12);color:var(--red)}
+    .stat-num{font-size:28px;font-weight:800;letter-spacing:-0.02em;color:var(--white)}
+    .stat-label{font-size:12px;color:var(--muted)}
+
+    /* ── CHART AREA ── */
+    .charts-row{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:24px}
+    .card{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--r);overflow:hidden;
+    }
+    .card-header{
+      padding:18px 22px 0;display:flex;align-items:center;justify-content:space-between;
+      margin-bottom:16px;
+    }
+    .card-title{font-size:14px;font-weight:700;color:var(--white)}
+    .card-subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+    .card-action{
+      font-size:12px;font-weight:600;color:var(--cyan);cursor:pointer;
+      background:none;border:none;font-family:inherit;
+    }
+    .card-body{padding:0 22px 22px}
+
+    /* ── MINI CHART (pure CSS bar) ── */
+    .bar-chart{display:flex;align-items:flex-end;gap:6px;height:120px;padding-top:8px}
+    .bar-col{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1}
+    .bar{
+      width:100%;border-radius:4px 4px 0 0;
+      background:linear-gradient(to top,var(--blue),var(--cyan));
+      transition:height 0.6s cubic-bezier(.4,0,.2,1);
+      min-height:4px;
+    }
+    .bar.purple{background:linear-gradient(to top,var(--purple),#c084fc)}
+    .bar-label{font-size:10px;color:var(--muted)}
+
+    /* ── DONUT ── */
+    .donut-wrap{display:flex;align-items:center;gap:24px;padding:0 22px 22px}
+    .donut{position:relative;width:120px;height:120px;flex-shrink:0}
+    .donut svg{transform:rotate(-90deg)}
+    .donut-center{
+      position:absolute;inset:0;display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+    }
+    .donut-center-num{font-size:22px;font-weight:800;color:var(--white)}
+    .donut-center-label{font-size:10px;color:var(--muted)}
+    .donut-legend{display:flex;flex-direction:column;gap:10px;flex:1}
+    .legend-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+    .legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .legend-val{margin-left:auto;font-weight:600;color:var(--text)}
+
+    /* ── TABLE ── */
+    .table-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse}
+    thead tr{border-bottom:1px solid var(--border)}
+    th{
+      font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+      color:var(--muted);padding:10px 12px;text-align:left;white-space:nowrap;
+    }
+    td{padding:12px 12px;font-size:13px;border-bottom:1px solid rgba(99,179,255,0.05)}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:rgba(255,255,255,0.015)}
+    .status-badge{
+      display:inline-flex;align-items:center;gap:5px;
+      font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;
+    }
+    .status-badge::before{content:'';width:5px;height:5px;border-radius:50%}
+    .status-badge.active{background:rgba(16,185,129,0.12);color:var(--green)}
+    .status-badge.active::before{background:var(--green)}
+    .status-badge.pending{background:rgba(245,158,11,0.12);color:var(--yellow)}
+    .status-badge.pending::before{background:var(--yellow)}
+    .status-badge.paused{background:rgba(239,68,68,0.1);color:var(--red)}
+    .status-badge.paused::before{background:var(--red)}
+    .status-badge.review{background:rgba(167,139,250,0.12);color:var(--purple)}
+    .status-badge.review::before{background:var(--purple)}
+
+    /* ── PLATFORM TAGS ── */
+    .platform{
+      display:inline-flex;align-items:center;
+      font-size:11px;font-weight:600;padding:2px 9px;border-radius:5px;
+      background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text);
+    }
+    .platform.tiktok{background:rgba(0,0,0,0.3);border-color:rgba(255,255,255,0.1)}
+    .platform.instagram{background:rgba(193,53,132,0.12);border-color:rgba(193,53,132,0.2);color:#e879c0}
+    .platform.youtube{background:rgba(255,0,0,0.1);border-color:rgba(255,0,0,0.15);color:#ff6b6b}
+    .platform.wechat{background:rgba(9,187,7,0.1);border-color:rgba(9,187,7,0.15);color:#4ade80}
+
+    /* ── BTN ── */
+    .btn{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:13px;font-weight:600;padding:8px 16px;border-radius:var(--r);
+      border:none;cursor:pointer;font-family:inherit;transition:all var(--tr);
+    }
+    .btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+    .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--blue));color:white;box-shadow:0 0 16px rgba(0,212,255,0.2)}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 24px rgba(0,212,255,0.35)}
+    .btn-ghost{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+    .btn-ghost:hover{border-color:var(--border2);background:rgba(255,255,255,0.05)}
+    .btn-danger{background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.2)}
+    .btn-danger:hover{background:rgba(239,68,68,0.2)}
+    .btn-sm{padding:5px 12px;font-size:12px}
+
+    /* ── GRID UTILITIES ── */
+    .row{display:flex;gap:16px;margin-bottom:24px;align-items:stretch}
+    .col-full{flex:1}
+    .col-half{flex:1}
+    .mb24{margin-bottom:24px}
+
+    /* ── ACTIVITY FEED ── */
+    .activity-feed{display:flex;flex-direction:column;gap:0}
+    .activity-item{
+      display:flex;align-items:flex-start;gap:12px;
+      padding:12px 22px;border-bottom:1px solid rgba(99,179,255,0.05);
+    }
+    .activity-item:last-child{border-bottom:none}
+    .act-icon{
+      width:32px;height:32px;border-radius:8px;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;font-size:14px;
+    }
+    .act-body{flex:1;min-width:0}
+    .act-text{font-size:13px;color:var(--text);line-height:1.5}
+    .act-text strong{color:var(--white)}
+    .act-time{font-size:11px;color:var(--muted);margin-top:2px}
+
+    /* ── PROGRESS BAR ── */
+    .progress-row{display:flex;flex-direction:column;gap:14px;padding:0 22px 22px}
+    .progress-item{}
+    .progress-header{display:flex;justify-content:space-between;margin-bottom:6px}
+    .progress-label{font-size:13px;color:var(--text)}
+    .progress-val{font-size:13px;font-weight:600;color:var(--white)}
+    .progress-track{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+    .progress-fill{height:100%;border-radius:3px;transition:width 1s cubic-bezier(.4,0,.2,1)}
+
+    /* ── KOL CARDS ── */
+    .kol-grid-admin{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .kol-card-admin{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--r);padding:20px;transition:all var(--tr);
+    }
+    .kol-card-admin:hover{border-color:var(--border2);transform:translateY(-2px)}
+    .kol-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .kol-av{
+      width:44px;height:44px;border-radius:50%;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;font-size:18px;
+    }
+    .kol-info-name{font-size:14px;font-weight:700;color:var(--white)}
+    .kol-info-handle{font-size:12px;color:var(--muted)}
+    .kol-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+    .kol-metric-item{background:var(--bg3);border-radius:8px;padding:10px;text-align:center}
+    .kol-metric-v{font-size:15px;font-weight:700;color:var(--white)}
+    .kol-metric-l{font-size:10px;color:var(--muted);margin-top:2px}
+    .kol-actions{display:flex;gap:8px}
+
+    /* ── SUPPLY TABLE SECTION ── */
+    .supply-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+    .supply-stat-card{
+      background:var(--surface);border:1px solid var(--border);
+      border-radius:var(--r);padding:18px;
+    }
+    .supply-stat-icon{font-size:28px;margin-bottom:10px}
+    .supply-stat-num{font-size:24px;font-weight:800;color:var(--white);letter-spacing:-0.02em}
+    .supply-stat-label{font-size:12px;color:var(--muted)}
+
+    /* ── FORM ── */
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+    .form-group{display:flex;flex-direction:column;gap:6px}
+    .form-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em}
+    .form-input{
+      background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);
+      padding:10px 14px;font-size:13px;color:var(--text);font-family:inherit;
+      transition:border-color var(--tr);outline:none;
+    }
+    .form-input:focus{border-color:rgba(0,212,255,0.4)}
+    select.form-input{cursor:pointer}
+    option{background:var(--bg2)}
+
+    /* ── ALERT ── */
+    .alert{
+      display:flex;align-items:flex-start;gap:12px;
+      padding:14px 18px;border-radius:var(--r);margin-bottom:16px;
+      font-size:13px;
+    }
+    .alert svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-top:1px}
+    .alert-info{background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.15);color:var(--cyan)}
+    .alert-warn{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.15);color:var(--yellow)}
+    .alert-success{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);color:var(--green)}
+
+    /* ── SETTINGS ── */
+    .settings-section{margin-bottom:28px}
+    .settings-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+    .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(99,179,255,0.04)}
+    .toggle-row:last-child{border-bottom:none}
+    .toggle-label{font-size:13px;color:var(--text)}
+    .toggle-desc{font-size:11px;color:var(--muted);margin-top:2px}
+    .toggle{
+      width:40px;height:22px;border-radius:11px;
+      background:var(--border);cursor:pointer;position:relative;
+      transition:background var(--tr);flex-shrink:0;
+    }
+    .toggle.on{background:var(--cyan)}
+    .toggle::after{
+      content:'';position:absolute;top:3px;left:3px;
+      width:16px;height:16px;border-radius:50%;background:white;
+      transition:transform var(--tr);box-shadow:0 1px 3px rgba(0,0,0,0.3);
+    }
+    .toggle.on::after{transform:translateX(18px)}
+
+    /* ── EMPTY STATE ── */
+    .empty-state{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:60px 20px;text-align:center;
+    }
+    .empty-icon{font-size:40px;margin-bottom:16px}
+    .empty-title{font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px}
+    .empty-desc{font-size:13px;color:var(--muted);max-width:320px;line-height:1.6}
+
+    /* ── MOBILE ── */
+    .mobile-toggle{
+      display:none;width:36px;height:36px;
+      background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+      align-items:center;justify-content:center;cursor:pointer;
+    }
+    .mobile-toggle svg{width:18px;height:18px;stroke:var(--text);fill:none;stroke-width:2}
+    .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:90}
+
+    @media(max-width:1024px){
+      .stats-row{grid-template-columns:repeat(2,1fr)}
+      .charts-row{grid-template-columns:1fr}
+      .kol-grid-admin{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:768px){
+      .sidebar{transform:translateX(-100%)}
+      .sidebar.open{transform:translateX(0)}
+      .sidebar-overlay.show{display:block}
+      .main{margin-left:0}
+      .mobile-toggle{display:flex}
+      .stats-row{grid-template-columns:1fr 1fr}
+      .charts-row{grid-template-columns:1fr}
+      .kol-grid-admin{grid-template-columns:1fr}
+      .form-row{grid-template-columns:1fr}
+      .content{padding:16px}
+    }
+
+  /* ── LOGIN OVERLAY ── */
+  #loginOverlay {
+    position:fixed;inset:0;z-index:9999;
+    background:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;
+  }
+  #loginOverlay.hidden { display:none; }
+  .login-box {
+    width:100%;max-width:420px;padding:48px 40px;
+    background:var(--surface);border:1px solid var(--border2);
+    border-radius:16px;box-shadow:0 24px 64px rgba(0,0,0,0.5);
+  }
+  .login-logo {
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin-bottom:32px;
+  }
+  .login-logo-icon {
+    width:42px;height:42px;border-radius:10px;
+    background:linear-gradient(135deg,var(--cyan),var(--blue));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .login-logo-icon svg { width:22px;height:22px;stroke:white;fill:none;stroke-width:2 }
+  .login-logo-text { font-size:22px;font-weight:800;letter-spacing:-0.02em }
+  .login-logo-text span { color:var(--cyan) }
+  .login-title { font-size:20px;font-weight:700;margin-bottom:6px }
+  .login-sub { color:var(--muted);font-size:13px;margin-bottom:28px }
+  .login-field { margin-bottom:18px }
+  .login-field label {
+    display:block;font-size:12px;font-weight:600;
+    color:var(--muted);margin-bottom:7px;letter-spacing:0.04em;text-transform:uppercase;
+  }
+  .login-field input {
+    width:100%;padding:11px 14px;
+    background:var(--bg2);border:1px solid var(--border2);
+    border-radius:8px;color:var(--text);font-size:14px;
+    outline:none;transition:border-color .2s;
+  }
+  .login-field input:focus { border-color:var(--cyan); }
+  .login-hint {
+    font-size:11px;color:var(--muted);margin-top:5px;
+    background:rgba(0,212,255,0.07);border-radius:6px;padding:6px 10px;
+  }
+  .login-hint b { color:var(--cyan); }
+  .login-btn {
+    width:100%;padding:13px;margin-top:8px;
+    background:linear-gradient(135deg,var(--cyan),var(--blue));
+    border:none;border-radius:8px;color:#fff;
+    font-size:15px;font-weight:700;cursor:pointer;
+    transition:opacity .2s,transform .2s;
+  }
+  .login-btn:hover { opacity:.9;transform:translateY(-1px) }
+  .login-error {
+    display:none;color:#ef4444;font-size:13px;
+    margin-bottom:12px;text-align:center;
+    background:rgba(239,68,68,0.1);border-radius:6px;padding:8px;
+  }
+  .login-error.show { display:block }
+  </style>
+</head>
+<body>
+
+<!-- ═══ LOGIN ═══ -->
+<div id="loginOverlay">
+  <div class="login-box">
+    <div class="login-logo">
+      <div class="login-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <span class="login-logo-text">UI<span>Chain</span></span>
+    </div>
+    <div class="login-title">管理后台登录</div>
+    <div class="login-sub">请使用管理员账户登录</div>
+    <div class="login-error" id="loginError">账号或密码错误，请重试</div>
+    <div class="login-field">
+      <label>账号</label>
+      <input type="text" id="loginUser" placeholder="admin" autocomplete="username"/>
+    </div>
+    <div class="login-field">
+      <label>密码</label>
+      <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"/>
+      <div class="login-hint">演示账号：<b>admin</b> &nbsp;/&nbsp; 密码：<b>uichain2026</b></div>
+    </div>
+    <button class="login-btn" onclick="doLogin()">登 录</button>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <span class="logo-text">UI<span>Chain</span></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-group-label">概览</div>
+      <div class="nav-item active" onclick="showPage('dashboard',this)">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        数据总览
+      </div>
+
+      <div class="nav-group-label">业务管理</div>
+      <div class="nav-item" onclick="showPage('kol',this)">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/><circle cx="19" cy="7" r="3"/><circle cx="5" cy="7" r="3"/></svg>
+        KOL 管理
+        <span class="nav-badge">12</span>
+      </div>
+      <div class="nav-item" onclick="showPage('brand',this)">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        品牌推广
+      </div>
+      <div class="nav-item" onclick="showPage('supply',this)">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        供应链
+        <span class="nav-badge yellow">3</span>
+      </div>
+      <div class="nav-item" onclick="showPage('clients',this)">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        客户管理
+      </div>
+      <div class="nav-item" onclick="showPage('orders',this)">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>
+        订单管理
+        <span class="nav-badge red">5</span>
+      </div>
+
+      <div class="nav-group-label">分析</div>
+      <div class="nav-item" onclick="showPage('analytics',this)">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        数据分析
+      </div>
+      <div class="nav-item" onclick="showPage('reports',this)">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        报表中心
+      </div>
+
+      <div class="nav-group-label">系统</div>
+      <div class="nav-item" onclick="showPage('settings',this)">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        系统设置
+      </div>
+    </nav>
+
+    <div class="sidebar-footer" style="flex-direction:column;align-items:stretch;gap:10px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="user-avatar">👤</div>
+        <div class="user-info">
+          <div class="user-name">Admin 管理员</div>
+          <div class="user-role">超级管理员</div>
+        </div>
+      </div>
+      <button onclick="doLogout()" style="
+        width:100%;padding:8px;border:1px solid rgba(239,68,68,0.3);
+        background:rgba(239,68,68,0.08);border-radius:8px;
+        color:#ef4444;font-size:12px;font-weight:600;cursor:pointer;
+        transition:background .2s;
+      " onmouseover="this.style.background='rgba(239,68,68,0.16)'"
+         onmouseout="this.style.background='rgba(239,68,68,0.08)'">
+        退出登录
+      </button>
+    </div>
+  </aside>
+  <div class="sidebar-overlay" id="overlay" onclick="closeSidebar()"></div>
+
+  <!-- ═══ MAIN ═══ -->
+  <div class="main">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <div class="mobile-toggle" onclick="openSidebar()">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </div>
+        <div>
+          <div class="page-title" id="pageTitle">数据总览</div>
+          <div class="breadcrumb" id="breadcrumb">UIChain / 控制台 / 数据总览</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="search-bar">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" placeholder="搜索..."/>
+        </div>
+        <div class="topbar-btn">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <div class="notif-dot"></div>
+        </div>
+        <div class="topbar-btn">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CONTENT ═══ -->
+    <div class="content">
+
+      <!-- ─── PAGE: DASHBOARD ─── -->
+      <div class="page active" id="page-dashboard">
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background:rgba(0,212,255,0.12);color:var(--cyan)">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+              </div>
+              <span class="stat-change up">+12.4%</span>
+            </div>
+            <div class="stat-num">2,847</div>
+            <div class="stat-label">注册企业客户</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background:rgba(167,139,250,0.12);color:var(--purple)">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+              </div>
+              <span class="stat-change up">+8.7%</span>
+            </div>
+            <div class="stat-num">1,204</div>
+            <div class="stat-label">活跃 KOL 合作</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background:rgba(16,185,129,0.12);color:var(--green)">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <span class="stat-change up">+23.1%</span>
+            </div>
+            <div class="stat-num">$486K</div>
+            <div class="stat-label">本月平台 GMV</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background:rgba(245,158,11,0.12);color:var(--yellow)">
+                <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              </div>
+              <span class="stat-change down">-2.3%</span>
+            </div>
+            <div class="stat-num">328</div>
+            <div class="stat-label">供应链在途订单</div>
+          </div>
+        </div>
+
+        <div class="charts-row">
+          <!-- 营收趋势 -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">营收趋势</div>
+                <div class="card-subtitle">最近 8 个月 GMV 走势</div>
+              </div>
+              <button class="btn btn-ghost btn-sm">导出数据</button>
+            </div>
+            <div class="card-body">
+              <div class="bar-chart" id="revenueChart"></div>
+            </div>
+          </div>
+          <!-- KOL 平台分布 -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <div class="card-title">KOL 平台分布</div>
+                <div class="card-subtitle">活跃 KOL 来源</div>
+              </div>
+            </div>
+            <div class="donut-wrap">
+              <div class="donut">
+                <svg width="120" height="120" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="48" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="16"/>
+                  <circle cx="60" cy="60" r="48" fill="none" stroke="var(--cyan)" stroke-width="16" stroke-dasharray="120 181" stroke-linecap="round"/>
+                  <circle cx="60" cy="60" r="48" fill="none" stroke="var(--purple)" stroke-width="16" stroke-dasharray="72 229" stroke-dashoffset="-120" stroke-linecap="round"/>
+                  <circle cx="60" cy="60" r="48" fill="none" stroke="var(--green)" stroke-width="16" stroke-dasharray="54 247" stroke-dashoffset="-192" stroke-linecap="round"/>
+                  <circle cx="60" cy="60" r="48" fill="none" stroke="var(--yellow)" stroke-width="16" stroke-dasharray="55 246" stroke-dashoffset="-246" stroke-linecap="round"/>
+                </svg>
+                <div class="donut-center">
+                  <div class="donut-center-num">1.2K</div>
+                  <div class="donut-center-label">总计</div>
+                </div>
+              </div>
+              <div class="donut-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:var(--cyan)"></div>TikTok<span class="legend-val">40%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Instagram<span class="legend-val">24%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>YouTube<span class="legend-val">18%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div>小红书<span class="legend-val">18%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <!-- 最近活动 -->
+          <div class="card col-half">
+            <div class="card-header">
+              <div class="card-title">最近动态</div>
+              <button class="card-action">查看全部</button>
+            </div>
+            <div class="activity-feed">
+              <div class="activity-item">
+                <div class="act-icon" style="background:rgba(0,212,255,0.1)">🤝</div>
+                <div class="act-body">
+                  <div class="act-text"><strong>新 KOL 合作申请</strong> — @fashion_alice 提交了品牌合作意向</div>
+                  <div class="act-time">5 分钟前</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="act-icon" style="background:rgba(16,185,129,0.1)">✅</div>
+                <div class="act-body">
+                  <div class="act-text"><strong>订单已完成</strong> — 企业客户 GlobeTech 供应链订单 #S-2891 交付</div>
+                  <div class="act-time">32 分钟前</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="act-icon" style="background:rgba(245,158,11,0.1)">⚠️</div>
+                <div class="act-body">
+                  <div class="act-text"><strong>供应商预警</strong> — 供应商 SkyParts 交期延误，预计延误 3 天</div>
+                  <div class="act-time">1 小时前</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="act-icon" style="background:rgba(167,139,250,0.1)">💰</div>
+                <div class="act-body">
+                  <div class="act-text"><strong>新客户付款</strong> — 成长版套餐订阅，客户 NovaBrand</div>
+                  <div class="act-time">2 小时前</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="act-icon" style="background:rgba(239,68,68,0.1)">🚨</div>
+                <div class="act-body">
+                  <div class="act-text"><strong>KOL 内容违规</strong> — @viral_max 一条内容被平台标记，待审核</div>
+                  <div class="act-time">3 小时前</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 目标达成率 -->
+          <div class="card col-half">
+            <div class="card-header">
+              <div class="card-title">本月目标达成</div>
+              <div class="card-subtitle">截至今日</div>
+            </div>
+            <div class="progress-row">
+              <div class="progress-item">
+                <div class="progress-header"><span class="progress-label">品牌推广曝光量</span><span class="progress-val">78%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:78%;background:linear-gradient(90deg,var(--cyan),var(--blue))"></div></div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header"><span class="progress-label">KOL 合作成单量</span><span class="progress-val">65%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:65%;background:linear-gradient(90deg,var(--purple),#c084fc)"></div></div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header"><span class="progress-label">供应链履约率</span><span class="progress-val">92%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:92%;background:linear-gradient(90deg,var(--green),#34d399)"></div></div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header"><span class="progress-label">新客获取目标</span><span class="progress-val">54%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:54%;background:linear-gradient(90deg,var(--yellow),#fbbf24)"></div></div>
+              </div>
+              <div class="progress-item">
+                <div class="progress-header"><span class="progress-label">平台 GMV 目标</span><span class="progress-val">83%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:83%;background:linear-gradient(90deg,var(--orange),#fb923c)"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAGE: KOL ─── -->
+      <div class="page" id="page-kol">
+        <div class="alert alert-info" style="margin-bottom:20px">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          当前有 <strong>12 个 KOL</strong> 合作申请待审核，<strong>3 个</strong>合同待签署。
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-ghost btn-sm" style="border-color:rgba(0,212,255,0.3);color:var(--cyan)">全部 (1204)</button>
+            <button class="btn btn-ghost btn-sm">待审核 (12)</button>
+            <button class="btn btn-ghost btn-sm">合作中 (986)</button>
+            <button class="btn btn-ghost btn-sm">暂停 (206)</button>
+          </div>
+          <button class="btn btn-primary btn-sm">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            添加 KOL
+          </button>
+        </div>
+        <div class="kol-grid-admin">
+          <div class="kol-card-admin">
+            <div class="kol-head">
+              <div class="kol-av" style="background:linear-gradient(135deg,#f97316,#ef4444)">🎯</div>
+              <div>
+                <div class="kol-info-name">Alice Fashion</div>
+                <div class="kol-info-handle">@alice_fashion · TikTok</div>
+              </div>
+              <span class="status-badge active" style="margin-left:auto">合作中</span>
+            </div>
+            <div class="kol-metrics">
+              <div class="kol-metric-item"><div class="kol-metric-v">2.4M</div><div class="kol-metric-l">粉丝数</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">8.7%</div><div class="kol-metric-l">互动率</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">$4.2K</div><div class="kol-metric-l">单次报价</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">12x</div><div class="kol-metric-l">ROI 倍数</div></div>
+            </div>
+            <div class="kol-actions">
+              <button class="btn btn-primary btn-sm" style="flex:1">查看详情</button>
+              <button class="btn btn-ghost btn-sm">暂停</button>
+            </div>
+          </div>
+          <div class="kol-card-admin">
+            <div class="kol-head">
+              <div class="kol-av" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">🌟</div>
+              <div>
+                <div class="kol-info-name">TechVibes</div>
+                <div class="kol-info-handle">@techvibes · YouTube</div>
+              </div>
+              <span class="status-badge review" style="margin-left:auto">审核中</span>
+            </div>
+            <div class="kol-metrics">
+              <div class="kol-metric-item"><div class="kol-metric-v">890K</div><div class="kol-metric-l">订阅数</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">5.2%</div><div class="kol-metric-l">互动率</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">$2.8K</div><div class="kol-metric-l">单次报价</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">7x</div><div class="kol-metric-l">ROI 倍数</div></div>
+            </div>
+            <div class="kol-actions">
+              <button class="btn btn-primary btn-sm" style="flex:1">审核通过</button>
+              <button class="btn btn-danger btn-sm">拒绝</button>
+            </div>
+          </div>
+          <div class="kol-card-admin">
+            <div class="kol-head">
+              <div class="kol-av" style="background:linear-gradient(135deg,#ec4899,#be185d)">💅</div>
+              <div>
+                <div class="kol-info-name">BeautyBySofia</div>
+                <div class="kol-info-handle">@beautysofia · Instagram</div>
+              </div>
+              <span class="status-badge active" style="margin-left:auto">合作中</span>
+            </div>
+            <div class="kol-metrics">
+              <div class="kol-metric-item"><div class="kol-metric-v">1.1M</div><div class="kol-metric-l">粉丝数</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">11.3%</div><div class="kol-metric-l">互动率</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">$3.5K</div><div class="kol-metric-l">单次报价</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">15x</div><div class="kol-metric-l">ROI 倍数</div></div>
+            </div>
+            <div class="kol-actions">
+              <button class="btn btn-primary btn-sm" style="flex:1">查看详情</button>
+              <button class="btn btn-ghost btn-sm">续约</button>
+            </div>
+          </div>
+          <div class="kol-card-admin">
+            <div class="kol-head">
+              <div class="kol-av" style="background:linear-gradient(135deg,#06b6d4,#2563eb)">📱</div>
+              <div>
+                <div class="kol-info-name">数码老王</div>
+                <div class="kol-info-handle">@techking · 小红书</div>
+              </div>
+              <span class="status-badge pending" style="margin-left:auto">待签约</span>
+            </div>
+            <div class="kol-metrics">
+              <div class="kol-metric-item"><div class="kol-metric-v">650K</div><div class="kol-metric-l">粉丝数</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">9.8%</div><div class="kol-metric-l">互动率</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">¥18K</div><div class="kol-metric-l">单次报价</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">9x</div><div class="kol-metric-l">ROI 倍数</div></div>
+            </div>
+            <div class="kol-actions">
+              <button class="btn btn-primary btn-sm" style="flex:1">发送合同</button>
+              <button class="btn btn-ghost btn-sm">沟通</button>
+            </div>
+          </div>
+          <div class="kol-card-admin">
+            <div class="kol-head">
+              <div class="kol-av" style="background:linear-gradient(135deg,#10b981,#059669)">🎬</div>
+              <div>
+                <div class="kol-info-name">Viral Max</div>
+                <div class="kol-info-handle">@viral_max · TikTok</div>
+              </div>
+              <span class="status-badge paused" style="margin-left:auto">暂停</span>
+            </div>
+            <div class="kol-metrics">
+              <div class="kol-metric-item"><div class="kol-metric-v">3.8M</div><div class="kol-metric-l">粉丝数</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">6.1%</div><div class="kol-metric-l">互动率</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">$7.2K</div><div class="kol-metric-l">单次报价</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">—</div><div class="kol-metric-l">内容违规</div></div>
+            </div>
+            <div class="kol-actions">
+              <button class="btn btn-ghost btn-sm" style="flex:1">查看违规详情</button>
+              <button class="btn btn-danger btn-sm">终止</button>
+            </div>
+          </div>
+          <div class="kol-card-admin">
+            <div class="kol-head">
+              <div class="kol-av" style="background:linear-gradient(135deg,#f59e0b,#d97706)">💡</div>
+              <div>
+                <div class="kol-info-name">LifeHack Lisa</div>
+                <div class="kol-info-handle">@lisahacks · YouTube</div>
+              </div>
+              <span class="status-badge active" style="margin-left:auto">合作中</span>
+            </div>
+            <div class="kol-metrics">
+              <div class="kol-metric-item"><div class="kol-metric-v">420K</div><div class="kol-metric-l">订阅数</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">13.4%</div><div class="kol-metric-l">互动率</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">$1.9K</div><div class="kol-metric-l">单次报价</div></div>
+              <div class="kol-metric-item"><div class="kol-metric-v">18x</div><div class="kol-metric-l">ROI 倍数</div></div>
+            </div>
+            <div class="kol-actions">
+              <button class="btn btn-primary btn-sm" style="flex:1">查看详情</button>
+              <button class="btn btn-ghost btn-sm">续约</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAGE: BRAND ─── -->
+      <div class="page" id="page-brand">
+        <div class="stats-row" style="grid-template-columns:repeat(3,1fr)">
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background:rgba(0,212,255,0.1);color:var(--cyan)">
+                <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </div>
+              <span class="stat-change up">+18%</span>
+            </div>
+            <div class="stat-num">14.2M</div>
+            <div class="stat-label">本月总曝光量</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background:rgba(167,139,250,0.1);color:var(--purple)">
+                <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+              </div>
+              <span class="stat-change up">+5.3%</span>
+            </div>
+            <div class="stat-num">3.6%</div>
+            <div class="stat-label">平均点击率 CTR</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header">
+              <div class="stat-icon" style="background:rgba(16,185,129,0.1);color:var(--green)">
+                <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <span class="stat-change up">+31%</span>
+            </div>
+            <div class="stat-num">8,420</div>
+            <div class="stat-label">本月转化成单</div>
+          </div>
+        </div>
+        <div class="card mb24">
+          <div class="card-header">
+            <div class="card-title">推广活动管理</div>
+            <button class="btn btn-primary btn-sm">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              新建活动
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr>
+                  <th>活动名称</th><th>平台</th><th>状态</th><th>预算</th><th>曝光量</th><th>ROI</th><th>操作</th>
+                </tr></thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">Q1 东南亚品牌出海计划</td>
+                    <td><span class="platform tiktok">TikTok</span></td>
+                    <td><span class="status-badge active">进行中</span></td>
+                    <td>$28,000</td><td>4.2M</td><td style="color:var(--green)">8.4x</td>
+                    <td><button class="btn btn-ghost btn-sm">详情</button></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">欧洲消费品牌认知提升</td>
+                    <td><span class="platform instagram">Instagram</span></td>
+                    <td><span class="status-badge active">进行中</span></td>
+                    <td>$15,000</td><td>1.8M</td><td style="color:var(--green)">5.2x</td>
+                    <td><button class="btn btn-ghost btn-sm">详情</button></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">美区 3C 产品种草计划</td>
+                    <td><span class="platform youtube">YouTube</span></td>
+                    <td><span class="status-badge pending">待启动</span></td>
+                    <td>$42,000</td><td>—</td><td>—</td>
+                    <td><button class="btn btn-primary btn-sm">启动</button></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">国内美妆品牌小红书推广</td>
+                    <td><span class="platform wechat">小红书</span></td>
+                    <td><span class="status-badge active">进行中</span></td>
+                    <td>¥120,000</td><td>8.2M</td><td style="color:var(--green)">11x</td>
+                    <td><button class="btn btn-ghost btn-sm">详情</button></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">2025 年度旗舰品牌战役</td>
+                    <td><span class="platform">全平台</span></td>
+                    <td><span class="status-badge review">规划中</span></td>
+                    <td>$200,000</td><td>—</td><td>—</td>
+                    <td><button class="btn btn-ghost btn-sm">编辑</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAGE: SUPPLY ─── -->
+      <div class="page" id="page-supply">
+        <div class="alert alert-warn">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span><strong>3 个供应商预警：</strong>SkyParts 交期延误、OceanLink 质检不合格、MegaWare 库存紧张，请及时处理。</span>
+        </div>
+        <div class="supply-stats">
+          <div class="supply-stat-card"><div class="supply-stat-icon">🏭</div><div class="supply-stat-num">842</div><div class="supply-stat-label">认证供应商总数</div></div>
+          <div class="supply-stat-card"><div class="supply-stat-icon">📦</div><div class="supply-stat-num">328</div><div class="supply-stat-label">在途订单</div></div>
+          <div class="supply-stat-card"><div class="supply-stat-icon">✅</div><div class="supply-stat-num">97.2%</div><div class="supply-stat-label">本月履约率</div></div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">供应商列表</div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-ghost btn-sm">筛选</button>
+              <button class="btn btn-primary btn-sm">+ 添加供应商</button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr>
+                  <th>供应商</th><th>国家</th><th>品类</th><th>状态</th><th>评分</th><th>在途订单</th><th>操作</th>
+                </tr></thead>
+                <tbody>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">PrimeTech Mfg.</td>
+                    <td>🇨🇳 中国</td><td>3C 电子</td>
+                    <td><span class="status-badge active">优质</span></td>
+                    <td style="color:var(--green)">★ 4.9</td><td>48</td>
+                    <td><button class="btn btn-ghost btn-sm">查看</button></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">SkyParts Ltd.</td>
+                    <td>🇩🇪 德国</td><td>精密零件</td>
+                    <td><span class="status-badge paused">延误</span></td>
+                    <td style="color:var(--yellow)">★ 3.8</td><td>12</td>
+                    <td><button class="btn btn-danger btn-sm">处理</button></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">OceanLink Trading</td>
+                    <td>🇻🇳 越南</td><td>纺织服饰</td>
+                    <td><span class="status-badge paused">质检</span></td>
+                    <td style="color:var(--yellow)">★ 4.1</td><td>22</td>
+                    <td><button class="btn btn-danger btn-sm">处理</button></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">GreenLeaf Organics</td>
+                    <td>🇮🇳 印度</td><td>有机原料</td>
+                    <td><span class="status-badge active">优质</span></td>
+                    <td style="color:var(--green)">★ 4.7</td><td>35</td>
+                    <td><button class="btn btn-ghost btn-sm">查看</button></td>
+                  </tr>
+                  <tr>
+                    <td style="font-weight:600;color:var(--white)">MegaWare USA</td>
+                    <td>🇺🇸 美国</td><td>家居用品</td>
+                    <td><span class="status-badge pending">库存紧张</span></td>
+                    <td style="color:var(--green)">★ 4.5</td><td>61</td>
+                    <td><button class="btn btn-ghost btn-sm">处理</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAGE: CLIENTS ─── -->
+      <div class="page" id="page-clients">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px">
+          <div style="font-size:13px;color:var(--muted)">共 <strong style="color:var(--text)">2,847</strong> 名企业客户</div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-ghost btn-sm">导出 CSV</button>
+            <button class="btn btn-primary btn-sm">+ 新增客户</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body" style="padding-top:22px">
+            <div class="table-wrap">
+              <table>
+                <thead><tr>
+                  <th>公司</th><th>套餐</th><th>状态</th><th>所在地</th><th>月付金额</th><th>加入时间</th><th>操作</th>
+                </tr></thead>
+                <tbody>
+                  <tr>
+                    <td><div style="font-weight:600;color:var(--white)">GlobeTech Solutions</div><div style="font-size:11px;color:var(--muted)">globetech@example.com</div></td>
+                    <td><span class="status-badge review">企业版</span></td>
+                    <td><span class="status-badge active">正常</span></td>
+                    <td>🇸🇬 新加坡</td><td style="color:var(--green);font-weight:600">$3,200</td><td style="color:var(--muted)">2024-08-12</td>
+                    <td><button class="btn btn-ghost btn-sm">详情</button></td>
+                  </tr>
+                  <tr>
+                    <td><div style="font-weight:600;color:var(--white)">NovaBrand Inc.</div><div style="font-size:11px;color:var(--muted)">nova@example.com</div></td>
+                    <td><span class="status-badge active">成长版</span></td>
+                    <td><span class="status-badge active">正常</span></td>
+                    <td>🇺🇸 美国</td><td style="color:var(--green);font-weight:600">$899</td><td style="color:var(--muted)">2025-01-05</td>
+                    <td><button class="btn btn-ghost btn-sm">详情</button></td>
+                  </tr>
+                  <tr>
+                    <td><div style="font-weight:600;color:var(--white)">SunRise Exports</div><div style="font-size:11px;color:var(--muted)">sunrise@example.com</div></td>
+                    <td><span class="status-badge pending">入门版</span></td>
+                    <td><span class="status-badge pending">待续费</span></td>
+                    <td>🇮🇳 印度</td><td style="color:var(--yellow);font-weight:600">$299</td><td style="color:var(--muted)">2024-11-20</td>
+                    <td><button class="btn btn-primary btn-sm">催续费</button></td>
+                  </tr>
+                  <tr>
+                    <td><div style="font-weight:600;color:var(--white)">EcoWear Fashion</div><div style="font-size:11px;color:var(--muted)">ecowear@example.com</div></td>
+                    <td><span class="status-badge active">成长版</span></td>
+                    <td><span class="status-badge active">正常</span></td>
+                    <td>🇫🇷 法国</td><td style="color:var(--green);font-weight:600">$899</td><td style="color:var(--muted)">2025-02-14</td>
+                    <td><button class="btn btn-ghost btn-sm">详情</button></td>
+                  </tr>
+                  <tr>
+                    <td><div style="font-weight:600;color:var(--white)">Yuki Cosmetics</div><div style="font-size:11px;color:var(--muted)">yuki@example.com</div></td>
+                    <td><span class="status-badge review">企业版</span></td>
+                    <td><span class="status-badge active">正常</span></td>
+                    <td>🇯🇵 日本</td><td style="color:var(--green);font-weight:600">$5,800</td><td style="color:var(--muted)">2024-06-30</td>
+                    <td><button class="btn btn-ghost btn-sm">详情</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAGE: ORDERS ─── -->
+      <div class="page" id="page-orders">
+        <div class="alert alert-warn" style="margin-bottom:20px">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>有 <strong>5 个订单</strong>需要处理：3 个待发货、2 个付款异常。</span>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">订单列表</div>
+            <button class="btn btn-ghost btn-sm">导出</button>
+          </div>
+          <div class="card-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>订单号</th><th>客户</th><th>服务类型</th><th>金额</th><th>状态</th><th>下单时间</th><th>操作</th></tr></thead>
+                <tbody>
+                  <tr><td style="color:var(--cyan);font-weight:600">#ORD-2891</td><td>GlobeTech</td><td>供应链采购</td><td style="color:var(--green)">$12,400</td><td><span class="status-badge active">已完成</span></td><td style="color:var(--muted)">2026-03-12</td><td><button class="btn btn-ghost btn-sm">详情</button></td></tr>
+                  <tr><td style="color:var(--cyan);font-weight:600">#ORD-2890</td><td>NovaBrand</td><td>KOL 合作</td><td style="color:var(--green)">$4,200</td><td><span class="status-badge pending">待发货</span></td><td style="color:var(--muted)">2026-03-13</td><td><button class="btn btn-primary btn-sm">处理</button></td></tr>
+                  <tr><td style="color:var(--cyan);font-weight:600">#ORD-2889</td><td>EcoWear</td><td>品牌推广</td><td style="color:var(--yellow)">$8,900</td><td><span class="status-badge paused">付款异常</span></td><td style="color:var(--muted)">2026-03-13</td><td><button class="btn btn-danger btn-sm">处理</button></td></tr>
+                  <tr><td style="color:var(--cyan);font-weight:600">#ORD-2888</td><td>Yuki Cosmetics</td><td>企业套餐</td><td style="color:var(--green)">$5,800</td><td><span class="status-badge active">已完成</span></td><td style="color:var(--muted)">2026-03-11</td><td><button class="btn btn-ghost btn-sm">详情</button></td></tr>
+                  <tr><td style="color:var(--cyan);font-weight:600">#ORD-2887</td><td>SunRise</td><td>供应商对接</td><td style="color:var(--yellow)">$1,200</td><td><span class="status-badge paused">付款异常</span></td><td style="color:var(--muted)">2026-03-10</td><td><button class="btn btn-danger btn-sm">处理</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAGE: ANALYTICS ─── -->
+      <div class="page" id="page-analytics">
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-header"><div class="stat-icon" style="background:rgba(0,212,255,0.1);color:var(--cyan)"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><span class="stat-change up">+42%</span></div><div class="stat-num">14.2M</div><div class="stat-label">总曝光量</div></div>
+          <div class="stat-card"><div class="stat-header"><div class="stat-icon" style="background:rgba(167,139,250,0.1);color:var(--purple)"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></div><span class="stat-change up">+8%</span></div><div class="stat-num">3.6%</div><div class="stat-label">平均 CTR</div></div>
+          <div class="stat-card"><div class="stat-header"><div class="stat-icon" style="background:rgba(16,185,129,0.1);color:var(--green)"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><span class="stat-change up">+31%</span></div><div class="stat-num">8,420</div><div class="stat-label">转化成单</div></div>
+          <div class="stat-card"><div class="stat-header"><div class="stat-icon" style="background:rgba(245,158,11,0.1);color:var(--yellow)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><span class="stat-change up">+19%</span></div><div class="stat-num">$68.4</div><div class="stat-label">平均客单价</div></div>
+        </div>
+        <div class="alert alert-success">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          本月各项核心指标全面超出预期目标，KOL 投放 ROI 平均达 9.8x，供应链履约率 97.2%。
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">平台效果对比</div></div>
+          <div class="card-body">
+            <div class="bar-chart" id="analyticsChart" style="height:160px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAGE: REPORTS ─── -->
+      <div class="page" id="page-reports">
+        <div class="empty-state">
+          <div class="empty-icon">📊</div>
+          <div class="empty-title">报表中心</div>
+          <div class="empty-desc">自动生成周报、月报、季报，支持 PDF / Excel 导出。选择时间范围和维度快速生成分析报告。</div>
+          <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;justify-content:center">
+            <button class="btn btn-primary">生成月报</button>
+            <button class="btn btn-ghost">生成周报</button>
+            <button class="btn btn-ghost">自定义报表</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── PAGE: SETTINGS ─── -->
+      <div class="page" id="page-settings">
+        <div class="settings-section">
+          <div class="settings-title">基础信息</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">公司名称</label><input class="form-input" value="UIChain Inc."/></div>
+            <div class="form-group"><label class="form-label">官网地址</label><input class="form-input" value="https://uichain.io"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">客服邮箱</label><input class="form-input" value="support@uichain.io"/></div>
+            <div class="form-group"><label class="form-label">时区</label><select class="form-input"><option>UTC+8 (北京时间)</option><option>UTC+0 (格林威治)</option><option>UTC-5 (纽约)</option></select></div>
+          </div>
+          <button class="btn btn-primary">保存更改</button>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-title">通知设置</div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">新 KOL 合作申请通知</div><div class="toggle-desc">有新的 KOL 提交合作申请时发送邮件提醒</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">供应商预警推送</div><div class="toggle-desc">供应商出现延误、质检问题时即时通知</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">订单状态变更通知</div><div class="toggle-desc">订单付款、发货、完成等节点推送通知</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">每日数据摘要</div><div class="toggle-desc">每日早 9 点发送关键指标摘要邮件</div></div>
+            <div class="toggle" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">营销活动到期提醒</div><div class="toggle-desc">活动结束前 3 天发送提醒</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+          </div>
+        </div>
+
+        <div class="settings-section">
+          <div class="settings-title">安全设置</div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">当前密码</label><input type="password" class="form-input" placeholder="输入当前密码"/></div>
+            <div class="form-group"><label class="form-label">新密码</label><input type="password" class="form-input" placeholder="输入新密码"/></div>
+          </div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">双因素认证 (2FA)</div><div class="toggle-desc">使用 Google Authenticator 增强账户安全</div></div>
+            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+          </div>
+          <button class="btn btn-primary" style="margin-top:16px">更新密码</button>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /layout -->
+
+<script>
+  // ── Page navigation ──
+  const pages = {
+    dashboard: '数据总览',
+    kol: 'KOL 管理',
+    brand: '品牌推广',
+    supply: '供应链管理',
+    clients: '客户管理',
+    orders: '订单管理',
+    analytics: '数据分析',
+    reports: '报表中心',
+    settings: '系统设置',
+  };
+
+  function showPage(id, el) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    if (el) el.classList.add('active');
+    document.getElementById('pageTitle').textContent = pages[id] || id;
+    document.getElementById('breadcrumb').textContent = 'UIChain / 控制台 / ' + (pages[id] || id);
+    closeSidebar();
+
+    // Render charts on demand
+    if (id === 'dashboard') renderRevenueChart();
+    if (id === 'analytics') renderAnalyticsChart();
+  }
+
+  // ── Bar charts ──
+  function renderBarChart(containerId, data, colors) {
+    const el = document.getElementById(containerId);
+    if (!el || el.dataset.rendered) return;
+    el.dataset.rendered = '1';
+    const max = Math.max(...data.map(d => d.val));
+    el.innerHTML = '';
+    data.forEach((d, i) => {
+      const col = document.createElement('div');
+      col.className = 'bar-col';
+      const barH = Math.round((d.val / max) * 100);
+      col.innerHTML = `
+        <div class="bar ${colors[i % colors.length]}" style="height:0" data-h="${barH}%"></div>
+        <div class="bar-label">${d.label}</div>`;
+      el.appendChild(col);
+    });
+    requestAnimationFrame(() => {
+      el.querySelectorAll('.bar').forEach(b => {
+        setTimeout(() => { b.style.height = b.dataset.h; }, 100);
+      });
+    });
+  }
+
+  function renderRevenueChart() {
+    renderBarChart('revenueChart', [
+      {val:320,label:'8月'},{val:410,label:'9月'},{val:380,label:'10月'},
+      {val:490,label:'11月'},{val:560,label:'12月'},{val:480,label:'1月'},
+      {val:620,label:'2月'},{val:740,label:'3月'}
+    ], ['','','','','','','','']);
+  }
+
+  function renderAnalyticsChart() {
+    renderBarChart('analyticsChart', [
+      {val:420,label:'TikTok'},{val:240,label:'Instagram'},
+      {val:180,label:'YouTube'},{val:320,label:'小红书'},{val:80,label:'其他'}
+    ], ['','purple','','purple','']);
+  }
+
+  // ── Sidebar mobile ──
+  function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('overlay').classList.add('show');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+  }
+
+  function doLogout() {
+    document.getElementById('loginUser').value = '';
+    document.getElementById('loginPass').value = '';
+    document.getElementById('loginError').classList.remove('show');
+    document.getElementById('loginOverlay').classList.remove('hidden');
+  }
+
+  // ── Login ──
+  function doLogin() {
+    const user = document.getElementById('loginUser').value.trim();
+    const pass = document.getElementById('loginPass').value;
+    const err  = document.getElementById('loginError');
+    if (user === 'admin' && pass === 'uichain2026') {
+      document.getElementById('loginOverlay').classList.add('hidden');
+      err.classList.remove('show');
+    } else {
+      err.classList.add('show');
+      document.getElementById('loginPass').value = '';
+      document.getElementById('loginPass').focus();
+    }
+  }
+  // 支持回车登录
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && !document.getElementById('loginOverlay').classList.contains('hidden')) {
+      doLogin();
+    }
+  });
+
+  // ── Init ──
+  renderRevenueChart();
+</script>
+</body>
+</html>

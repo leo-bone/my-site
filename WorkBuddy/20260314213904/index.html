@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UIChain — 全球中小企业品牌与增长平台 | KOL匹配·供应链·品牌出海</title>
+  <meta name="description" content="UIChain 是专为全球中小企业打造的一站式增长平台，提供品牌推广、AI驱动的KOL智能匹配、全球供应链管理与数据智能分析服务，助力品牌快速出海。" />
+  <meta name="keywords" content="中小企业出海,KOL匹配,品牌推广,供应链管理,全球营销平台,网红营销,跨境电商,UIChain" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="UIChain Inc." />
+  <link rel="canonical" href="https://uichain.com/" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://uichain.com/" />
+  <meta property="og:title" content="UIChain — 全球中小企业品牌与增长平台" />
+  <meta property="og:description" content="一站式品牌推广 · KOL 智能匹配 · 全球供应链协同，为中小企业提供与世界500强同等级别的增长引擎。" />
+  <meta property="og:locale" content="zh_CN" />
+  <meta property="og:site_name" content="UIChain" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="UIChain — 全球中小企业品牌与增长平台" />
+  <meta name="twitter:description" content="一站式品牌推广 · KOL 智能匹配 · 全球供应链协同，为中小企业提供与世界500强同等级别的增长引擎。" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "UIChain",
+    "url": "https://uichain.com",
+    "description": "全球中小企业品牌增长与供应链效率平台，提供KOL智能匹配、全球供应链管理、品牌推广与数据智能分析服务。",
+    "foundingDate": "2018",
+    "founders": [
+      { "@type": "Person", "name": "Leo" },
+      { "@type": "Person", "name": "Anna" }
+    ],
+    "areaServed": "Worldwide",
+    "serviceType": ["品牌推广", "KOL营销", "供应链管理", "数据分析"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "ui_chain@gmail.com",
+      "contactType": "customer service",
+      "availableLanguage": ["Chinese", "English"]
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CSS RESET & VARIABLES ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --clr-dark:    #060810;
+      --clr-dark2:   #0d0f1a;
+      --clr-dark3:   #131625;
+      --clr-surface: #181b2e;
+      --clr-border:  rgba(99,179,255,0.1);
+      --clr-gold:    #00d4ff;
+      --clr-gold2:   #38edff;
+      --clr-blue:    #3b6ef8;
+      --clr-blue2:   #5b8fff;
+      --clr-cyan:    #00d4ff;
+      --clr-purple:  #a78bfa;
+      --clr-text:    #e2e8f8;
+      --clr-muted:   #7a85aa;
+      --clr-white:   #ffffff;
+      --radius-sm:   8px;
+      --radius-md:   16px;
+      --radius-lg:   24px;
+      --radius-xl:   40px;
+      --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
+      --font-main:   'Inter', system-ui, sans-serif;
+      --font-display:'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-main);
+      background: var(--clr-dark);
+      color: var(--clr-text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--clr-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--clr-blue2); border-radius: 3px; }
+
+    /* ─── UTILITIES ─── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--clr-cyan);
+      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+      padding: 6px 14px; border-radius: 100px;
+    }
+    .tag::before { content: ''; width: 6px; height: 6px; background: var(--clr-cyan); border-radius: 50%; }
+
+    /* ─── GLOW BLOBS ─── */
+    .blob {
+      position: absolute; border-radius: 50%; filter: blur(120px);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ─── NAVBAR ─── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: 72px; display: flex; align-items: center;
+      background: rgba(10,10,15,0.75);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid var(--clr-border);
+      transition: background var(--transition);
+    }
+    .navbar .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none; font-family: var(--font-display);
+      font-weight: 800; font-size: 20px; color: var(--clr-white);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, #00d4ff, #3b6ef8);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .nav-logo-icon svg { width: 20px; height: 20px; fill: white; }
+    .nav-logo span { color: var(--clr-gold); }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links a {
+      text-decoration: none; color: var(--clr-muted); font-size: 14px;
+      font-weight: 500; padding: 8px 14px; border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+    }
+    .nav-links a:hover { color: var(--clr-white); background: rgba(255,255,255,0.06); }
+    .nav-cta {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .btn-ghost {
+      text-decoration: none; color: var(--clr-text); font-size: 14px;
+      font-weight: 500; padding: 9px 20px; border-radius: var(--radius-sm);
+      border: 1px solid var(--clr-border); transition: all var(--transition);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
+    .btn-primary {
+      text-decoration: none; font-size: 14px; font-weight: 600;
+      padding: 9px 22px; border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #00d4ff, #3b6ef8);
+      color: white; transition: all var(--transition);
+      box-shadow: 0 0 20px rgba(0,212,255,0.25);
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(0,212,255,0.45); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--clr-text); border-radius: 2px; transition: var(--transition); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden; padding-top: 72px;
+    }
+    .hero .blob-1 { width: 700px; height: 700px; background: rgba(0,212,255,0.1); top: -200px; right: -100px; }
+    .hero .blob-2 { width: 500px; height: 500px; background: rgba(59,110,248,0.12); bottom: -100px; left: -150px; }
+    .hero .blob-3 { width: 300px; height: 300px; background: rgba(167,139,250,0.08); top: 30%; left: 40%; }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 100%);
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1; text-align: center;
+      padding: 80px 0; width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--clr-cyan); background: rgba(6,182,212,0.1);
+      border: 1px solid rgba(6,182,212,0.2); padding: 8px 18px;
+      border-radius: 100px; margin-bottom: 32px;
+    }
+    .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--clr-cyan); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.2)} }
+
+    .hero-title {
+      font-family: var(--font-display); font-size: clamp(44px, 7vw, 88px);
+      font-weight: 800; line-height: 1.08; letter-spacing: -0.03em;
+      color: var(--clr-white); margin-bottom: 28px;
+    }
+    .hero-title .line-gold { color: transparent; background: linear-gradient(135deg, #00d4ff, #38edff, #a78bfa); -webkit-background-clip: text; background-clip: text; }
+    .hero-title .line-blue { color: transparent; background: linear-gradient(135deg, #5b8fff, #00d4ff); -webkit-background-clip: text; background-clip: text; }
+
+    .hero-desc {
+      font-size: clamp(16px, 2vw, 20px); color: var(--clr-muted); max-width: 600px;
+      margin: 0 auto 44px; font-weight: 400; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+    .hero-btn-main {
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none; font-size: 16px; font-weight: 700;
+      padding: 16px 36px; border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #00d4ff, #3b6ef8);
+      color: #fff; transition: all var(--transition);
+      box-shadow: 0 8px 32px rgba(0,212,255,0.25);
+    }
+    .hero-btn-main:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,212,255,0.45); }
+    .hero-btn-main svg { width: 18px; height: 18px; }
+    .hero-btn-sec {
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none; font-size: 16px; font-weight: 600;
+      padding: 16px 36px; border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.12); color: var(--clr-text);
+      background: rgba(255,255,255,0.04); transition: all var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .hero-btn-sec:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .hero-btn-sec svg { width: 18px; height: 18px; }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+      border: 1px solid var(--clr-border); border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.02); backdrop-filter: blur(12px);
+      overflow: hidden; max-width: 680px; margin: 0 auto;
+    }
+    .hero-stat {
+      flex: 1; min-width: 160px; padding: 28px 24px; text-align: center;
+      border-right: 1px solid var(--clr-border);
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-num {
+      font-family: var(--font-display); font-size: 32px; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--clr-white);
+    }
+    .hero-stat-num span { color: var(--clr-cyan); }
+    .hero-stat-label { font-size: 13px; color: var(--clr-muted); margin-top: 4px; }
+
+    /* ─── SECTION COMMON ─── */
+    section { padding: 100px 0; }
+    .section-header { text-align: center; margin-bottom: 72px; }
+    .section-title {
+      font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 56px);
+      font-weight: 800; letter-spacing: -0.025em; line-height: 1.1;
+      color: var(--clr-white); margin: 16px 0 20px;
+    }
+    .section-desc {
+      font-size: 18px; color: var(--clr-muted); max-width: 560px;
+      margin: 0 auto; line-height: 1.7;
+    }
+
+    /* ─── SERVICES ─── */
+    .services { background: var(--clr-dark2); position: relative; overflow: hidden; }
+    .services .blob { width: 600px; height: 600px; background: rgba(37,99,235,0.07); top: -100px; right: -200px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; background: var(--clr-border);
+      border: 1px solid var(--clr-border); border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .service-card {
+      background: var(--clr-dark2); padding: 44px 36px;
+      position: relative; overflow: hidden;
+      transition: background var(--transition);
+    }
+    .service-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--accent, rgba(37,99,235,0.06)) 0%, transparent 60%);
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover { background: var(--clr-dark3); }
+    .service-icon {
+      width: 56px; height: 56px; border-radius: var(--radius-md);
+      background: var(--icon-bg, rgba(37,99,235,0.15));
+      border: 1px solid var(--icon-border, rgba(37,99,235,0.2));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px; position: relative; z-index: 1;
+    }
+    .service-icon svg { width: 26px; height: 26px; }
+    .service-num {
+      position: absolute; top: 28px; right: 28px;
+      font-size: 48px; font-weight: 900; color: rgba(255,255,255,0.03);
+      font-family: var(--font-display); line-height: 1;
+      pointer-events: none; user-select: none;
+      transition: color var(--transition);
+    }
+    .service-card:hover .service-num { color: rgba(255,255,255,0.06); }
+    .service-title {
+      font-family: var(--font-display); font-size: 20px; font-weight: 700;
+      color: var(--clr-white); margin-bottom: 12px; position: relative; z-index: 1;
+    }
+    .service-desc {
+      font-size: 15px; color: var(--clr-muted); line-height: 1.7;
+      position: relative; z-index: 1;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 20px; font-size: 13px; font-weight: 600;
+      color: var(--clr-blue2); text-decoration: none;
+      position: relative; z-index: 1; transition: gap var(--transition);
+    }
+    .service-link:hover { gap: 10px; }
+    .service-link svg { width: 14px; height: 14px; }
+
+    /* ─── HOW IT WORKS ─── */
+    .how { position: relative; overflow: hidden; background: var(--clr-dark3); }
+    .how .container { position: relative; z-index: 1; }
+    .how::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,110,248,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .how-steps { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 800px; margin: 0 auto; position: relative; }
+    .how-steps::before {
+      content: ''; position: absolute; left: 31px; top: 40px; bottom: 40px;
+      width: 2px; background: linear-gradient(to bottom, #00d4ff, #3b6ef8, #a78bfa);
+    }
+    .how-step { display: flex; gap: 32px; padding: 36px 0; }
+    .how-step-dot {
+      flex-shrink: 0; width: 64px; height: 64px; border-radius: 50%;
+      background: var(--clr-surface); border: 2px solid var(--dot-clr, var(--clr-blue));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 20px; font-weight: 800;
+      color: var(--dot-clr, var(--clr-blue)); position: relative; z-index: 1;
+    }
+    .how-step-body { padding-top: 12px; }
+    .how-step-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--clr-white); margin-bottom: 10px; }
+    .how-step-desc { font-size: 15px; color: var(--clr-muted); line-height: 1.7; max-width: 560px; }
+
+    /* ─── KOL ─── */
+    .kol { background: var(--clr-dark2); position: relative; overflow: hidden; }
+    .kol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .kol-visual {
+      position: relative; aspect-ratio: 1; max-width: 500px;
+    }
+    .kol-card-main {
+      position: absolute; inset: 0; border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #00d4ff 0%, #3b6ef8 50%, #a78bfa 100%);
+      overflow: hidden;
+    }
+    .kol-card-inner {
+      position: absolute; inset: 1px; border-radius: calc(var(--radius-lg) - 1px);
+      background: var(--clr-surface); display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 20px; padding: 40px;
+    }
+    .kol-avatar-group { display: flex; gap: -10px; }
+    .kol-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 3px solid var(--clr-surface);
+      margin-left: -10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .kol-avatar:first-child { margin-left: 0; }
+    .kol-avatar.a1 { background: linear-gradient(135deg,#f97316,#ef4444); }
+    .kol-avatar.a2 { background: linear-gradient(135deg,#8b5cf6,#6d28d9); }
+    .kol-avatar.a3 { background: linear-gradient(135deg,#06b6d4,#2563eb); }
+    .kol-avatar.a4 { background: linear-gradient(135deg,#10b981,#059669); }
+    .kol-avatar.a5 { background: linear-gradient(135deg,#f59e0b,#d97706); }
+    .kol-metric {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md); padding: 20px 28px; text-align: center; width: 100%;
+    }
+    .kol-metric-num { font-family: var(--font-display); font-size: 36px; font-weight: 800; color: var(--clr-cyan); }
+    .kol-metric-label { font-size: 13px; color: var(--clr-muted); }
+    .kol-float {
+      position: absolute; background: var(--clr-surface);
+      border: 1px solid var(--clr-border); border-radius: var(--radius-md);
+      padding: 12px 18px; display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 600; color: var(--clr-text);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .kol-float.f1 { top: -20px; right: -20px; }
+    .kol-float.f2 { bottom: -20px; left: -20px; }
+    .kol-float svg { width: 20px; height: 20px; }
+    .kol-text h2 { font-family: var(--font-display); font-size: clamp(28px,3.5vw,44px); font-weight: 800; color: var(--clr-white); line-height: 1.1; letter-spacing: -0.025em; margin: 16px 0 20px; }
+    .kol-text p { font-size: 16px; color: var(--clr-muted); line-height: 1.7; margin-bottom: 36px; }
+    .kol-features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+    .kol-feature { display: flex; align-items: flex-start; gap: 14px; }
+    .kol-feature-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .kol-feature-icon svg { width: 16px; height: 16px; }
+    .kol-feature-body h4 { font-size: 15px; font-weight: 600; color: var(--clr-text); margin-bottom: 4px; }
+    .kol-feature-body p { font-size: 14px; color: var(--clr-muted); }
+
+    /* ─── SUPPLY CHAIN ─── */
+    .supply { position: relative; overflow: hidden; }
+    .supply-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .supply-card {
+      background: var(--clr-surface); border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg); padding: 32px 28px;
+      transition: all var(--transition); position: relative; overflow: hidden;
+    }
+    .supply-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--bar-1, var(--clr-blue)), var(--bar-2, var(--clr-cyan)));
+      transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+    }
+    .supply-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.12); }
+    .supply-card:hover::before { transform: scaleX(1); }
+    .supply-icon { font-size: 36px; margin-bottom: 20px; }
+    .supply-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--clr-white); margin-bottom: 10px; }
+    .supply-desc { font-size: 14px; color: var(--clr-muted); line-height: 1.7; }
+
+    /* ─── ABOUT ─── */
+    .about { background: var(--clr-dark); overflow: hidden; }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-tag-row { margin-bottom: 20px; }
+    .about-title { font-family: var(--font-display); font-size: clamp(28px,3.5vw,42px); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .about-title span { color: transparent; background: linear-gradient(135deg,#00d4ff,#5b8fff); -webkit-background-clip: text; background-clip: text; }
+    .about-desc { font-size: 15px; color: var(--clr-muted); line-height: 1.85; margin-bottom: 16px; }
+    .about-milestones { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+    .milestone {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px 20px; border-radius: var(--radius-md);
+      background: var(--clr-surface); border: 1px solid var(--clr-border);
+      transition: border-color var(--transition);
+    }
+    .milestone:hover { border-color: rgba(0,212,255,0.25); }
+    .milestone-year {
+      font-family: var(--font-display); font-size: 13px; font-weight: 800;
+      color: var(--clr-cyan); min-width: 48px; padding-top: 2px;
+      letter-spacing: 0.04em;
+    }
+    .milestone-text { font-size: 13px; color: var(--clr-muted); line-height: 1.6; }
+    .milestone-text b { color: var(--clr-text); }
+    /* Founders */
+    .founders-side { display: flex; flex-direction: column; gap: 24px; }
+    .founders-visual {
+      position: relative; border-radius: var(--radius-xl); overflow: hidden;
+      background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(59,110,248,0.1));
+      border: 1px solid var(--clr-border); padding: 40px 32px;
+    }
+    .founders-visual::before {
+      content:''; position:absolute; top:-60px; right:-60px;
+      width:240px; height:240px; border-radius:50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.12), transparent 70%);
+    }
+    .founders-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--clr-cyan); margin-bottom: 28px;
+    }
+    .founder-cards { display: flex; flex-direction: column; gap: 16px; }
+    .founder-card {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 20px; border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.04); border: 1px solid var(--clr-border);
+    }
+    .founder-avatar {
+      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 700;
+    }
+    .founder-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .founder-role { font-size: 12px; color: var(--clr-cyan); font-weight: 600; margin-bottom: 4px; }
+    .founder-bio { font-size: 12px; color: var(--clr-muted); line-height: 1.6; }
+    .about-values {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px;
+    }
+    .value-item {
+      padding: 14px 16px; border-radius: var(--radius-md);
+      background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.12);
+      font-size: 13px; color: var(--clr-text); font-weight: 600;
+    }
+    .value-item span { color: var(--clr-cyan); margin-right: 6px; }
+    @media (max-width: 900px) {
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials { position: relative; overflow: hidden; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .testimonial-card {
+      background: var(--clr-surface); border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg); padding: 36px;
+      transition: all var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .testimonial-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .testimonial-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.1); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+    .testimonial-card:hover::before { opacity: 1; }
+    .testimonial-stars { display: flex; gap: 4px; margin-bottom: 20px; }
+    .testimonial-stars span { color: var(--clr-cyan); font-size: 14px; }
+    .testimonial-text { font-size: 15px; color: var(--clr-text); line-height: 1.75; margin-bottom: 28px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; font-size: 18px; display: flex; align-items: center; justify-content: center; }
+    .testimonial-name { font-size: 14px; font-weight: 600; color: var(--clr-text); }
+    .testimonial-role { font-size: 13px; color: var(--clr-muted); }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--clr-dark2), var(--clr-dark3));
+    }
+    .cta-inner {
+      background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(59,110,248,0.1));
+      border: 1px solid rgba(0,212,255,0.15); border-radius: var(--radius-xl);
+      padding: 80px 60px; text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-inner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.12) 0%, transparent 70%);
+    }
+    .cta-inner * { position: relative; z-index: 1; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(32px,5vw,56px); font-weight: 800; color: var(--clr-white); letter-spacing: -0.025em; margin: 16px 0 20px; }
+    .cta-desc { font-size: 18px; color: var(--clr-muted); max-width: 500px; margin: 0 auto 44px; line-height: 1.7; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-main {
+      display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+      font-size: 16px; font-weight: 700; padding: 16px 40px; border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #00d4ff, #3b6ef8); color: #fff;
+      transition: all var(--transition); box-shadow: 0 8px 32px rgba(0,212,255,0.25);
+    }
+    .cta-btn-main:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,212,255,0.45); }
+    .cta-btn-sec {
+      display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
+      font-size: 16px; font-weight: 600; padding: 16px 40px; border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.15); color: var(--clr-text);
+      background: rgba(255,255,255,0.05); transition: all var(--transition);
+    }
+    .cta-btn-sec:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--clr-dark); border-top: 1px solid var(--clr-border);
+      padding: 72px 0 32px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 56px; }
+    .footer-brand p { font-size: 15px; color: var(--clr-muted); line-height: 1.7; margin: 16px 0 28px; max-width: 300px; }
+    .footer-socials { display: flex; gap: 10px; }
+    .social-btn {
+      width: 38px; height: 38px; border-radius: var(--radius-sm);
+      background: var(--clr-surface); border: 1px solid var(--clr-border);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: var(--clr-muted); font-size: 15px;
+      transition: all var(--transition);
+    }
+    .social-btn:hover { border-color: rgba(255,255,255,0.15); color: var(--clr-text); background: var(--clr-dark3); }
+    .footer-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--clr-text); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { text-decoration: none; font-size: 14px; color: var(--clr-muted); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--clr-text); }
+    .footer-bottom { border-top: 1px solid var(--clr-border); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: var(--clr-muted); }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 13px; color: var(--clr-muted); text-decoration: none; transition: color var(--transition); }
+    .footer-legal a:hover { color: var(--clr-text); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .supply-grid { grid-template-columns: repeat(2,1fr); }
+      .kol-grid { grid-template-columns: 1fr; }
+      .kol-visual { max-width: 400px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-card.featured { transform: none; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 72px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .supply-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-direction: column; }
+      .hero-stat { border-right: none; border-bottom: 1px solid var(--clr-border); }
+      .hero-stat:last-child { border-bottom: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .cta-inner { padding: 48px 28px; }
+      .how-steps::before { left: 24px; }
+      .how-step-dot { width: 50px; height: 50px; font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════ NAVBAR ═══════════════════════════════════ -->
+  <nav class="navbar" id="navbar" aria-label="主导航">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="UIChain 首页">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        UI<span>Chain</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">服务</a>
+        <a href="#kol">KOL合作</a>
+        <a href="#supply">供应链</a>
+        <a href="#about">关于我们</a>
+        <a href="#testimonials">案例</a>
+      </div>
+      <div class="nav-cta">
+        <a href="admin.html" class="btn-ghost">登录后台</a>
+      </div>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">全球领先的 SME 增长平台</div>
+        <h1 class="hero-title">
+          让全球中小企业<br/>
+          <span class="line-gold">品牌突围</span>，<span class="line-blue">走向世界</span>
+        </h1>
+        <p class="hero-desc">
+          一站式品牌推广 · KOL 智能匹配 · 全球供应链协同<br/>
+          为中小企业提供与世界 500 强同等级别的增长引擎
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="hero-btn-main">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            联系我们咨询
+          </a>
+          <a href="#services" class="hero-btn-sec">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            了解核心服务
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">120<span>K+</span></div>
+            <div class="hero-stat-label">目标服务企业</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">50<span>+</span></div>
+            <div class="hero-stat-label">覆盖国家与地区</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num"><span>$</span>3.2<span>B</span></div>
+            <div class="hero-stat-label">目标促成交易额</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">98<span>%</span></div>
+            <div class="hero-stat-label">客户满意度目标</div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--clr-muted);margin-top:12px;opacity:0.6;">* 以上数据为平台发展目标，仅供参考</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ SERVICES ═══════════════════════════════════ -->
+  <section class="services" id="services">
+    <div class="blob"></div>
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="tag">核心服务</div>
+        <h2 class="section-title">四大核心服务<br/>驱动企业增长</h2>
+        <p class="section-desc">从品牌建设到供应链落地，我们为全球中小企业提供完整的商业增长解决方案</p>
+      </div>
+      <div class="services-grid fade-up">
+        <div class="service-card" style="--accent:rgba(37,99,235,0.08)">
+          <div class="service-num">01</div>
+          <div class="service-icon" style="--icon-bg:rgba(37,99,235,0.15);--icon-border:rgba(37,99,235,0.25)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3 class="service-title">全球品牌推广</h3>
+          <p class="service-desc">多语言内容创作、跨平台广告投放、SEO/SEM 优化，帮助中小企业在全球市场建立强势品牌认知与信任度。</p>
+          <a href="#contact" class="service-link">了解更多 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="service-card" style="--accent:rgba(139,92,246,0.08)">
+          <div class="service-num">02</div>
+          <div class="service-icon" style="--icon-bg:rgba(139,92,246,0.15);--icon-border:rgba(139,92,246,0.25)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/><circle cx="19" cy="7" r="3"/><circle cx="5" cy="7" r="3"/></svg>
+          </div>
+          <h3 class="service-title">KOL 智能匹配</h3>
+          <p class="service-desc">AI 驱动的 KOL 数据库，精准匹配品类、受众、ROI，覆盖 TikTok®、Instagram®、YouTube®、小红书等主流平台（平台名称归各自品牌所有，UIChain 与上述平台不存在官方合作关系）。</p>
+          <a href="#kol" class="service-link">了解更多 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="service-card" style="--accent:rgba(247,201,72,0.06)">
+          <div class="service-num">03</div>
+          <div class="service-icon" style="--icon-bg:rgba(247,201,72,0.12);--icon-border:rgba(247,201,72,0.2)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#f7c948" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3 class="service-title">供应链管理</h3>
+          <p class="service-desc">对接全球优质供应商，提供采购、库存、物流全链路可视化管理，降低成本、提升交付效率与合规保障。</p>
+          <a href="#supply" class="service-link">了解更多 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+        <div class="service-card" style="--accent:rgba(6,182,212,0.08)">
+          <div class="service-num">04</div>
+          <div class="service-icon" style="--icon-bg:rgba(6,182,212,0.15);--icon-border:rgba(6,182,212,0.25)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="service-title">数据智能分析</h3>
+          <p class="service-desc">实时营销效果追踪、竞品监控、消费者洞察，让每一分预算的投入都有数据支撑，决策更精准。</p>
+          <a href="#contact" class="service-link">了解更多 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ HOW IT WORKS ═══════════════════════════════════ -->
+  <section class="how">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="tag">运作流程</div>
+        <h2 class="section-title">四步启动<br/>全球增长飞轮</h2>
+        <p class="section-desc">简洁高效的合作流程，最快 72 小时即可全面启动</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step fade-up">
+          <div class="how-step-dot" style="--dot-clr:var(--clr-blue)">01</div>
+          <div class="how-step-body">
+            <h3 class="how-step-title">品牌诊断与需求分析</h3>
+            <p class="how-step-desc">专业顾问团队通过深度访谈与市场调研，全面评估您的品牌现状、目标市场与竞争格局，制定个性化增长策略。</p>
+          </div>
+        </div>
+        <div class="how-step fade-up">
+          <div class="how-step-dot" style="--dot-clr:var(--clr-purple)">02</div>
+          <div class="how-step-body">
+            <h3 class="how-step-title">精准方案制定</h3>
+            <p class="how-step-desc">结合 AI 数据分析，精选最适合您业务的 KOL 组合、推广渠道与供应链合作伙伴，形成可执行的落地方案。</p>
+          </div>
+        </div>
+        <div class="how-step fade-up">
+          <div class="how-step-dot" style="--dot-clr:var(--clr-cyan)">03</div>
+          <div class="how-step-body">
+            <h3 class="how-step-title">全链路执行落地</h3>
+            <p class="how-step-desc">项目经理统筹协调，多团队并行推进品牌传播、KOL 内容投放与供应链对接，确保各环节高效协同。</p>
+          </div>
+        </div>
+        <div class="how-step fade-up">
+          <div class="how-step-dot" style="--dot-clr:var(--clr-gold)">04</div>
+          <div class="how-step-body">
+            <h3 class="how-step-title">数据追踪与持续优化</h3>
+            <p class="how-step-desc">实时监控所有核心指标，每周复盘数据，动态调整策略，保证 ROI 持续提升，实现可复制的增长模型。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ KOL ═══════════════════════════════════ -->
+  <section class="kol" id="kol">
+    <div class="container">
+      <div class="kol-grid">
+        <div class="kol-visual fade-up">
+          <div class="kol-card-main">
+            <div class="kol-card-inner">
+              <div class="kol-avatar-group">
+                <div class="kol-avatar a1">🎯</div>
+                <div class="kol-avatar a2">🌟</div>
+                <div class="kol-avatar a3">📱</div>
+                <div class="kol-avatar a4">🎬</div>
+                <div class="kol-avatar a5">💡</div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--clr-text)">全球 KOL 数据库</div>
+                <div style="font-size:13px;color:var(--clr-muted);margin-top:6px">500,000+ 认证创作者</div>
+              </div>
+              <div class="kol-metric">
+                <div class="kol-metric-num">47x</div>
+                <div class="kol-metric-label">平均 KOL 投放 ROI 提升</div>
+              </div>
+              <div style="width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--clr-border);border-radius:12px;padding:16px 20px">
+                <div style="font-size:12px;color:var(--clr-muted);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">平台覆盖</div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">TikTok</span>
+                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">Instagram</span>
+                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">YouTube</span>
+                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">小红书</span>
+                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">Twitch</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="kol-float f1">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--clr-text)">4.9 / 5.0</div>
+              <div style="font-size:11px;color:var(--clr-muted)">KOL 满意度</div>
+            </div>
+          </div>
+          <div class="kol-float f2">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--clr-text)">+328% 平均增长</div>
+              <div style="font-size:11px;color:var(--clr-muted)">投放后 90 天</div>
+            </div>
+          </div>
+        </div>
+        <div class="kol-text fade-up">
+          <div class="tag">KOL 合作</div>
+          <h2>精准匹配，<br/>让每次合作都产生爆发力</h2>
+          <p>我们的 AI 引擎分析超过 200 个维度的 KOL 数据，精准匹配您的品牌调性、目标受众与预算，大幅提升内容合作的转化效率。</p>
+          <div class="kol-features">
+            <div class="kol-feature">
+              <div class="kol-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-blue2)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              </div>
+              <div class="kol-feature-body">
+                <h4>AI 智能匹配引擎</h4>
+                <p>多维度数据分析，自动筛选最优 KOL 组合，匹配准确率超过 93%</p>
+              </div>
+            </div>
+            <div class="kol-feature">
+              <div class="kol-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-purple)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="kol-feature-body">
+                <h4>可信度核验体系</h4>
+                <p>全面核查 KOL 粉丝真实度、互动质量与历史合作口碑，规避风险</p>
+              </div>
+            </div>
+            <div class="kol-feature">
+              <div class="kol-feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <div class="kol-feature-body">
+                <h4>全程效果追踪</h4>
+                <p>实时监控曝光、互动、转化等全链路数据，投放效果一目了然</p>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" class="hero-btn-main" style="display:inline-flex">
+            开始 KOL 合作
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ SUPPLY CHAIN ═══════════════════════════════════ -->
+  <section class="supply" id="supply">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="tag">供应链管理</div>
+        <h2 class="section-title">全球供应链<br/>透明可控</h2>
+        <p class="section-desc">构建从原料采购到最终交付的端到端可视化供应链，让您的业务运转更高效、更稳定</p>
+      </div>
+      <div class="supply-grid fade-up">
+        <div class="supply-card" style="--bar-1:#2563eb;--bar-2:#06b6d4">
+          <div class="supply-icon">🌐</div>
+          <h3 class="supply-title">全球供应商网络</h3>
+          <p class="supply-desc">覆盖 80+ 国家的认证优质供应商数据库，快速对接，缩短寻源周期 70%</p>
+        </div>
+        <div class="supply-card" style="--bar-1:#8b5cf6;--bar-2:#c026d3">
+          <div class="supply-icon">📦</div>
+          <h3 class="supply-title">智能库存管理</h3>
+          <p class="supply-desc">AI 预测需求，自动补货提醒，库存周转率提升 45%，减少积压与缺货损失</p>
+        </div>
+        <div class="supply-card" style="--bar-1:#f7c948;--bar-2:#f97316">
+          <div class="supply-icon">🚢</div>
+          <h3 class="supply-title">物流全程可视化</h3>
+          <p class="supply-desc">实时追踪货物状态，整合海陆空多式联运，支持 200+ 物流服务商对接</p>
+        </div>
+        <div class="supply-card" style="--bar-1:#10b981;--bar-2:#06b6d4">
+          <div class="supply-icon">✅</div>
+          <h3 class="supply-title">合规质检体系</h3>
+          <p class="supply-desc">覆盖 EU CE、美国 FCC、中国 CCC 等主要认证，降低跨境合规风险</p>
+        </div>
+        <div class="supply-card" style="--bar-1:#f97316;--bar-2:#ef4444">
+          <div class="supply-icon">💰</div>
+          <h3 class="supply-title">成本优化引擎</h3>
+          <p class="supply-desc">大数据比价、批量采购议价、关税优化，综合采购成本平均降低 22%</p>
+        </div>
+        <div class="supply-card" style="--bar-1:#06b6d4;--bar-2:#8b5cf6">
+          <div class="supply-icon">🔗</div>
+          <h3 class="supply-title">ERP 无缝集成</h3>
+          <p class="supply-desc">可与 SAP®、Oracle®、金蝶、用友等主流 ERP 系统集成对接，数据自动同步（各品牌名称归其所有者）</p>
+        </div>
+        <div class="supply-card" style="--bar-1:#2563eb;--bar-2:#8b5cf6">
+          <div class="supply-icon">🛡️</div>
+          <h3 class="supply-title">风险预警机制</h3>
+          <p class="supply-desc">实时监控供应商信用、地缘政治风险及自然灾害等，提前预警，应急方案即启</p>
+        </div>
+        <div class="supply-card" style="--bar-1:#f7c948;--bar-2:#10b981">
+          <div class="supply-icon">📊</div>
+          <h3 class="supply-title">供应链金融</h3>
+          <p class="supply-desc">应收账款融资、订单贷款等供应链金融产品，缓解资金压力，加速业务扩张</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-inner">
+
+        <!-- 左侧：品牌故事 + 里程碑 -->
+        <div class="fade-up">
+          <div class="about-tag-row">
+            <div class="tag">关于我们</div>
+          </div>
+          <h2 class="about-title">始于信念，<br/>成于<span>连接</span></h2>
+          <p class="about-desc">
+            2018年，Leo 与 Anna 从全球500强高级合伙人的岗位上迈出，
+            创立了 UIChain。他们深知大企业的运作逻辑，更看到了无数中小企业
+            在品牌出海、KOL合作与供应链管理上所面临的资源鸿沟。
+          </p>
+          <p class="about-desc">
+            UIChain 的使命，从第一天起就只有一个：<b style="color:var(--clr-text)">
+            用世界级的资源与能力，平等地服务每一家中小企业。</b>
+          </p>
+
+          <div class="about-milestones">
+            <div class="milestone">
+              <div class="milestone-year">2018</div>
+              <div class="milestone-text"><b>公司创立</b> — Leo 与 Anna 联合发起，总部设立于深圳，专注服务全球中小企业品牌增长</div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-year">2020</div>
+              <div class="milestone-text"><b>KOL 网络建立</b> — 完成全球首批 KOL 资源整合，覆盖东南亚、北美、欧洲三大市场</div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-year">2022</div>
+              <div class="milestone-text"><b>供应链平台上线</b> — 推出一体化供应链管理模块，服务企业突破 5,000 家</div>
+            </div>
+            <div class="milestone">
+              <div class="milestone-year">2024</div>
+              <div class="milestone-text"><b>全球化提速</b> — 业务扩展至 50+ 国家，AI 智能匹配系统正式投入运营</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧：创始人 + 价值观 -->
+        <div class="founders-side fade-up">
+          <div class="founders-visual">
+            <div class="founders-label">✦ 联合创始人</div>
+            <div class="founder-cards">
+              <div class="founder-card">
+                <div class="founder-avatar" style="background:linear-gradient(135deg,#00d4ff,#3b6ef8)">L</div>
+                <div>
+                  <div class="founder-name">Leo</div>
+                  <div class="founder-role">联合创始人 & CEO</div>
+                  <div class="founder-bio">前全球500强高级合伙人，深耕品牌战略与跨境业务15年，主导过数十个亿级品牌出海项目</div>
+                </div>
+              </div>
+              <div class="founder-card">
+                <div class="founder-avatar" style="background:linear-gradient(135deg,#a78bfa,#3b6ef8)">A</div>
+                <div>
+                  <div class="founder-name">Anna</div>
+                  <div class="founder-role">联合创始人 & COO</div>
+                  <div class="founder-bio">前全球500强高级合伙人，专精供应链整合与KOL生态运营，构建了UIChain全球资源网络</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-values">
+            <div class="value-item"><span>🎯</span>中小企业优先</div>
+            <div class="value-item"><span>🌐</span>全球视野本地化</div>
+            <div class="value-item"><span>⚡</span>数据驱动决策</div>
+            <div class="value-item"><span>🤝</span>长期伙伴关系</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ TESTIMONIALS ═══════════════════════════════════ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="tag">客户反馈</div>
+        <h2 class="section-title">全球客户<br/>真实评价</h2>
+        <p class="section-desc">来自全球各地企业的使用反馈（以下为示意内容）</p>
+      </div>
+      <div class="testimonials-grid fade-up">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"通过 UIChain 的 KOL 匹配系统，我们在东南亚市场的品牌知名度 3 个月内大幅提升，投入产出比远超预期。真正帮我们找到了适合品牌的创作者。"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#f97316,#ef4444)">🏪</div>
+            <div>
+              <div class="testimonial-name">Michael L.</div>
+              <div class="testimonial-role">CEO · 某科技公司（示意）</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"供应链管理模块让我们的采购成本显著降低，物流追踪系统大幅减少了客户投诉。UIChain 是我们出海必不可少的战略伙伴。"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">🚀</div>
+            <div>
+              <div class="testimonial-name">Sarah M.</div>
+              <div class="testimonial-role">COO · 某贸易公司（示意）</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"作为一个刚进入美国市场的新兴品牌，UIChain 帮我们精准触达了核心受众，第一季度的销售额超出预算目标。专属顾问团队的支持非常专业。"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#06b6d4,#2563eb)">🌎</div>
+            <div>
+              <div class="testimonial-name">Aisha O.</div>
+              <div class="testimonial-role">Founder · 某美妆品牌（示意）</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"UIChain 的品牌诊断报告精准指出了我们在欧洲市场的定位误差，调整策略后转化率明显提升。数据分析能力令人印象深刻。"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">📊</div>
+            <div>
+              <div class="testimonial-name">Marco R.</div>
+              <div class="testimonial-role">Marketing Dir · 某消费品牌（示意）</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"我们在 UIChain 平台上同时管理多个国家的供应商，系统稳定、操作直觉，每月节省了大量的人工协调时间，让团队可以专注于更高价值的工作。"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">⚡</div>
+            <div>
+              <div class="testimonial-name">Tanaka I.</div>
+              <div class="testimonial-role">Supply Chain VP · 某制造企业（示意）</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <p class="testimonial-text">"从签约到第一个 KOL 内容上线只用了 5 天，团队响应速度超快。中小企业很难找到这种配置的全链路解决方案，UIChain 是真正理解我们痛点的平台。"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#ec4899,#be185d)">💎</div>
+            <div>
+              <div class="testimonial-name">Ana L.</div>
+              <div class="testimonial-role">Brand Owner · 某时尚品牌（示意）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:12px;color:var(--clr-muted);margin-top:32px;opacity:0.6;">* 以上评价为示意内容，仅供展示参考，不代表真实客户意见</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ CTA ═══════════════════════════════════ -->
+  <section class="cta-section" id="cta">
+    <div class="container">
+      <div class="cta-inner fade-up">
+        <div class="tag">开始增长</div>
+        <h2 class="cta-title">准备好了吗？<br/>让世界认识你的品牌</h2>
+        <p class="cta-desc">覆盖全球 50+ 国家，帮助中小企业打通品牌出海、KOL 合作与供应链管理的全链路，驱动可持续增长</p>
+        <div class="cta-actions">
+          <a href="#contact" class="cta-btn-main">
+            立即联系我们咨询
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#services" class="cta-btn-sec">
+            了解核心服务
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </a>
+        </div>
+        <div style="margin-top:40px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--clr-muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg>
+            专属顾问一对一
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--clr-muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg>
+            24小时内响应
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--clr-muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg>
+            中英双语服务
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--clr-muted)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg>
+            全球 50+ 国家覆盖
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
+  <section id="contact" style="background:var(--clr-dark2);padding:100px 0;">
+    <div class="container">
+      <div class="section-header fade-up">
+        <div class="tag">联系我们</div>
+        <h2 class="section-title">随时与我们<br/>取得联系</h2>
+        <p class="section-desc">有任何问题或合作意向，我们会在 24 小时内回复</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;" class="fade-up">
+
+        <!-- 联系信息 -->
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div style="padding:28px 32px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;display:flex;align-items:center;gap:20px;">
+            <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#00d4ff,#3b6ef8);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">✉</div>
+            <div>
+              <div style="font-size:12px;color:var(--clr-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">邮件联系</div>
+              <a href="mailto:ui_chain@gmail.com" style="font-size:16px;font-weight:700;color:var(--clr-cyan);text-decoration:none;">ui_chain@gmail.com</a>
+              <div style="font-size:12px;color:var(--clr-muted);margin-top:4px;">工作日 24 小时内回复</div>
+            </div>
+          </div>
+          <div style="padding:28px 32px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;display:flex;align-items:center;gap:20px;">
+            <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#a78bfa,#3b6ef8);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🌐</div>
+            <div>
+              <div style="font-size:12px;color:var(--clr-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">服务覆盖</div>
+              <div style="font-size:15px;font-weight:700;color:var(--clr-text);">全球 50+ 国家与地区</div>
+              <div style="font-size:12px;color:var(--clr-muted);margin-top:4px;">中文 / English 双语支持</div>
+            </div>
+          </div>
+          <div style="padding:28px 32px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;display:flex;align-items:center;gap:20px;">
+            <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#10b981,#3b6ef8);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">⏰</div>
+            <div>
+              <div style="font-size:12px;color:var(--clr-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">工作时间</div>
+              <div style="font-size:15px;font-weight:700;color:var(--clr-text);">周一至周五 09:00–18:00</div>
+              <div style="font-size:12px;color:var(--clr-muted);margin-top:4px;">北京时间（UTC+8）</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 快速留言表单 -->
+        <div style="padding:36px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;">
+          <div style="font-size:18px;font-weight:700;margin-bottom:24px;">发送留言</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+            <div>
+              <label style="font-size:12px;color:var(--clr-muted);font-weight:600;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.05em;">您的姓名</label>
+              <input type="text" placeholder="Leo / Anna" style="width:100%;padding:10px 14px;background:var(--clr-dark3);border:1px solid var(--clr-border);border-radius:8px;color:var(--clr-text);font-size:14px;outline:none;" onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor=''"/>
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--clr-muted);font-weight:600;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.05em;">公司名称</label>
+              <input type="text" placeholder="您的公司" style="width:100%;padding:10px 14px;background:var(--clr-dark3);border:1px solid var(--clr-border);border-radius:8px;color:var(--clr-text);font-size:14px;outline:none;" onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor=''"/>
+            </div>
+          </div>
+          <div style="margin-bottom:14px;">
+            <label style="font-size:12px;color:var(--clr-muted);font-weight:600;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.05em;">邮箱地址</label>
+            <input type="email" placeholder="your@email.com" style="width:100%;padding:10px 14px;background:var(--clr-dark3);border:1px solid var(--clr-border);border-radius:8px;color:var(--clr-text);font-size:14px;outline:none;" onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor=''"/>
+          </div>
+          <div style="margin-bottom:20px;">
+            <label style="font-size:12px;color:var(--clr-muted);font-weight:600;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.05em;">留言内容</label>
+            <textarea rows="4" placeholder="请描述您的需求或问题..." style="width:100%;padding:10px 14px;background:var(--clr-dark3);border:1px solid var(--clr-border);border-radius:8px;color:var(--clr-text);font-size:14px;outline:none;resize:vertical;" onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor=''"></textarea>
+          </div>
+          <button onclick="this.textContent='✅ 已发送！我们会尽快回复';this.style.opacity='0.7';this.disabled=true;" style="width:100%;padding:13px;background:linear-gradient(135deg,#00d4ff,#3b6ef8);border:none;border-radius:8px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s;">
+            发送留言 →
+          </button>
+          <p style="text-align:center;font-size:12px;color:var(--clr-muted);margin-top:12px;">我们承诺 24 小时内回复您的邮件</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" style="text-decoration:none">
+            <div class="nav-logo-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            UI<span style="color:var(--clr-gold)">Chain</span>
+          </a>
+          <p>赋能全球中小企业的品牌增长与供应链效率，让每家中小企业都能拥有大企业的增长引擎。</p>
+          <div class="footer-socials">
+            <a href="javascript:void(0)" class="social-btn" title="LinkedIn">in</a>
+            <a href="javascript:void(0)" class="social-btn" title="Twitter">𝕏</a>
+            <a href="javascript:void(0)" class="social-btn" title="Instagram">ig</a>
+            <a href="javascript:void(0)" class="social-btn" title="YouTube">▶</a>
+            <a href="javascript:void(0)" class="social-btn" title="微信">微</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>产品服务</h4>
+          <ul>
+            <li><a href="#services">品牌推广</a></li>
+            <li><a href="#kol">KOL 合作</a></li>
+            <li><a href="#supply">供应链管理</a></li>
+            <li><a href="#services">数据分析</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>公司</h4>
+          <ul>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#testimonials">客户案例</a></li>
+            <li><a href="#contact">联系我们</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>联系我们</h4>
+          <ul style="gap:14px">
+            <li style="display:flex;align-items:center;gap:8px">
+              <span style="color:var(--clr-cyan);font-size:15px">✉</span>
+              <a href="mailto:ui_chain@gmail.com" style="color:var(--clr-muted);transition:color .2s" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color=''">ui_chain@gmail.com</a>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:8px">
+              <span style="color:var(--clr-cyan);font-size:15px;margin-top:1px">🌐</span>
+              <span style="color:var(--clr-muted);font-size:13px;line-height:1.6">服务全球 50+ 国家<br/>中文 / English</span>
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:8px">
+              <span style="color:var(--clr-cyan);font-size:15px;margin-top:1px">⏰</span>
+              <span style="color:var(--clr-muted);font-size:13px;line-height:1.6">工作日 09:00–18:00<br/>（UTC+8）</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 UIChain Inc. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="javascript:void(0)" onclick="alert('隐私政策页面建设中')">隐私政策</a>
+          <a href="javascript:void(0)" onclick="alert('服务条款页面建设中')">服务条款</a>
+          <a href="javascript:void(0)" onclick="alert('Cookie设置页面建设中')">Cookie 设置</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════ SCRIPTS ═══════════════════════════════════ -->
+  <script>
+    // ── Scroll Animation ──
+    const observerOpts = { threshold: 0.1, rootMargin: '0px 0px -60px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, observerOpts);
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ── Stagger children in grids ──
+    document.querySelectorAll('.services-grid, .supply-grid, .pricing-grid, .testimonials-grid, .how-steps').forEach(grid => {
+      const children = grid.querySelectorAll(':scope > *');
+      children.forEach((child, i) => {
+        child.style.transitionDelay = `${i * 80}ms`;
+      });
+    });
+
+    // ── Navbar scroll effect ──
+    window.addEventListener('scroll', () => {
+      const nb = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        nb.style.background = 'rgba(10,10,15,0.92)';
+      } else {
+        nb.style.background = 'rgba(10,10,15,0.75)';
+      }
+    }, { passive: true });
+
+    // ── Hamburger menu ──
+    let menuOpen = false;
+    function toggleMenu() {
+      menuOpen = !menuOpen;
+      const links = document.querySelector('.nav-links');
+      const cta = document.querySelector('.nav-cta');
+      if (menuOpen) {
+        links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(10,10,15,0.97);padding:20px 24px;border-bottom:1px solid var(--clr-border);backdrop-filter:blur(24px);z-index:999';
+        cta.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(10,10,15,0.97);padding:8px 24px 20px;border-bottom:1px solid var(--clr-border);backdrop-filter:blur(24px);z-index:998;top:calc(72px + 220px)';
+      } else {
+        links.style.cssText = '';
+        cta.style.cssText = '';
+      }
+    }
+
+    // ── Smooth counter animation ──
+    function animateCounter(el, target, suffix = '') {
+      const duration = 2000;
+      const start = performance.now();
+      const isDecimal = target % 1 !== 0;
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = isDecimal ? (eased * target).toFixed(1) : Math.floor(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    // ── Trigger counters when hero stats visible ──
+    const statsObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        const nums = document.querySelectorAll('.hero-stat-num');
+        const data = [{val:120,suf:'K+'},{val:50,suf:'+'},{val:3.2,suf:'B'},{val:98,suf:'%'}];
+        nums.forEach((el, i) => {
+          const textEl = el.cloneNode(false);
+          textEl.innerHTML = '';
+          const span = el.querySelector('span');
+          if (span) {
+            const pre = el.childNodes[0]?.nodeValue;
+            animateCounter(el, data[i].val);
+            setTimeout(() => { el.appendChild(span); }, 0);
+          }
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    }, { threshold: 0.5 });
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) statsObserver.observe(heroStats);
+
+    // ── Parallax on hero blobs ──
+    window.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      document.querySelectorAll('.hero .blob').forEach((b, i) => {
+        const factor = (i + 1) * 0.4;
+        b.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+      });
+    }, { passive: true });
+  </script>
+</body>
+</html>
