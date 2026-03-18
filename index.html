@@ -1,144 +1,796 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>leo | 投资人 & 分析师个人主页</title>
-  <meta
-    name="description"
-    content="leo，投资人 & 分析师，重点关注 AI 与 Web3 相关方向。分享投资观察、行业洞见与个人思考，展示部分研究框架与工作之外的灵感作品。"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css"
-  />
-  <link rel="stylesheet" href="./style.css" />
+  <title>UIChain — Global SME Growth Platform | Brand Marketing · KOL Matching · Global Sourcing · AI Tools</title>
+  <meta name="description" content="UIChain empowers global SMEs with AI-powered KOL matching, global sourcing (supplier discovery), brand marketing, and custom AI tool development — all in one platform. Expand your business worldwide with Fortune 500-grade resources." />
+  <meta name="keywords" content="global sourcing platform, SME growth, KOL marketing, influencer matching, AI tool development, supplier discovery, brand promotion, global marketing, cross-border business, UIChain" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="UIChain Inc." />
+  <link rel="canonical" href="https://uichain.org/" />
+
+  <!-- GEO meta tags for AI & search engines -->
+  <meta name="geo.region" content="US" />
+  <meta name="geo.placename" content="Global" />
+  <meta name="target" content="all" />
+  <meta name="audience" content="global SMEs, brand owners, entrepreneurs" />
+  <meta name="coverage" content="Worldwide" />
+  <meta name="distribution" content="Global" />
+  <meta name="language" content="English" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://uichain.org/" />
+  <meta property="og:title" content="UIChain — Global SME Growth Platform | KOL · Sourcing · AI Tools" />
+  <meta property="og:description" content="UIChain helps SMEs worldwide find verified suppliers, match with top KOLs, promote their brand, and build AI-powered tools — all from one platform." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="UIChain" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="UIChain — Global SME Growth Platform" />
+  <meta name="twitter:description" content="AI-powered KOL matching · Global supplier sourcing · Brand promotion · Custom AI tool development for SMEs worldwide." />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "UIChain",
+    "url": "https://uichain.org",
+    "logo": "https://uichain.org/logo.png",
+    "description": "UIChain is a global growth platform for SMEs providing AI-powered KOL matching, global sourcing, brand marketing, and AI tool development.",
+    "foundingDate": "2018",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Worldwide"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/uichain",
+      "https://twitter.com/uichain",
+      "https://www.instagram.com/uichain",
+      "https://www.youtube.com/@uichain"
+    ],
+    "knowsAbout": ["KOL Marketing", "Global Sourcing", "Brand Promotion", "AI Tool Development", "SME Growth"]
+  }
+  </script>
+
+  <!-- FAQ Schema for AI Search Engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What services does UIChain provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "UIChain offers four core services: KOL Marketing (influencer matching), Global Sourcing (supplier discovery & verification), Brand Promotion (international marketing), and Data Intelligence & AI Tools (custom AI tool development)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Global Sourcing work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our Global Sourcing service helps SMEs find, verify, and negotiate with reliable suppliers worldwide. We handle supplier discovery, due diligence, sample coordination, negotiation optimization, logistics coordination, and long-term relationship management."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can UIChain develop custom AI tools?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Our Data Intelligence & AI Tools service includes custom AI tool development for marketing automation, workflow optimization, and intelligent dashboards tailored to your business needs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is UIChain for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "UIChain is designed for global SMEs, brand owners, and entrepreneurs looking to expand internationally, find quality suppliers, reach top influencers, and leverage AI for business growth."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --clr-bg: #0a0a0f;
+      --clr-fg: #ffffff;
+      --clr-border: #2a2a35;
+      --clr-accent-primary: #00d9ff;
+      --clr-accent-secondary: #ff6b9d;
+      --clr-accent-tertiary: #00ff88;
+      --clr-surface: #14141e;
+      --transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--clr-bg);
+      color: var(--clr-fg);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      background: rgba(10, 10, 15, 0.75);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid var(--clr-border);
+      transition: background var(--transition);
+    }
+
+    .navbar-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--clr-accent-primary), var(--clr-accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--clr-fg);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--clr-accent-primary);
+    }
+
+    .hero {
+      padding: 120px 24px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(0, 217, 255, 0.1) 0%, transparent 100%);
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--clr-accent-primary), var(--clr-accent-secondary), var(--clr-accent-tertiary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--clr-accent-primary), var(--clr-accent-secondary));
+      color: var(--clr-bg);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0, 217, 255, 0.3);
+    }
+
+    .section {
+      padding: 80px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .section > p {
+      text-align: center;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 48px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .service-card {
+      padding: 32px;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: 12px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      border-color: var(--clr-accent-primary);
+      background: rgba(0, 217, 255, 0.05);
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--clr-accent-primary);
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    .sourcing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .sourcing-card {
+      padding: 20px;
+      background: rgba(0, 217, 255, 0.05);
+      border: 1px solid var(--clr-accent-primary);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .sourcing-card h4 {
+      color: var(--clr-accent-primary);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .sourcing-card p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .how-it-works {
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 107, 157, 0.1));
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .step {
+      padding: 32px;
+      background: var(--clr-surface);
+      border-left: 3px solid var(--clr-accent-primary);
+      border-radius: 4px;
+    }
+
+    .step-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--clr-accent-primary);
+      margin-bottom: 12px;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    .about {
+      background: linear-gradient(180deg, rgba(0, 217, 255, 0.05) 0%, transparent 100%);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .about-text h3 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      color: var(--clr-accent-primary);
+    }
+
+    .about-text p {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .milestones {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .milestone {
+      padding: 16px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid var(--clr-accent-primary);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .milestone-year {
+      font-weight: 700;
+      color: var(--clr-accent-primary);
+      margin-bottom: 4px;
+    }
+
+    .milestone-desc {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .testimonials {
+      background: var(--clr-surface);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .testimonial {
+      padding: 24px;
+      background: rgba(0, 217, 255, 0.05);
+      border: 1px solid var(--clr-accent-primary);
+      border-radius: 8px;
+    }
+
+    .testimonial-text {
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--clr-accent-primary);
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .contact {
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 255, 136, 0.1));
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 24px;
+    }
+
+    .contact p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+    }
+
+    .contact-email {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--clr-accent-primary);
+      margin-bottom: 32px;
+    }
+
+    .contact-email a {
+      color: var(--clr-accent-primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-email a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      background: rgba(10, 10, 15, 0.9);
+      border-top: 1px solid var(--clr-border);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--clr-accent-primary);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid var(--clr-accent-primary);
+      border-radius: 50%;
+      color: var(--clr-accent-primary);
+      text-decoration: none;
+      font-size: 18px;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--clr-accent-primary);
+      color: var(--clr-bg);
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section h2 {
+        font-size: 32px;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
-  <!-- Header / Nav -->
-  <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
-    <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 md:px-6">
-      <a href="index.html" class="flex items-center gap-2">
-        <span
-          class="bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 bg-clip-text text-lg font-semibold tracking-tight text-transparent"
-        >
-          MY SPACE
-        </span>
-      </a>
-      <button
-        id="nav-toggle"
-        class="inline-flex items-center justify-center rounded-md p-2 text-slate-300 hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500 md:hidden"
-        aria-label="打开主导航"
-      >
-        <span class="sr-only">打开主导航</span>
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="navbar-container">
+      <div class="logo">UIChain</div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        Empower Your Global <span class="accent">SME Growth</span>
+      </h1>
+      <p>
+        AI-powered KOL matching, global supplier sourcing, brand promotion, and custom AI tools — all in one integrated platform. Connect with Fortune 500-grade resources worldwide.
+      </p>
+      <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+        Get Started
       </button>
-      <div id="nav-menu" class="hidden flex-col gap-2 md:flex md:flex-row md:items-center md:gap-6">
-        <a
-          href="index.html"
-          class="text-sm font-medium text-sky-400"
-          aria-current="page"
-        >
-          首页
-        </a>
-        <a href="about.html" class="text-sm font-medium text-slate-300 hover:text-white">
-          关于
-        </a>
-        <a href="works.html" class="text-sm font-medium text-slate-300 hover:text-white">
-          作品
-        </a>
-        <a href="contact.html" class="text-sm font-medium text-slate-300 hover:text-white">
-          联系
-        </a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <p>Four core services designed to accelerate your global SME growth</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>01 — KOL Marketing</h3>
+        <p>Discover and partner with the right influencers worldwide. We handle audience analysis, campaign strategy, and performance tracking.</p>
       </div>
-    </nav>
-    <!-- mobile dropdown -->
-    <div id="nav-menu-mobile" class="hidden border-t border-slate-800 bg-slate-950 md:hidden">
-      <div class="mx-auto flex max-w-5xl flex-col px-4 py-2 space-y-1">
-        <a
-          href="index.html"
-          class="block rounded-md px-2 py-2 text-sm font-medium text-sky-400"
-          aria-current="page"
-        >
-          首页
-        </a>
-        <a href="about.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
-          关于
-        </a>
-        <a href="works.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
-          作品
-        </a>
-        <a href="contact.html" class="block rounded-md px-2 py-2 text-sm font-medium text-slate-200 hover:bg-slate-900">
-          联系
-        </a>
+      <div class="service-card">
+        <h3>02 — Global Sourcing</h3>
+        <p>Find, verify, and negotiate with reliable suppliers across the globe. Streamline procurement, reduce costs, and access quality manufacturers.</p>
+      </div>
+      <div class="service-card">
+        <h3>03 — Brand Promotion</h3>
+        <p>Launch your brand internationally with data-driven marketing strategies. Multi-channel campaigns, localization, and market expansion support.</p>
+      </div>
+      <div class="service-card">
+        <h3>04 — Data Intelligence & AI Tools</h3>
+        <p>Custom AI-powered tools for your business: marketing automation bots, workflow optimization, intelligent dashboards, and predictive analytics.</p>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- Main -->
-  <main class="flex-1">
-    <section class="mx-auto flex max-w-5xl flex-col items-center gap-10 px-4 py-12 md:flex-row md:py-20 md:px-6">
-      <!-- Text -->
-      <div class="w-full md:w-1/2 space-y-6 fade-in-up">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sky-400">
-          leo · Investor & Analyst
+  <!-- Global Sourcing Details -->
+  <section class="section">
+    <h2>Global Sourcing in Detail</h2>
+    <p>Our comprehensive sourcing process covers every step of supplier discovery to long-term partnership</p>
+    <div class="sourcing-grid">
+      <div class="sourcing-card">
+        <h4>Supplier Discovery</h4>
+        <p>AI-powered supplier identification & market intelligence</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Due Diligence</h4>
+        <p>Background verification & compliance checks</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Sample Coordination</h4>
+        <p>Quality evaluation & testing logistics</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Negotiation Optimization</h4>
+        <p>Price & contract negotiations</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Logistics Coordination</h4>
+        <p>Shipping, customs & delivery management</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Risk Monitoring</h4>
+        <p>Ongoing compliance & quality assurance</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Long-term Partnership</h4>
+        <p>Relationship management & continuous optimization</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Market Intelligence</h4>
+        <p>Price trends, industry insights & competitive analysis</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="section how-it-works">
+    <h2>How It Works</h2>
+    <p>Simple, transparent process from consultation to execution</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h3>Consultation</h3>
+        <p>Discuss your growth goals, current challenges, and desired outcomes. We understand your market, product, and target audience.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h3>Strategic Planning</h3>
+        <p>Develop a comprehensive sourcing, marketing, or AI strategy tailored to your needs. Identify key influencers, supplier categories, and channels.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Execution</h3>
+        <p>We handle the heavy lifting: supplier negotiations, KOL outreach, campaign management, or custom AI tool development.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <h3>Measurement & Optimization</h3>
+        <p>Real-time performance tracking, data analytics, and continuous optimization to ensure maximum ROI and business growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <h2>About UIChain</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Founded in 2018</h3>
+        <p>
+          UIChain is a global growth platform serving ambitious SMEs, entrepreneurs, and brands worldwide. We combine market expertise, technology innovation, and deep industry networks to unlock growth opportunities.
         </p>
-        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-          欢迎来到我的世界
-        </h1>
-        <p class="text-sm leading-relaxed text-slate-300 sm:text-base">
-          这里是 leo 的个人空间，一名长期关注一级与二级市场的投资人 & 分析师。
-          在这里我会整理部分投资笔记、行业洞见，以及工作之外的一些兴趣与作品，也欢迎你通过留言与我交流想法。
+        <p>
+          Our team brings Fortune 500 experience to emerging businesses, helping companies source products globally, connect with influential partners, launch brands internationally, and leverage AI for competitive advantage.
         </p>
-        <div class="flex flex-wrap gap-3">
-          <a
-            href="about.html"
-            class="inline-flex items-center rounded-full bg-gradient-to-r from-sky-500 via-indigo-500 to-purple-500 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-sky-500/20 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
-          >
-            了解更多关于我
-          </a>
-          <a
-            href="works.html"
-            class="inline-flex items-center rounded-full border border-slate-700 px-5 py-2 text-sm font-medium text-slate-200 transition duration-300 hover:border-sky-500 hover:text-white"
-          >
-            查看我的作品
-          </a>
+        <p>
+          We believe every SME deserves access to world-class resources. That's why we've built UIChain.
+        </p>
+      </div>
+      <div class="milestones">
+        <div class="milestone">
+          <div class="milestone-year">2018</div>
+          <div class="milestone-desc">Founded</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-year">2020</div>
+          <div class="milestone-desc">KOL matching launched</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-year">2022</div>
+          <div class="milestone-desc">Global sourcing expanded</div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-year">2024</div>
+          <div class="milestone-desc">AI tool development launched</div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Hero Image -->
-      <div class="w-full md:w-1/2">
-        <div
-          class="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-1 shadow-2xl"
-        >
-          <div class="relative overflow-hidden rounded-3xl bg-slate-950/80">
-            <img
-              src="https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&w=1200"
-              alt="抽象科技术占位图"
-              class="h-full w-full max-h-80 object-cover object-center transition duration-500 hover:scale-105"
-            />
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-sky-500/10 via-transparent to-purple-500/20"></div>
-          </div>
-          <div class="pointer-events-none absolute -right-16 -top-16 h-32 w-32 rounded-full bg-sky-500/20 blur-3xl"></div>
+  <!-- Testimonials Section -->
+  <section class="section testimonials">
+    <h2>Client Success Stories</h2>
+    <p>Hear from companies that grew with UIChain</p>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "UIChain helped us source high-quality suppliers across Southeast Asia. We reduced procurement costs by 35% in 6 months while maintaining premium quality."
         </div>
+        <div class="testimonial-author">Sarah Chen</div>
+        <div class="testimonial-role">CEO, Fashion Retailer</div>
       </div>
-    </section>
-  </main>
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "The KOL matching was incredible. We connected with micro-influencers perfectly aligned with our brand values and saw a 240% ROI on our campaign."
+        </div>
+        <div class="testimonial-author">Marcus Johnson</div>
+        <div class="testimonial-role">Marketing Director, Tech Startup</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "UIChain's custom AI tools automated 60% of our manual workflows. We now process customer inquiries 10x faster with better accuracy."
+        </div>
+        <div class="testimonial-author">Priya Sharma</div>
+        <div class="testimonial-role">Operations Manager, E-commerce Brand</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <h2>Ready to Scale Globally?</h2>
+    <p>Join hundreds of SMEs already growing with UIChain</p>
+    <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+      Start Your Journey
+    </button>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <h2>Get in Touch</h2>
+    <p>Let's discuss how UIChain can accelerate your growth</p>
+    <div class="contact-email">
+      <a href="mailto:welcome@uichain.org">welcome@uichain.org</a>
+    </div>
+    <p style="font-size: 14px; color: rgba(255, 255, 255, 0.5);">
+      We respond to all inquiries within 24 hours
+    </p>
+  </section>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-800 bg-slate-950/80">
-    <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 px-4 py-4 text-xs text-slate-400 md:flex-row md:px-6">
-      <p>© <span id="year"></span> leo. 保留所有权利。</p>
-      <p class="flex items-center gap-1">
-        <span class="h-1 w-1 rounded-full bg-sky-500"></span>
-        <span>用 HTML · Tailwind CSS · JavaScript 构建</span>
-      </p>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/company/uichain" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+        <a href="https://twitter.com/uichain" target="_blank" rel="noopener noreferrer" title="X (Twitter)">𝕏</a>
+        <a href="https://www.instagram.com/uichain" target="_blank" rel="noopener noreferrer" title="Instagram">📷</a>
+        <a href="https://www.youtube.com/@uichain" target="_blank" rel="noopener noreferrer" title="YouTube">▶️</a>
+      </div>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:welcome@uichain.org">Email</a>
+      </div>
+      <p>&copy; 2018-2026 UIChain Inc. All rights reserved. | Global growth platform for SMEs.</p>
     </div>
   </footer>
-
-  <script src="./script.js"></script>
 </body>
 </html>
-
