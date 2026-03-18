@@ -32,7 +32,7 @@
   <meta name="twitter:title" content="UIChain — Global SME Growth Platform" />
   <meta name="twitter:description" content="AI-powered KOL matching · Global supplier sourcing · Brand promotion · Custom AI tool development for SMEs worldwide." />
 
-  <!-- JSON-LD Structured Data (SEO + GEO for AI search engines) -->
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,47 +40,23 @@
     "name": "UIChain",
     "url": "https://uichain.org",
     "logo": "https://uichain.org/logo.png",
-    "description": "UIChain is a global growth platform for SMEs, providing AI-powered KOL matching, global sourcing (supplier discovery), brand promotion, data intelligence, and custom AI tool development services.",
+    "description": "UIChain is a global growth platform for SMEs providing AI-powered KOL matching, global sourcing, brand marketing, and AI tool development.",
     "foundingDate": "2018",
-    "founders": [
-      { "@type": "Person", "name": "Leo" },
-      { "@type": "Person", "name": "Anna" }
-    ],
     "areaServed": {
       "@type": "Place",
       "name": "Worldwide"
     },
-    "serviceType": [
-      "Brand Promotion",
-      "KOL Marketing",
-      "Global Sourcing",
-      "Supplier Discovery",
-      "Data Intelligence",
-      "AI Tool Development"
-    ],
-    "knowsAbout": [
-      "influencer marketing",
-      "KOL matching",
-      "global sourcing",
-      "supplier discovery",
-      "SME growth",
-      "AI tool development",
-      "cross-border business"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "email": "welcome@uichain.org",
-      "contactType": "customer service",
-      "availableLanguage": ["English", "Chinese"]
-    },
     "sameAs": [
-      "https://linkedin.com/company/uichain",
-      "https://twitter.com/uichain"
-    ]
+      "https://www.linkedin.com/company/uichain",
+      "https://twitter.com/uichain",
+      "https://www.instagram.com/uichain",
+      "https://www.youtube.com/@uichain"
+    ],
+    "knowsAbout": ["KOL Marketing", "Global Sourcing", "Brand Promotion", "AI Tool Development", "SME Growth"]
   }
   </script>
 
-  <!-- FAQ Schema for GEO (AI-readable Q&A) -->
+  <!-- FAQ Schema for AI Search Engines -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -88,1325 +64,734 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is UIChain?",
+        "name": "What services does UIChain provide?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "UIChain is a comprehensive growth platform for global SMEs, offering AI-powered KOL matching, global sourcing and supplier discovery, brand promotion, data intelligence analytics, and custom AI tool development."
+          "text": "UIChain offers four core services: KOL Marketing (influencer matching), Global Sourcing (supplier discovery & verification), Brand Promotion (international marketing), and Data Intelligence & AI Tools (custom AI tool development)."
         }
       },
       {
         "@type": "Question",
-        "name": "What is global sourcing on UIChain?",
+        "name": "How does Global Sourcing work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "UIChain's Global Sourcing service helps businesses find and verify quality suppliers worldwide. We connect buyers with certified manufacturers and vendors across 80+ countries, reducing sourcing time by up to 70%."
+          "text": "Our Global Sourcing service helps SMEs find, verify, and negotiate with reliable suppliers worldwide. We handle supplier discovery, due diligence, sample coordination, negotiation optimization, logistics coordination, and long-term relationship management."
         }
       },
       {
         "@type": "Question",
-        "name": "How does UIChain's AI-powered KOL matching work?",
+        "name": "Can UIChain develop custom AI tools?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "UIChain's AI engine analyzes over 200 data dimensions to match brands with the most suitable KOLs across TikTok, Instagram, YouTube, and other platforms, achieving 93%+ matching accuracy and significantly improving campaign ROI."
+          "text": "Yes. Our Data Intelligence & AI Tools service includes custom AI tool development for marketing automation, workflow optimization, and intelligent dashboards tailored to your business needs."
         }
       },
       {
         "@type": "Question",
-        "name": "Does UIChain offer AI tool development?",
+        "name": "Who is UIChain for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. UIChain provides custom AI tool development services including marketing automation bots, data analysis dashboards, and intelligent business workflow tools tailored to SME needs."
+          "text": "UIChain is designed for global SMEs, brand owners, and entrepreneurs looking to expand internationally, find quality suppliers, reach top influencers, and leverage AI for business growth."
         }
       }
     ]
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
   <style>
-    /* ─── CSS RESET & VARIABLES ─── */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
     :root {
-      --clr-dark:    #060810;
-      --clr-dark2:   #0d0f1a;
-      --clr-dark3:   #131625;
-      --clr-surface: #181b2e;
-      --clr-border:  rgba(99,179,255,0.1);
-      --clr-gold:    #00d4ff;
-      --clr-gold2:   #38edff;
-      --clr-blue:    #3b6ef8;
-      --clr-blue2:   #5b8fff;
-      --clr-cyan:    #00d4ff;
-      --clr-purple:  #a78bfa;
-      --clr-text:    #e2e8f8;
-      --clr-muted:   #7a85aa;
-      --clr-white:   #ffffff;
-      --radius-sm:   8px;
-      --radius-md:   16px;
-      --radius-lg:   24px;
-      --radius-xl:   40px;
-      --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
-      --font-main:   'Inter', system-ui, sans-serif;
-      --font-display:'Plus Jakarta Sans', 'Inter', sans-serif;
+      --clr-bg: #0a0a0f;
+      --clr-fg: #ffffff;
+      --clr-border: #2a2a35;
+      --clr-accent-primary: #00d9ff;
+      --clr-accent-secondary: #ff6b9d;
+      --clr-accent-tertiary: #00ff88;
+      --clr-surface: #14141e;
+      --transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: var(--font-main);
-      background: var(--clr-dark);
-      color: var(--clr-text);
-      overflow-x: hidden;
+      background: var(--clr-bg);
+      color: var(--clr-fg);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-size: 16px;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* ─── SCROLLBAR ─── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--clr-dark); }
-    ::-webkit-scrollbar-thumb { background: var(--clr-blue2); border-radius: 3px; }
-
-    /* ─── UTILITIES ─── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-    .tag {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--clr-cyan);
-      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
-      padding: 6px 14px; border-radius: 100px;
-    }
-    .tag::before { content: ''; width: 6px; height: 6px; background: var(--clr-cyan); border-radius: 50%; }
-
-    /* ─── GLOW BLOBS ─── */
-    .blob {
-      position: absolute; border-radius: 50%; filter: blur(120px);
-      pointer-events: none; z-index: 0;
-    }
-
-    /* ─── NAVBAR ─── */
     .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      height: 72px; display: flex; align-items: center;
-      background: rgba(10,10,15,0.75);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      background: rgba(10, 10, 15, 0.75);
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       border-bottom: 1px solid var(--clr-border);
       transition: background var(--transition);
     }
-    .navbar .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none; font-family: var(--font-display);
-      font-weight: 800; font-size: 20px; color: var(--clr-white);
-      letter-spacing: -0.02em;
+
+    .navbar-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .nav-logo-icon {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: linear-gradient(135deg, #00d4ff, #3b6ef8);
-      display: flex; align-items: center; justify-content: center;
+
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--clr-accent-primary), var(--clr-accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      cursor: pointer;
+      transition: var(--transition);
     }
-    .nav-logo-icon svg { width: 20px; height: 20px; fill: white; }
-    .nav-logo span { color: var(--clr-gold); }
-    .nav-links { display: flex; align-items: center; gap: 2px; }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
     .nav-links a {
-      text-decoration: none; color: var(--clr-muted); font-size: 14px;
-      font-weight: 500; padding: 8px 14px; border-radius: var(--radius-sm);
-      transition: color var(--transition), background var(--transition);
-    }
-    .nav-links a:hover { color: var(--clr-white); background: rgba(255,255,255,0.06); }
-    .nav-cta {
-      display: flex; align-items: center; gap: 12px;
-    }
-    .btn-ghost {
-      text-decoration: none; color: var(--clr-text); font-size: 14px;
-      font-weight: 500; padding: 9px 20px; border-radius: var(--radius-sm);
-      border: 1px solid var(--clr-border); transition: all var(--transition);
-    }
-    .btn-ghost:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
-    .btn-primary {
-      text-decoration: none; font-size: 14px; font-weight: 600;
-      padding: 9px 22px; border-radius: var(--radius-sm);
-      background: linear-gradient(135deg, #00d4ff, #3b6ef8);
-      color: white; transition: all var(--transition);
-      box-shadow: 0 0 20px rgba(0,212,255,0.25);
-    }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(0,212,255,0.45); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
-    .hamburger span { width: 22px; height: 2px; background: var(--clr-text); border-radius: 2px; transition: var(--transition); }
-
-    /* ─── HERO ─── */
-    .hero {
-      position: relative; min-height: 100vh;
-      display: flex; align-items: center;
-      overflow: hidden; padding-top: 72px;
-    }
-    .hero .blob-1 { width: 700px; height: 700px; background: rgba(0,212,255,0.1); top: -200px; right: -100px; }
-    .hero .blob-2 { width: 500px; height: 500px; background: rgba(59,110,248,0.12); bottom: -100px; left: -150px; }
-    .hero .blob-3 { width: 300px; height: 300px; background: rgba(167,139,250,0.08); top: 30%; left: 40%; }
-    .hero-grid {
-      position: absolute; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 100%);
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 0%, transparent 100%);
-    }
-    .hero-content {
-      position: relative; z-index: 1; text-align: center;
-      padding: 80px 0; width: 100%;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--clr-cyan); background: rgba(6,182,212,0.1);
-      border: 1px solid rgba(6,182,212,0.2); padding: 8px 18px;
-      border-radius: 100px; margin-bottom: 32px;
-    }
-    .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--clr-cyan); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.2)} }
-
-    .hero-title {
-      font-family: var(--font-display); font-size: clamp(44px, 7vw, 88px);
-      font-weight: 800; line-height: 1.08; letter-spacing: -0.03em;
-      color: var(--clr-white); margin-bottom: 28px;
-    }
-    .hero-title .line-gold { color: transparent; background: linear-gradient(135deg, #00d4ff, #38edff, #a78bfa); -webkit-background-clip: text; background-clip: text; }
-    .hero-title .line-blue { color: transparent; background: linear-gradient(135deg, #5b8fff, #00d4ff); -webkit-background-clip: text; background-clip: text; }
-
-    .hero-desc {
-      font-size: clamp(16px, 2vw, 20px); color: var(--clr-muted); max-width: 600px;
-      margin: 0 auto 44px; font-weight: 400; line-height: 1.7;
-    }
-    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
-    .hero-btn-main {
-      display: inline-flex; align-items: center; gap: 10px;
-      text-decoration: none; font-size: 16px; font-weight: 700;
-      padding: 16px 36px; border-radius: var(--radius-md);
-      background: linear-gradient(135deg, #00d4ff, #3b6ef8);
-      color: #fff; transition: all var(--transition);
-      box-shadow: 0 8px 32px rgba(0,212,255,0.25);
-    }
-    .hero-btn-main:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,212,255,0.45); }
-    .hero-btn-main svg { width: 18px; height: 18px; }
-    .hero-btn-sec {
-      display: inline-flex; align-items: center; gap: 10px;
-      text-decoration: none; font-size: 16px; font-weight: 600;
-      padding: 16px 36px; border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.12); color: var(--clr-text);
-      background: rgba(255,255,255,0.04); transition: all var(--transition);
-      backdrop-filter: blur(8px);
-    }
-    .hero-btn-sec:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
-    .hero-btn-sec svg { width: 18px; height: 18px; }
-
-    .hero-stats {
-      display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
-      border: 1px solid var(--clr-border); border-radius: var(--radius-lg);
-      background: rgba(255,255,255,0.02); backdrop-filter: blur(12px);
-      overflow: hidden; max-width: 680px; margin: 0 auto;
-    }
-    .hero-stat {
-      flex: 1; min-width: 160px; padding: 28px 24px; text-align: center;
-      border-right: 1px solid var(--clr-border);
-    }
-    .hero-stat:last-child { border-right: none; }
-    .hero-stat-num {
-      font-family: var(--font-display); font-size: 32px; font-weight: 800;
-      letter-spacing: -0.02em; color: var(--clr-white);
-    }
-    .hero-stat-num span { color: var(--clr-cyan); }
-    .hero-stat-label { font-size: 13px; color: var(--clr-muted); margin-top: 4px; }
-
-    /* ─── SECTION COMMON ─── */
-    section { padding: 100px 0; }
-    .section-header { text-align: center; margin-bottom: 72px; }
-    .section-title {
-      font-family: var(--font-display); font-size: clamp(32px, 4.5vw, 56px);
-      font-weight: 800; letter-spacing: -0.025em; line-height: 1.1;
-      color: var(--clr-white); margin: 16px 0 20px;
-    }
-    .section-desc {
-      font-size: 18px; color: var(--clr-muted); max-width: 560px;
-      margin: 0 auto; line-height: 1.7;
-    }
-
-    /* ─── SERVICES ─── */
-    .services { background: var(--clr-dark2); position: relative; overflow: hidden; }
-    .services .blob { width: 600px; height: 600px; background: rgba(37,99,235,0.07); top: -100px; right: -200px; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 1px; background: var(--clr-border);
-      border: 1px solid var(--clr-border); border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-    .service-card {
-      background: var(--clr-dark2); padding: 44px 36px;
-      position: relative; overflow: hidden;
-      transition: background var(--transition);
-    }
-    .service-card::before {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, var(--accent, rgba(37,99,235,0.06)) 0%, transparent 60%);
-      opacity: 0; transition: opacity var(--transition);
-    }
-    .service-card:hover::before { opacity: 1; }
-    .service-card:hover { background: var(--clr-dark3); }
-    .service-icon {
-      width: 56px; height: 56px; border-radius: var(--radius-md);
-      background: var(--icon-bg, rgba(37,99,235,0.15));
-      border: 1px solid var(--icon-border, rgba(37,99,235,0.2));
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 24px; position: relative; z-index: 1;
-    }
-    .service-icon svg { width: 26px; height: 26px; }
-    .service-num {
-      position: absolute; top: 28px; right: 28px;
-      font-size: 48px; font-weight: 900; color: rgba(255,255,255,0.03);
-      font-family: var(--font-display); line-height: 1;
-      pointer-events: none; user-select: none;
+      color: var(--clr-fg);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
       transition: color var(--transition);
     }
-    .service-card:hover .service-num { color: rgba(255,255,255,0.06); }
-    .service-title {
-      font-family: var(--font-display); font-size: 20px; font-weight: 700;
-      color: var(--clr-white); margin-bottom: 12px; position: relative; z-index: 1;
-    }
-    .service-desc {
-      font-size: 15px; color: var(--clr-muted); line-height: 1.7;
-      position: relative; z-index: 1;
-    }
-    .service-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      margin-top: 20px; font-size: 13px; font-weight: 600;
-      color: var(--clr-blue2); text-decoration: none;
-      position: relative; z-index: 1; transition: gap var(--transition);
-    }
-    .service-link:hover { gap: 10px; }
-    .service-link svg { width: 14px; height: 14px; }
 
-    /* ─── HOW IT WORKS ─── */
-    .how { position: relative; overflow: hidden; background: var(--clr-dark3); }
-    .how .container { position: relative; z-index: 1; }
-    .how::before {
-      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 800px; height: 800px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(59,110,248,0.05) 0%, transparent 70%);
-      pointer-events: none;
+    .nav-links a:hover {
+      color: var(--clr-accent-primary);
     }
-    .how-steps { display: grid; grid-template-columns: 1fr; gap: 0; max-width: 800px; margin: 0 auto; position: relative; }
-    .how-steps::before {
-      content: ''; position: absolute; left: 31px; top: 40px; bottom: 40px;
-      width: 2px; background: linear-gradient(to bottom, #00d4ff, #3b6ef8, #a78bfa);
-    }
-    .how-step { display: flex; gap: 32px; padding: 36px 0; }
-    .how-step-dot {
-      flex-shrink: 0; width: 64px; height: 64px; border-radius: 50%;
-      background: var(--clr-surface); border: 2px solid var(--dot-clr, var(--clr-blue));
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-size: 20px; font-weight: 800;
-      color: var(--dot-clr, var(--clr-blue)); position: relative; z-index: 1;
-    }
-    .how-step-body { padding-top: 12px; }
-    .how-step-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--clr-white); margin-bottom: 10px; }
-    .how-step-desc { font-size: 15px; color: var(--clr-muted); line-height: 1.7; max-width: 560px; }
 
-    /* ─── KOL ─── */
-    .kol { background: var(--clr-dark2); position: relative; overflow: hidden; }
-    .kol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-    .kol-visual {
-      position: relative; aspect-ratio: 1; max-width: 500px;
+    .hero {
+      padding: 120px 24px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(0, 217, 255, 0.1) 0%, transparent 100%);
     }
-    .kol-card-main {
-      position: absolute; inset: 0; border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, #00d4ff 0%, #3b6ef8 50%, #a78bfa 100%);
-      overflow: hidden;
-    }
-    .kol-card-inner {
-      position: absolute; inset: 1px; border-radius: calc(var(--radius-lg) - 1px);
-      background: var(--clr-surface); display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 20px; padding: 40px;
-    }
-    .kol-avatar-group { display: flex; gap: -10px; }
-    .kol-avatar {
-      width: 56px; height: 56px; border-radius: 50%;
-      border: 3px solid var(--clr-surface);
-      margin-left: -10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px;
-    }
-    .kol-avatar:first-child { margin-left: 0; }
-    .kol-avatar.a1 { background: linear-gradient(135deg,#f97316,#ef4444); }
-    .kol-avatar.a2 { background: linear-gradient(135deg,#8b5cf6,#6d28d9); }
-    .kol-avatar.a3 { background: linear-gradient(135deg,#06b6d4,#2563eb); }
-    .kol-avatar.a4 { background: linear-gradient(135deg,#10b981,#059669); }
-    .kol-avatar.a5 { background: linear-gradient(135deg,#f59e0b,#d97706); }
-    .kol-metric {
-      background: rgba(255,255,255,0.05); border: 1px solid var(--clr-border);
-      border-radius: var(--radius-md); padding: 20px 28px; text-align: center; width: 100%;
-    }
-    .kol-metric-num { font-family: var(--font-display); font-size: 36px; font-weight: 800; color: var(--clr-cyan); }
-    .kol-metric-label { font-size: 13px; color: var(--clr-muted); }
-    .kol-float {
-      position: absolute; background: var(--clr-surface);
-      border: 1px solid var(--clr-border); border-radius: var(--radius-md);
-      padding: 12px 18px; display: flex; align-items: center; gap: 10px;
-      font-size: 13px; font-weight: 600; color: var(--clr-text);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-    }
-    .kol-float.f1 { top: -20px; right: -20px; }
-    .kol-float.f2 { bottom: -20px; left: -20px; }
-    .kol-float svg { width: 20px; height: 20px; }
-    .kol-text h2 { font-family: var(--font-display); font-size: clamp(28px,3.5vw,44px); font-weight: 800; color: var(--clr-white); line-height: 1.1; letter-spacing: -0.025em; margin: 16px 0 20px; }
-    .kol-text p { font-size: 16px; color: var(--clr-muted); line-height: 1.7; margin-bottom: 36px; }
-    .kol-features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
-    .kol-feature { display: flex; align-items: flex-start; gap: 14px; }
-    .kol-feature-icon { width: 32px; height: 32px; border-radius: 8px; background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-    .kol-feature-icon svg { width: 16px; height: 16px; }
-    .kol-feature-body h4 { font-size: 15px; font-weight: 600; color: var(--clr-text); margin-bottom: 4px; }
-    .kol-feature-body p { font-size: 14px; color: var(--clr-muted); }
 
-    /* ─── SOURCING ─── */
-    .supply { position: relative; overflow: hidden; }
-    .supply-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
-    .supply-card {
-      background: var(--clr-surface); border: 1px solid var(--clr-border);
-      border-radius: var(--radius-lg); padding: 32px 28px;
-      transition: all var(--transition); position: relative; overflow: hidden;
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
     }
-    .supply-card::before {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-      background: linear-gradient(90deg, var(--bar-1, var(--clr-blue)), var(--bar-2, var(--clr-cyan)));
-      transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
-    }
-    .supply-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.12); }
-    .supply-card:hover::before { transform: scaleX(1); }
-    .supply-icon { font-size: 36px; margin-bottom: 20px; }
-    .supply-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--clr-white); margin-bottom: 10px; }
-    .supply-desc { font-size: 14px; color: var(--clr-muted); line-height: 1.7; }
 
-    /* ─── ABOUT ─── */
-    .about { background: var(--clr-dark); overflow: hidden; }
-    .about-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      line-height: 1.2;
     }
-    .about-tag-row { margin-bottom: 20px; }
-    .about-title { font-family: var(--font-display); font-size: clamp(28px,3.5vw,42px); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
-    .about-title span { color: transparent; background: linear-gradient(135deg,#00d4ff,#5b8fff); -webkit-background-clip: text; background-clip: text; }
-    .about-desc { font-size: 15px; color: var(--clr-muted); line-height: 1.85; margin-bottom: 16px; }
-    .about-milestones { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+
+    .hero h1 .accent {
+      background: linear-gradient(135deg, var(--clr-accent-primary), var(--clr-accent-secondary), var(--clr-accent-tertiary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--clr-accent-primary), var(--clr-accent-secondary));
+      color: var(--clr-bg);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(0, 217, 255, 0.3);
+    }
+
+    .section {
+      padding: 80px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-size: 42px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .section > p {
+      text-align: center;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 48px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .service-card {
+      padding: 32px;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: 12px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      border-color: var(--clr-accent-primary);
+      background: rgba(0, 217, 255, 0.05);
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--clr-accent-primary);
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    .sourcing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .sourcing-card {
+      padding: 20px;
+      background: rgba(0, 217, 255, 0.05);
+      border: 1px solid var(--clr-accent-primary);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .sourcing-card h4 {
+      color: var(--clr-accent-primary);
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .sourcing-card p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .how-it-works {
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(255, 107, 157, 0.1));
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .step {
+      padding: 32px;
+      background: var(--clr-surface);
+      border-left: 3px solid var(--clr-accent-primary);
+      border-radius: 4px;
+    }
+
+    .step-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--clr-accent-primary);
+      margin-bottom: 12px;
+    }
+
+    .step h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    .about {
+      background: linear-gradient(180deg, rgba(0, 217, 255, 0.05) 0%, transparent 100%);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 48px;
+    }
+
+    .about-text h3 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      color: var(--clr-accent-primary);
+    }
+
+    .about-text p {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .milestones {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
     .milestone {
-      display: flex; gap: 16px; align-items: flex-start;
-      padding: 16px 20px; border-radius: var(--radius-md);
-      background: var(--clr-surface); border: 1px solid var(--clr-border);
-      transition: border-color var(--transition);
+      padding: 16px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid var(--clr-accent-primary);
+      border-radius: 8px;
+      text-align: center;
     }
-    .milestone:hover { border-color: rgba(0,212,255,0.25); }
+
     .milestone-year {
-      font-family: var(--font-display); font-size: 13px; font-weight: 800;
-      color: var(--clr-cyan); min-width: 48px; padding-top: 2px;
-      letter-spacing: 0.04em;
-    }
-    .milestone-text { font-size: 13px; color: var(--clr-muted); line-height: 1.6; }
-    .milestone-text b { color: var(--clr-text); }
-    /* Founders */
-    .founders-side { display: flex; flex-direction: column; gap: 24px; }
-    .founders-visual {
-      position: relative; border-radius: var(--radius-xl); overflow: hidden;
-      background: linear-gradient(135deg, rgba(0,212,255,0.06), rgba(59,110,248,0.1));
-      border: 1px solid var(--clr-border); padding: 40px 32px;
-    }
-    .founders-visual::before {
-      content:''; position:absolute; top:-60px; right:-60px;
-      width:240px; height:240px; border-radius:50%;
-      background: radial-gradient(circle, rgba(0,212,255,0.12), transparent 70%);
-    }
-    .founders-label {
-      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--clr-cyan); margin-bottom: 28px;
-    }
-    .founder-cards { display: flex; flex-direction: column; gap: 16px; }
-    .founder-card {
-      display: flex; align-items: center; gap: 16px;
-      padding: 16px 20px; border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.04); border: 1px solid var(--clr-border);
-    }
-    .founder-avatar {
-      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 22px; font-weight: 700;
-    }
-    .founder-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
-    .founder-role { font-size: 12px; color: var(--clr-cyan); font-weight: 600; margin-bottom: 4px; }
-    .founder-bio { font-size: 12px; color: var(--clr-muted); line-height: 1.6; }
-    .about-values {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px;
-    }
-    .value-item {
-      padding: 14px 16px; border-radius: var(--radius-md);
-      background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.12);
-      font-size: 13px; color: var(--clr-text); font-weight: 600;
-    }
-    .value-item span { color: var(--clr-cyan); margin-right: 6px; }
-    @media (max-width: 900px) {
-      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      font-weight: 700;
+      color: var(--clr-accent-primary);
+      margin-bottom: 4px;
     }
 
-    /* ─── TESTIMONIALS ─── */
-    .testimonials { position: relative; overflow: hidden; }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-    .testimonial-card {
-      background: var(--clr-surface); border: 1px solid var(--clr-border);
-      border-radius: var(--radius-lg); padding: 36px;
-      transition: all var(--transition);
-      position: relative; overflow: hidden;
+    .milestone-desc {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
     }
-    .testimonial-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.4), transparent);
-      opacity: 0; transition: opacity var(--transition);
-    }
-    .testimonial-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.1); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
-    .testimonial-card:hover::before { opacity: 1; }
-    .testimonial-stars { display: flex; gap: 4px; margin-bottom: 20px; }
-    .testimonial-stars span { color: var(--clr-cyan); font-size: 14px; }
-    .testimonial-text { font-size: 15px; color: var(--clr-text); line-height: 1.75; margin-bottom: 28px; font-style: italic; }
-    .testimonial-author { display: flex; align-items: center; gap: 14px; }
-    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; font-size: 18px; display: flex; align-items: center; justify-content: center; }
-    .testimonial-name { font-size: 14px; font-weight: 600; color: var(--clr-text); }
-    .testimonial-role { font-size: 13px; color: var(--clr-muted); }
 
-    /* ─── CTA ─── */
-    .cta-section {
-      position: relative; overflow: hidden;
-      background: linear-gradient(135deg, var(--clr-dark2), var(--clr-dark3));
+    .testimonials {
+      background: var(--clr-surface);
     }
-    .cta-inner {
-      background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(59,110,248,0.1));
-      border: 1px solid rgba(0,212,255,0.15); border-radius: var(--radius-xl);
-      padding: 80px 60px; text-align: center; position: relative; overflow: hidden;
-    }
-    .cta-inner::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.12) 0%, transparent 70%);
-    }
-    .cta-inner * { position: relative; z-index: 1; }
-    .cta-title { font-family: var(--font-display); font-size: clamp(32px,5vw,56px); font-weight: 800; color: var(--clr-white); letter-spacing: -0.025em; margin: 16px 0 20px; }
-    .cta-desc { font-size: 18px; color: var(--clr-muted); max-width: 500px; margin: 0 auto 44px; line-height: 1.7; }
-    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .cta-btn-main {
-      display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-      font-size: 16px; font-weight: 700; padding: 16px 40px; border-radius: var(--radius-md);
-      background: linear-gradient(135deg, #00d4ff, #3b6ef8); color: #fff;
-      transition: all var(--transition); box-shadow: 0 8px 32px rgba(0,212,255,0.25);
-    }
-    .cta-btn-main:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,212,255,0.45); }
-    .cta-btn-sec {
-      display: inline-flex; align-items: center; gap: 10px; text-decoration: none;
-      font-size: 16px; font-weight: 600; padding: 16px 40px; border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.15); color: var(--clr-text);
-      background: rgba(255,255,255,0.05); transition: all var(--transition);
-    }
-    .cta-btn-sec:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--clr-dark); border-top: 1px solid var(--clr-border);
-      padding: 72px 0 32px;
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
     }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; margin-bottom: 56px; }
-    .footer-brand p { font-size: 15px; color: var(--clr-muted); line-height: 1.7; margin: 16px 0 28px; max-width: 300px; }
-    .footer-socials { display: flex; gap: 10px; }
-    .social-btn {
-      width: 38px; height: 38px; border-radius: var(--radius-sm);
-      background: var(--clr-surface); border: 1px solid var(--clr-border);
-      display: flex; align-items: center; justify-content: center;
-      text-decoration: none; color: var(--clr-muted); font-size: 15px;
-      transition: all var(--transition);
-    }
-    .social-btn:hover { border-color: rgba(255,255,255,0.15); color: var(--clr-text); background: var(--clr-dark3); }
-    .footer-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--clr-text); margin-bottom: 20px; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col ul li a { text-decoration: none; font-size: 14px; color: var(--clr-muted); transition: color var(--transition); }
-    .footer-col ul li a:hover { color: var(--clr-text); }
-    .footer-bottom { border-top: 1px solid var(--clr-border); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-copy { font-size: 13px; color: var(--clr-muted); }
-    .footer-legal { display: flex; gap: 24px; }
-    .footer-legal a { font-size: 13px; color: var(--clr-muted); text-decoration: none; transition: color var(--transition); }
-    .footer-legal a:hover { color: var(--clr-text); }
 
-    /* ─── ANIMATIONS ─── */
-    .fade-up { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: repeat(2,1fr); }
-      .supply-grid { grid-template-columns: repeat(2,1fr); }
-      .kol-grid { grid-template-columns: 1fr; }
-      .kol-visual { max-width: 400px; margin: 0 auto; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .pricing-card.featured { transform: none; }
+    .testimonial {
+      padding: 24px;
+      background: rgba(0, 217, 255, 0.05);
+      border: 1px solid var(--clr-accent-primary);
+      border-radius: 8px;
     }
+
+    .testimonial-text {
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--clr-accent-primary);
+    }
+
+    .testimonial-role {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .contact {
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(0, 255, 136, 0.1));
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-bottom: 24px;
+    }
+
+    .contact p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 32px;
+    }
+
+    .contact-email {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--clr-accent-primary);
+      margin-bottom: 32px;
+    }
+
+    .contact-email a {
+      color: var(--clr-accent-primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-email a:hover {
+      text-decoration: underline;
+    }
+
+    .footer {
+      background: rgba(10, 10, 15, 0.9);
+      border-top: 1px solid var(--clr-border);
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 14px;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--clr-accent-primary);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid var(--clr-accent-primary);
+      border-radius: 50%;
+      color: var(--clr-accent-primary);
+      text-decoration: none;
+      font-size: 18px;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--clr-accent-primary);
+      color: var(--clr-bg);
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
     @media (max-width: 768px) {
-      section { padding: 72px 0; }
-      .nav-links, .nav-cta { display: none; }
-      .hamburger { display: flex; }
-      .services-grid { grid-template-columns: 1fr; }
-      .supply-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .hero-stats { flex-direction: column; }
-      .hero-stat { border-right: none; border-bottom: 1px solid var(--clr-border); }
-      .hero-stat:last-child { border-bottom: none; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-      .cta-inner { padding: 48px 28px; }
-      .how-steps::before { left: 24px; }
-      .how-step-dot { width: 50px; height: 50px; font-size: 16px; }
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .section h2 {
+        font-size: 32px;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 16px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- ═══════════════════════════════════ NAVBAR ═══════════════════════════════════ -->
-  <nav class="navbar" id="navbar" aria-label="Main Navigation Menu">
-    <div class="container">
-      <a href="#" class="nav-logo" aria-label="UIChain Home Page">
-        <div class="nav-logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
-        UI<span>Chain</span>
-      </a>
-      <div class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#kol">KOL Platform</a>
-        <a href="#supply">Sourcing</a>
-        <a href="#about">About Us</a>
-        <a href="#testimonials">Case Studies</a>
-      </div>
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="navbar-container">
+      <div class="logo">UIChain</div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
   </nav>
 
-  <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+  <!-- Hero Section -->
   <section class="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-    <div class="hero-grid"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">Global SME Growth Platform</div>
-        <h1 class="hero-title">
-          Empowering SMEs<br/>
-          <span class="line-gold">Global Expansion</span>, <span class="line-blue">Sustainable Growth</span>
-        </h1>
-        <p class="hero-desc">
-          One-stop brand promotion · AI-powered KOL matching · Global sourcing & supplier discovery<br/>
-          Providing SMEs with Fortune 500-level growth engines — plus custom AI tools built for your business
+    <div class="hero-content">
+      <h1>
+        Empower Your Global <span class="accent">SME Growth</span>
+      </h1>
+      <p>
+        AI-powered KOL matching, global supplier sourcing, brand promotion, and custom AI tools — all in one integrated platform. Connect with Fortune 500-grade resources worldwide.
+      </p>
+      <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+        Get Started
+      </button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <p>Four core services designed to accelerate your global SME growth</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>01 — KOL Marketing</h3>
+        <p>Discover and partner with the right influencers worldwide. We handle audience analysis, campaign strategy, and performance tracking.</p>
+      </div>
+      <div class="service-card">
+        <h3>02 — Global Sourcing</h3>
+        <p>Find, verify, and negotiate with reliable suppliers across the globe. Streamline procurement, reduce costs, and access quality manufacturers.</p>
+      </div>
+      <div class="service-card">
+        <h3>03 — Brand Promotion</h3>
+        <p>Launch your brand internationally with data-driven marketing strategies. Multi-channel campaigns, localization, and market expansion support.</p>
+      </div>
+      <div class="service-card">
+        <h3>04 — Data Intelligence & AI Tools</h3>
+        <p>Custom AI-powered tools for your business: marketing automation bots, workflow optimization, intelligent dashboards, and predictive analytics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Sourcing Details -->
+  <section class="section">
+    <h2>Global Sourcing in Detail</h2>
+    <p>Our comprehensive sourcing process covers every step of supplier discovery to long-term partnership</p>
+    <div class="sourcing-grid">
+      <div class="sourcing-card">
+        <h4>Supplier Discovery</h4>
+        <p>AI-powered supplier identification & market intelligence</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Due Diligence</h4>
+        <p>Background verification & compliance checks</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Sample Coordination</h4>
+        <p>Quality evaluation & testing logistics</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Negotiation Optimization</h4>
+        <p>Price & contract negotiations</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Logistics Coordination</h4>
+        <p>Shipping, customs & delivery management</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Risk Monitoring</h4>
+        <p>Ongoing compliance & quality assurance</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Long-term Partnership</h4>
+        <p>Relationship management & continuous optimization</p>
+      </div>
+      <div class="sourcing-card">
+        <h4>Market Intelligence</h4>
+        <p>Price trends, industry insights & competitive analysis</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="section how-it-works">
+    <h2>How It Works</h2>
+    <p>Simple, transparent process from consultation to execution</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">01</div>
+        <h3>Consultation</h3>
+        <p>Discuss your growth goals, current challenges, and desired outcomes. We understand your market, product, and target audience.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <h3>Strategic Planning</h3>
+        <p>Develop a comprehensive sourcing, marketing, or AI strategy tailored to your needs. Identify key influencers, supplier categories, and channels.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <h3>Execution</h3>
+        <p>We handle the heavy lifting: supplier negotiations, KOL outreach, campaign management, or custom AI tool development.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">04</div>
+        <h3>Measurement & Optimization</h3>
+        <p>Real-time performance tracking, data analytics, and continuous optimization to ensure maximum ROI and business growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <h2>About UIChain</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <h3>Founded in 2018</h3>
+        <p>
+          UIChain is a global growth platform serving ambitious SMEs, entrepreneurs, and brands worldwide. We combine market expertise, technology innovation, and deep industry networks to unlock growth opportunities.
         </p>
-        <div class="hero-actions">
-          <a href="#contact" class="hero-btn-main">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Contact Us
-          </a>
-          <a href="#services" class="hero-btn-sec">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            View Services
-          </a>
-        </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <div class="hero-stat-num">120<span>K+</span></div>
-            <div class="hero-stat-label">Target SMEs</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">50<span>+</span></div>
-            <div class="hero-stat-label">Countries Covered</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num"><span>$</span>3.2<span>B</span></div>
-            <div class="hero-stat-label">Target Transaction Volume</div>
-          </div>
-          <div class="hero-stat">
-            <div class="hero-stat-num">98<span>%</span></div>
-            <div class="hero-stat-label">Customer Satisfaction Target</div>
-          </div>
-        </div>
-        <p style="font-size:11px;color:var(--clr-muted);margin-top:12px;opacity:0.6;">* Platform development targets for reference only</p>
+        <p>
+          Our team brings Fortune 500 experience to emerging businesses, helping companies source products globally, connect with influential partners, launch brands internationally, and leverage AI for competitive advantage.
+        </p>
+        <p>
+          We believe every SME deserves access to world-class resources. That's why we've built UIChain.
+        </p>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════ SERVICES ═══════════════════════════════════ -->
-  <section class="services" id="services">
-    <div class="blob"></div>
-    <div class="container">
-      <div class="section-header fade-up">
-        <div class="tag">Core Services</div>
-        <h2 class="section-title">Four Core Services<br/>Driving Business Growth</h2>
-        <p class="section-desc">From brand building to global sourcing and AI tool development, we provide complete business growth solutions for global SMEs</p>
-      </div>
-      <div class="services-grid fade-up">
-        <div class="service-card" style="--accent:rgba(37,99,235,0.08)">
-          <div class="service-num">01</div>
-          <div class="service-icon" style="--icon-bg:rgba(37,99,235,0.15);--icon-border:rgba(37,99,235,0.25)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <h3 class="service-title">Global Brand Promotion</h3>
-          <p class="service-desc">Multilingual content creation, cross-platform advertising, SEO/SEM optimization to help SMEs establish strong brand recognition and trust in global markets.</p>
-          <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <div class="milestones">
+        <div class="milestone">
+          <div class="milestone-year">2018</div>
+          <div class="milestone-desc">Founded</div>
         </div>
-        <div class="service-card" style="--accent:rgba(139,92,246,0.08)">
-          <div class="service-num">02</div>
-          <div class="service-icon" style="--icon-bg:rgba(139,92,246,0.15);--icon-border:rgba(139,92,246,0.25)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/><circle cx="19" cy="7" r="3"/><circle cx="5" cy="7" r="3"/></svg>
-          </div>
-          <h3 class="service-title">AI-Powered KOL Matching</h3>
-          <p class="service-desc">AI-driven KOL database with precise matching based on category, audience, and ROI. Covers major platforms including TikTok®, Instagram®, YouTube®, and regional social platforms (platform names owned by respective brands, UIChain has no official partnership with these platforms).</p>
-          <a href="#kol" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <div class="milestone">
+          <div class="milestone-year">2020</div>
+          <div class="milestone-desc">KOL matching launched</div>
         </div>
-        <div class="service-card" style="--accent:rgba(247,201,72,0.06)">
-          <div class="service-num">03</div>
-          <div class="service-icon" style="--icon-bg:rgba(247,201,72,0.12);--icon-border:rgba(247,201,72,0.2)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#f7c948" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3 class="service-title">Global Sourcing</h3>
-          <p class="service-desc">We help global clients discover and verify quality suppliers worldwide. From factory identification to due diligence, sample coordination, and negotiation — we streamline every step of the supplier sourcing process across 80+ countries.</p>
-          <a href="#supply" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <div class="milestone">
+          <div class="milestone-year">2022</div>
+          <div class="milestone-desc">Global sourcing expanded</div>
         </div>
-        <div class="service-card" style="--accent:rgba(6,182,212,0.08)">
-          <div class="service-num">04</div>
-          <div class="service-icon" style="--icon-bg:rgba(6,182,212,0.15);--icon-border:rgba(6,182,212,0.25)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="1.8"><path d="M12 2a10 10 0 0 1 10 10"/><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/><path d="M2 12A10 10 0 0 0 12 22"/></svg>
-          </div>
-          <h3 class="service-title">Data Intelligence & AI Tools</h3>
-          <p class="service-desc">Real-time marketing analytics, competitor monitoring, and consumer insights. We also build custom AI-powered tools — from chatbots and automation workflows to intelligent dashboards — tailored to your business needs.</p>
-          <a href="#contact" class="service-link">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <div class="milestone">
+          <div class="milestone-year">2024</div>
+          <div class="milestone-desc">AI tool development launched</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════ HOW IT WORKS ═══════════════════════════════════ -->
-  <section class="how">
-    <div class="container">
-      <div class="section-header fade-up">
-        <div class="tag">How It Works</div>
-        <h2 class="section-title">Four Steps to<br/>Global Growth</h2>
-        <p class="section-desc">Streamlined collaboration process - full activation possible within 72 hours</p>
+  <!-- Testimonials Section -->
+  <section class="section testimonials">
+    <h2>Client Success Stories</h2>
+    <p>Hear from companies that grew with UIChain</p>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "UIChain helped us source high-quality suppliers across Southeast Asia. We reduced procurement costs by 35% in 6 months while maintaining premium quality."
+        </div>
+        <div class="testimonial-author">Sarah Chen</div>
+        <div class="testimonial-role">CEO, Fashion Retailer</div>
       </div>
-      <div class="how-steps">
-        <div class="how-step fade-up">
-          <div class="how-step-dot" style="--dot-clr:var(--clr-blue)">01</div>
-          <div class="how-step-body">
-            <h3 class="how-step-title">Brand Assessment & Needs Analysis</h3>
-            <p class="how-step-desc">Expert consultants conduct in-depth interviews and market research to comprehensively evaluate your brand status, target markets, and competitive landscape, developing personalized growth strategies.</p>
-          </div>
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "The KOL matching was incredible. We connected with micro-influencers perfectly aligned with our brand values and saw a 240% ROI on our campaign."
         </div>
-        <div class="how-step fade-up">
-          <div class="how-step-dot" style="--dot-clr:var(--clr-purple)">02</div>
-          <div class="how-step-body">
-            <h3 class="how-step-title">Precision Solution Development</h3>
-            <p class="how-step-desc">Leveraging AI data analysis to select the optimal KOL combinations, promotion channels, and sourcing partners for your business, creating actionable implementation plans.</p>
-          </div>
+        <div class="testimonial-author">Marcus Johnson</div>
+        <div class="testimonial-role">Marketing Director, Tech Startup</div>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-text">
+          "UIChain's custom AI tools automated 60% of our manual workflows. We now process customer inquiries 10x faster with better accuracy."
         </div>
-        <div class="how-step fade-up">
-          <div class="how-step-dot" style="--dot-clr:var(--clr-cyan)">03</div>
-          <div class="how-step-body">
-            <h3 class="how-step-title">End-to-End Execution</h3>
-            <p class="how-step-desc">Project managers coordinate multiple teams working in parallel on brand communication, KOL content deployment, and supplier sourcing to ensure efficient collaboration across all touchpoints.</p>
-          </div>
-        </div>
-        <div class="how-step fade-up">
-          <div class="how-step-dot" style="--dot-clr:var(--clr-gold)">04</div>
-          <div class="how-step-body">
-            <h3 class="how-step-title">Data Tracking & Continuous Optimization</h3>
-            <p class="how-step-desc">Real-time monitoring of all key metrics, weekly data reviews, dynamic strategy adjustments to ensure continuous ROI improvement and replicable growth models.</p>
-          </div>
-        </div>
+        <div class="testimonial-author">Priya Sharma</div>
+        <div class="testimonial-role">Operations Manager, E-commerce Brand</div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════ KOL ═══════════════════════════════════ -->
-  <section class="kol" id="kol">
-    <div class="container">
-      <div class="kol-grid">
-        <div class="kol-visual fade-up">
-          <div class="kol-card-main">
-            <div class="kol-card-inner">
-              <div class="kol-avatar-group">
-                <div class="kol-avatar a1">🎯</div>
-                <div class="kol-avatar a2">🌟</div>
-                <div class="kol-avatar a3">📱</div>
-                <div class="kol-avatar a4">🎬</div>
-                <div class="kol-avatar a5">💡</div>
-              </div>
-              <div style="text-align:center">
-                <div style="font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--clr-text)">Global KOL Database</div>
-                <div style="font-size:13px;color:var(--clr-muted);margin-top:6px">500,000+ Verified Creators</div>
-              </div>
-              <div class="kol-metric">
-                <div class="kol-metric-num">47x</div>
-                <div class="kol-metric-label">Average KOL Campaign ROI Increase</div>
-              </div>
-              <div style="width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--clr-border);border-radius:12px;padding:16px 20px">
-                <div style="font-size:12px;color:var(--clr-muted);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Platform Coverage</div>
-                <div style="display:flex;gap:8px;flex-wrap:wrap">
-                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">TikTok</span>
-                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">Instagram</span>
-                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">YouTube</span>
-                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">Regional Platforms</span>
-                  <span style="background:rgba(255,255,255,0.06);border:1px solid var(--clr-border);padding:4px 12px;border-radius:100px;font-size:12px;color:var(--clr-text)">Twitch</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="kol-float f1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--clr-text)">4.9 / 5.0</div>
-              <div style="font-size:11px;color:var(--clr-muted)">KOL Satisfaction</div>
-            </div>
-          </div>
-          <div class="kol-float f2">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            <div>
-              <div style="font-size:13px;font-weight:700;color:var(--clr-text)">+328% Avg. Growth</div>
-              <div style="font-size:11px;color:var(--clr-muted)">90 days post-campaign</div>
-            </div>
-          </div>
-        </div>
-        <div class="kol-text fade-up">
-          <div class="tag">KOL Platform</div>
-          <h2>Precision Matching<br/>For Maximum Impact</h2>
-          <p>Our AI engine analyzes over 200 dimensions of KOL data, precisely matching your brand tone, target audience, and budget to significantly improve conversion efficiency in content collaborations.</p>
-          <div class="kol-features">
-            <div class="kol-feature">
-              <div class="kol-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-blue2)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              </div>
-              <div class="kol-feature-body">
-                <h4>AI Smart Matching Engine</h4>
-                <p>Multi-dimensional data analysis automatically selects the optimal KOL mix with 93%+ matching accuracy</p>
-              </div>
-            </div>
-            <div class="kol-feature">
-              <div class="kol-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-purple)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <div class="kol-feature-body">
-                <h4>Authenticity Verification</h4>
-                <p>Comprehensive audit of follower authenticity, engagement quality, and past collaboration track record to minimize risk</p>
-              </div>
-            </div>
-            <div class="kol-feature">
-              <div class="kol-feature-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-gold)" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-              </div>
-              <div class="kol-feature-body">
-                <h4>Full-Funnel Performance Tracking</h4>
-                <p>Real-time monitoring of impressions, engagement, and conversions across every stage of your KOL campaign</p>
-              </div>
-            </div>
-          </div>
-          <a href="#contact" class="hero-btn-main" style="display:inline-flex">
-            Start a KOL Campaign
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
+  <!-- CTA Section -->
+  <section class="section">
+    <h2>Ready to Scale Globally?</h2>
+    <p>Join hundreds of SMEs already growing with UIChain</p>
+    <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+      Start Your Journey
+    </button>
   </section>
 
-  <!-- ═══════════════════════════════════ SOURCING ═══════════════════════════════════ -->
-  <section class="supply" id="supply">
-    <div class="container">
-      <div class="section-header fade-up">
-        <div class="tag">Global Sourcing</div>
-        <h2 class="section-title">Find the Right Suppliers<br/>Anywhere in the World</h2>
-        <p class="section-desc">We help global clients identify, verify, and onboard quality suppliers — faster, smarter, and with less risk</p>
-      </div>
-      <div class="supply-grid fade-up">
-        <div class="supply-card" style="--bar-1:#2563eb;--bar-2:#06b6d4">
-          <div class="supply-icon">🌐</div>
-          <h3 class="supply-title">Global Supplier Network</h3>
-          <p class="supply-desc">Access a curated database of verified suppliers across 80+ countries. Reduce your sourcing cycle by up to 70% with our pre-qualified vendor network.</p>
-        </div>
-        <div class="supply-card" style="--bar-1:#8b5cf6;--bar-2:#c026d3">
-          <div class="supply-icon">🔍</div>
-          <h3 class="supply-title">Supplier Discovery & Matching</h3>
-          <p class="supply-desc">Tell us what you need — our team handles supplier research, shortlisting, and AI-assisted matching based on your product category, budget, and quality requirements.</p>
-        </div>
-        <div class="supply-card" style="--bar-1:#f7c948;--bar-2:#f97316">
-          <div class="supply-icon">✅</div>
-          <h3 class="supply-title">Due Diligence & Verification</h3>
-          <p class="supply-desc">We conduct background checks, factory audits, compliance verification (EU CE, US FCC, and more), and reference calls — so you source with confidence.</p>
-        </div>
-        <div class="supply-card" style="--bar-1:#10b981;--bar-2:#06b6d4">
-          <div class="supply-icon">📦</div>
-          <h3 class="supply-title">Sample Coordination</h3>
-          <p class="supply-desc">We manage sample requests, quality review workflows, and feedback loops between you and suppliers — eliminating the back-and-forth that slows deals down.</p>
-        </div>
-        <div class="supply-card" style="--bar-1:#f97316;--bar-2:#ef4444">
-          <div class="supply-icon">💰</div>
-          <h3 class="supply-title">Negotiation & Cost Optimization</h3>
-          <p class="supply-desc">Our sourcing specialists negotiate pricing, MOQs, payment terms, and delivery schedules on your behalf — typically reducing procurement costs by 15–25%.</p>
-        </div>
-        <div class="supply-card" style="--bar-1:#06b6d4;--bar-2:#8b5cf6">
-          <div class="supply-icon">🚢</div>
-          <h3 class="supply-title">Logistics & Delivery Support</h3>
-          <p class="supply-desc">From freight forwarding to last-mile delivery, we connect you with reliable logistics partners and provide real-time shipment tracking across 200+ carriers worldwide.</p>
-        </div>
-        <div class="supply-card" style="--bar-1:#2563eb;--bar-2:#8b5cf6">
-          <div class="supply-icon">🛡️</div>
-          <h3 class="supply-title">Risk & Compliance Monitoring</h3>
-          <p class="supply-desc">Stay protected with ongoing supplier credit monitoring, geopolitical risk alerts, and contingency sourcing plans — so your supply chain stays resilient.</p>
-        </div>
-        <div class="supply-card" style="--bar-1:#f7c948;--bar-2:#10b981">
-          <div class="supply-icon">🤝</div>
-          <h3 class="supply-title">Long-term Supplier Relationship Management</h3>
-          <p class="supply-desc">We help you build lasting supplier partnerships — managing communication, performance reviews, and contract renewals to ensure consistent quality over time.</p>
-        </div>
-      </div>
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <h2>Get in Touch</h2>
+    <p>Let's discuss how UIChain can accelerate your growth</p>
+    <div class="contact-email">
+      <a href="mailto:welcome@uichain.org">welcome@uichain.org</a>
     </div>
+    <p style="font-size: 14px; color: rgba(255, 255, 255, 0.5);">
+      We respond to all inquiries within 24 hours
+    </p>
   </section>
 
-  <!-- ═══════════════════════════════════ ABOUT ═══════════════════════════════════ -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-inner">
-
-        <!-- Left: Brand story + Milestones -->
-        <div class="fade-up">
-          <div class="about-tag-row">
-            <div class="tag">About Us</div>
-          </div>
-          <h2 class="about-title">Built on Conviction,<br/>Powered by <span>Connection</span></h2>
-          <p class="about-desc">
-            In 2018, Leo and Anna left their roles as senior partners at Fortune 500 firms to found UIChain.
-            They understood how the world's largest companies operate — and saw firsthand the resource gap
-            that left small and mid-sized businesses behind in brand expansion, KOL partnerships, and global sourcing.
-          </p>
-          <p class="about-desc">
-            UIChain's mission has never changed: <b style="color:var(--clr-text)">
-            to give every SME access to world-class resources, tools, and expertise — on equal footing.</b>
-          </p>
-
-          <div class="about-milestones">
-            <div class="milestone">
-              <div class="milestone-year">2018</div>
-              <div class="milestone-text"><b>Founded</b> — Leo and Anna co-founded UIChain, focused on driving growth for global SMEs through brand strategy and global connections</div>
-            </div>
-            <div class="milestone">
-              <div class="milestone-year">2020</div>
-              <div class="milestone-text"><b>KOL Network Launched</b> — Completed first wave of global KOL partnerships, covering Southeast Asia, North America, and Europe</div>
-            </div>
-            <div class="milestone">
-              <div class="milestone-year">2022</div>
-              <div class="milestone-text"><b>Sourcing Platform Live</b> — Launched integrated global sourcing module; client base surpassed 5,000 businesses worldwide</div>
-            </div>
-            <div class="milestone">
-              <div class="milestone-year">2024</div>
-              <div class="milestone-text"><b>Global Acceleration & AI Innovation</b> — Expanded to 50+ countries; AI matching system deployed; AI tool development services launched</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Founders + Values -->
-        <div class="founders-side fade-up">
-          <div class="founders-visual">
-            <div class="founders-label">✦ Co-Founders</div>
-            <div class="founder-cards">
-              <div class="founder-card">
-                <div class="founder-avatar" style="background:linear-gradient(135deg,#00d4ff,#3b6ef8)">L</div>
-                <div>
-                  <div class="founder-name">Leo</div>
-                  <div class="founder-role">Co-Founder & CEO</div>
-                  <div class="founder-bio">Former senior partner at Fortune 500 firms with 15+ years in brand strategy and cross-border business. Led dozens of nine-figure brand expansion projects globally.</div>
-                </div>
-              </div>
-              <div class="founder-card">
-                <div class="founder-avatar" style="background:linear-gradient(135deg,#a78bfa,#3b6ef8)">A</div>
-                <div>
-                  <div class="founder-name">Anna</div>
-                  <div class="founder-role">Co-Founder & COO</div>
-                  <div class="founder-bio">Former Fortune 500 senior partner specializing in supply chain optimization and KOL ecosystem management. Architect of UIChain's global partner network.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-values">
-            <div class="value-item"><span>🎯</span>SME-First Mindset</div>
-            <div class="value-item"><span>🌐</span>Global Yet Local</div>
-            <div class="value-item"><span>⚡</span>Data-Driven Decisions</div>
-            <div class="value-item"><span>🤝</span>Long-Term Partnerships</div>
-          </div>
-        </div>
-
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://www.linkedin.com/company/uichain" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+        <a href="https://twitter.com/uichain" target="_blank" rel="noopener noreferrer" title="X (Twitter)">𝕏</a>
+        <a href="https://www.instagram.com/uichain" target="_blank" rel="noopener noreferrer" title="Instagram">📷</a>
+        <a href="https://www.youtube.com/@uichain" target="_blank" rel="noopener noreferrer" title="YouTube">▶️</a>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════ TESTIMONIALS ═══════════════════════════════════ -->
-  <section class="testimonials" id="testimonials">
-    <div class="container">
-      <div class="section-header fade-up">
-        <div class="tag">Client Stories</div>
-        <h2 class="section-title">What Our Clients<br/>Are Saying</h2>
-        <p class="section-desc">Real feedback from businesses around the world (illustrative examples)</p>
+      <div class="footer-links">
+        <a href="#services">Services</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="mailto:welcome@uichain.org">Email</a>
       </div>
-      <div class="testimonials-grid fade-up">
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-          <p class="testimonial-text">"Through UIChain's KOL matching platform, our brand awareness in Southeast Asia skyrocketed within 3 months. The ROI far exceeded expectations — they truly found creators who resonated with our audience."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#f97316,#ef4444)">🏪</div>
-            <div>
-              <div class="testimonial-name">Michael L.</div>
-              <div class="testimonial-role">CEO · Tech Company (Illustrative)</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-          <p class="testimonial-text">"UIChain's sourcing team found us verified suppliers in two weeks — what used to take months. The due diligence reports gave us complete confidence before placing our first order."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">🚀</div>
-            <div>
-              <div class="testimonial-name">Sarah M.</div>
-              <div class="testimonial-role">COO · Trading Company (Illustrative)</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-          <p class="testimonial-text">"As a brand new to the US market, UIChain helped us reach exactly the right audience. Our first-quarter sales beat our targets. The dedicated advisor team was exceptionally professional."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#06b6d4,#2563eb)">🌎</div>
-            <div>
-              <div class="testimonial-name">Aisha O.</div>
-              <div class="testimonial-role">Founder · Beauty Brand (Illustrative)</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-          <p class="testimonial-text">"UIChain's brand diagnostic report identified exactly where our European positioning was off. After adjusting strategy, conversion rates improved notably. Their data analytics capability is seriously impressive."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">📊</div>
-            <div>
-              <div class="testimonial-name">Marco R.</div>
-              <div class="testimonial-role">Marketing Director · Consumer Brand (Illustrative)</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-          <p class="testimonial-text">"We manage suppliers across multiple countries through UIChain — the system is stable and intuitive. The custom AI dashboard they built saves our team hours every week and keeps everything in one place."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">⚡</div>
-            <div>
-              <div class="testimonial-name">Tanaka I.</div>
-              <div class="testimonial-role">Supply Chain VP · Manufacturing (Illustrative)</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-          <p class="testimonial-text">"From signing to first KOL content live in just 5 days — the team's speed is remarkable. It's nearly impossible to find this kind of end-to-end solution elsewhere. UIChain genuinely understands the SME pain point."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background:linear-gradient(135deg,#ec4899,#be185d)">💎</div>
-            <div>
-              <div class="testimonial-name">Ana L.</div>
-              <div class="testimonial-role">Brand Owner · Fashion Label (Illustrative)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p style="text-align:center;font-size:12px;color:var(--clr-muted);margin-top:32px;opacity:0.6;">* Testimonials above are illustrative examples for demonstration purposes only and do not represent real client opinions.</p>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════ CTA ═══════════════════════════════════ -->
-  <section class="cta-section" id="cta">
-    <div class="container">
-      <div class="cta-inner fade-up">
-        <div class="tag">Get Started</div>
-        <h2 class="cta-title">Ready to Grow<br/>Your Business Globally?</h2>
-        <p class="cta-desc">Serving 50+ countries — we help SMEs break through in brand marketing, KOL partnerships, global sourcing, and AI-powered tools.</p>
-        <div class="cta-actions">
-          <a href="#contact" class="cta-btn-main">
-            Talk to Us Today
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#services" class="cta-btn-sec">
-            Explore Our Services
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </a>
-        </div>
-        <div style="margin-top:40px;display:flex;gap:32px;justify-content:center;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--clr-muted)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg>
-            Dedicated 1-on-1 Advisor
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--clr-muted)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg>
-            Response Within 24 Hours
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--clr-muted)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg>
-            English & Multilingual Support
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--clr-muted)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--clr-cyan)" stroke-width="2" style="width:16px;height:16px"><polyline points="20 6 9 17 4 12"/></svg>
-            50+ Countries Covered
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════ CONTACT ═══════════════════════════════════ -->
-  <section id="contact" style="background:var(--clr-dark2);padding:100px 0;">
-    <div class="container">
-      <div class="section-header fade-up">
-        <div class="tag">Contact Us</div>
-        <h2 class="section-title">Let's Start a<br/>Conversation</h2>
-        <p class="section-desc">Whether you have a question or a project in mind, we'll get back to you within 24 hours</p>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:56px;" class="fade-up">
-
-        <!-- Contact Info -->
-        <div style="display:flex;flex-direction:column;gap:24px;">
-          <div style="padding:28px 32px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;display:flex;align-items:center;gap:20px;">
-            <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#00d4ff,#3b6ef8);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">✉</div>
-            <div>
-              <div style="font-size:12px;color:var(--clr-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Email</div>
-              <a href="mailto:welcome@uichain.org" style="font-size:16px;font-weight:700;color:var(--clr-cyan);text-decoration:none;">welcome@uichain.org</a>
-              <div style="font-size:12px;color:var(--clr-muted);margin-top:4px;">We reply within 24 hours on business days</div>
-            </div>
-          </div>
-          <div style="padding:28px 32px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;display:flex;align-items:center;gap:20px;">
-            <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#a78bfa,#3b6ef8);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🌐</div>
-            <div>
-              <div style="font-size:12px;color:var(--clr-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Global Coverage</div>
-              <div style="font-size:15px;font-weight:700;color:var(--clr-text);">50+ Countries & Regions</div>
-              <div style="font-size:12px;color:var(--clr-muted);margin-top:4px;">English / Multilingual Support</div>
-            </div>
-          </div>
-          <div style="padding:28px 32px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;display:flex;align-items:center;gap:20px;">
-            <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#10b981,#3b6ef8);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">⏰</div>
-            <div>
-              <div style="font-size:12px;color:var(--clr-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:6px;">Business Hours</div>
-              <div style="font-size:15px;font-weight:700;color:var(--clr-text);">Mon–Fri 09:00–18:00</div>
-              <div style="font-size:12px;color:var(--clr-muted);margin-top:4px;">UTC+8 · Async responses available globally</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Quick Contact Form -->
-        <div style="padding:36px;background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:16px;">
-          <div style="font-size:18px;font-weight:700;margin-bottom:24px;">Send a Message</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
-            <div>
-              <label style="font-size:12px;color:var(--clr-muted);font-weight:600;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.05em;">Your Name</label>
-              <input type="text" placeholder="e.g. Alex Johnson" style="width:100%;padding:10px 14px;background:var(--clr-dark3);border:1px solid var(--clr-border);border-radius:8px;color:var(--clr-text);font-size:14px;outline:none;" onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor=''"/>
-            </div>
-            <div>
-              <label style="font-size:12px;color:var(--clr-muted);font-weight:600;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.05em;">Company</label>
-              <input type="text" placeholder="Your Company Name" style="width:100%;padding:10px 14px;background:var(--clr-dark3);border:1px solid var(--clr-border);border-radius:8px;color:var(--clr-text);font-size:14px;outline:none;" onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor=''"/>
-            </div>
-          </div>
-          <div style="margin-bottom:14px;">
-            <label style="font-size:12px;color:var(--clr-muted);font-weight:600;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.05em;">Email Address</label>
-            <input type="email" placeholder="your@email.com" style="width:100%;padding:10px 14px;background:var(--clr-dark3);border:1px solid var(--clr-border);border-radius:8px;color:var(--clr-text);font-size:14px;outline:none;" onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor=''"/>
-          </div>
-          <div style="margin-bottom:20px;">
-            <label style="font-size:12px;color:var(--clr-muted);font-weight:600;display:block;margin-bottom:7px;text-transform:uppercase;letter-spacing:0.05em;">Message</label>
-            <textarea rows="4" placeholder="Tell us about your project or question..." style="width:100%;padding:10px 14px;background:var(--clr-dark3);border:1px solid var(--clr-border);border-radius:8px;color:var(--clr-text);font-size:14px;outline:none;resize:vertical;" onfocus="this.style.borderColor='#00d4ff'" onblur="this.style.borderColor=''"></textarea>
-          </div>
-          <button onclick="this.textContent='✅ Sent! We\'ll be in touch soon.';this.style.opacity='0.7';this.disabled=true;" style="width:100%;padding:13px;background:linear-gradient(135deg,#00d4ff,#3b6ef8);border:none;border-radius:8px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s;">
-            Send Message →
-          </button>
-          <p style="text-align:center;font-size:12px;color:var(--clr-muted);margin-top:12px;">We commit to replying within 24 hours</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="nav-logo" style="text-decoration:none">
-            <div class="nav-logo-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-            </div>
-            UI<span style="color:var(--clr-gold)">Chain</span>
-          </a>
-          <p>Empowering global SMEs with world-class brand growth, KOL partnerships, sourcing, and AI-powered tools — leveling the playing field for every small business.</p>
-          <div class="footer-socials">
-            <a href="javascript:void(0)" class="social-btn" title="LinkedIn">in</a>
-            <a href="javascript:void(0)" class="social-btn" title="Twitter / X">𝕏</a>
-            <a href="javascript:void(0)" class="social-btn" title="Instagram">ig</a>
-            <a href="javascript:void(0)" class="social-btn" title="YouTube">▶</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#services">Brand Promotion</a></li>
-            <li><a href="#kol">KOL Platform</a></li>
-            <li><a href="#supply">Global Sourcing</a></li>
-            <li><a href="#services">AI Tools & Analytics</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#testimonials">Client Stories</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Contact</h4>
-          <ul style="gap:14px">
-            <li style="display:flex;align-items:center;gap:8px">
-              <span style="color:var(--clr-cyan);font-size:15px">✉</span>
-              <a href="mailto:welcome@uichain.org" style="color:var(--clr-muted);transition:color .2s" onmouseover="this.style.color='#00d4ff'" onmouseout="this.style.color=''">welcome@uichain.org</a>
-            </li>
-            <li style="display:flex;align-items:flex-start;gap:8px">
-              <span style="color:var(--clr-cyan);font-size:15px;margin-top:1px">🌐</span>
-              <span style="color:var(--clr-muted);font-size:13px;line-height:1.6">Serving 50+ countries worldwide<br/>English & Multilingual</span>
-            </li>
-            <li style="display:flex;align-items:flex-start;gap:8px">
-              <span style="color:var(--clr-cyan);font-size:15px;margin-top:1px">⏰</span>
-              <span style="color:var(--clr-muted);font-size:13px;line-height:1.6">Mon–Fri 09:00–18:00<br/>(UTC+8)</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span class="footer-copy">© 2026 UIChain Inc. All rights reserved.</span>
-        <div class="footer-legal">
-          <a href="javascript:void(0)" onclick="alert('Privacy Policy page coming soon')">Privacy Policy</a>
-          <a href="javascript:void(0)" onclick="alert('Terms of Service page coming soon')">Terms of Service</a>
-          <a href="javascript:void(0)" onclick="alert('Cookie Settings page coming soon')">Cookie Settings</a>
-        </div>
-      </div>
+      <p>&copy; 2018-2026 UIChain Inc. All rights reserved. | Global growth platform for SMEs.</p>
     </div>
   </footer>
-
-  <!-- ═══════════════════════════════════ SCRIPTS ═══════════════════════════════════ -->
-  <script>
-    // ── Scroll Animation ──
-    const observerOpts = { threshold: 0.1, rootMargin: '0px 0px -60px 0px' };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, observerOpts);
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // ── Stagger children in grids ──
-    document.querySelectorAll('.services-grid, .supply-grid, .pricing-grid, .testimonials-grid, .how-steps').forEach(grid => {
-      const children = grid.querySelectorAll(':scope > *');
-      children.forEach((child, i) => {
-        child.style.transitionDelay = `${i * 80}ms`;
-      });
-    });
-
-    // ── Navbar scroll effect ──
-    window.addEventListener('scroll', () => {
-      const nb = document.getElementById('navbar');
-      if (window.scrollY > 60) {
-        nb.style.background = 'rgba(10,10,15,0.92)';
-      } else {
-        nb.style.background = 'rgba(10,10,15,0.75)';
-      }
-    }, { passive: true });
-
-    // ── Hamburger menu ──
-    let menuOpen = false;
-    function toggleMenu() {
-      menuOpen = !menuOpen;
-      const links = document.querySelector('.nav-links');
-      const cta = document.querySelector('.nav-cta');
-      if (menuOpen) {
-        links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(10,10,15,0.97);padding:20px 24px;border-bottom:1px solid var(--clr-border);backdrop-filter:blur(24px);z-index:999';
-        cta.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(10,10,15,0.97);padding:8px 24px 20px;border-bottom:1px solid var(--clr-border);backdrop-filter:blur(24px);z-index:998;top:calc(72px + 220px)';
-      } else {
-        links.style.cssText = '';
-        cta.style.cssText = '';
-      }
-    }
-
-    // ── Smooth counter animation ──
-    function animateCounter(el, target, suffix = '') {
-      const duration = 2000;
-      const start = performance.now();
-      const isDecimal = target % 1 !== 0;
-      function update(now) {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = isDecimal ? (eased * target).toFixed(1) : Math.floor(eased * target);
-        el.textContent = current + suffix;
-        if (progress < 1) requestAnimationFrame(update);
-      }
-      requestAnimationFrame(update);
-    }
-
-    // ── Trigger counters when hero stats visible ──
-    const statsObserver = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        const nums = document.querySelectorAll('.hero-stat-num');
-        const data = [{val:120,suf:'K+'},{val:50,suf:'+'},{val:3.2,suf:'B'},{val:98,suf:'%'}];
-        nums.forEach((el, i) => {
-          const textEl = el.cloneNode(false);
-          textEl.innerHTML = '';
-          const span = el.querySelector('span');
-          if (span) {
-            const pre = el.childNodes[0]?.nodeValue;
-            animateCounter(el, data[i].val);
-            setTimeout(() => { el.appendChild(span); }, 0);
-          }
-        });
-        statsObserver.unobserve(entry.target);
-      }
-    }, { threshold: 0.5 });
-    const heroStats = document.querySelector('.hero-stats');
-    if (heroStats) statsObserver.observe(heroStats);
-
-    // ── Parallax on hero blobs ──
-    window.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 20;
-      document.querySelectorAll('.hero .blob').forEach((b, i) => {
-        const factor = (i + 1) * 0.4;
-        b.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-      });
-    }, { passive: true });
-  </script>
 </body>
 </html>
